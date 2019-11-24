@@ -2,6 +2,7 @@ import * as operationsRedux from '@mfs-redux/forms/operations';
 import * as selectorsRedux from '@mfs-redux/forms/selectors';
 import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
 import { uuid } from '@mfs-lib/uuid';
+import { flatten, unflatten } from '@mfs-lib/flat';
 
 const asThunk = (f, dispatchConnector, stateConnector) => {
   return (dispatch, getState) => {
@@ -29,12 +30,14 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
   addFormToRegistry(formId, {
     formValidator,
     initialState: initial,
-    initialFields: Object.entries(initial).reduce((acc, [key, val]) => {
-      acc[key] = {
-        value: val,
-      };
-      return acc;
-    }, {}),
+    initialFields: unflatten(
+      Object.entries(flatten(initial)).reduce((acc, [key, val]) => {
+        acc[key] = {
+          value: val,
+        };
+        return acc;
+      }, {}),
+    ),
   });
 
   return {
@@ -66,28 +69,12 @@ export const updateForm = ({ formId = uuid(), formValidator, initialState }) => 
   };
 };
 
-export const addYUPSchemaValidator = (schema) => (formData) => {
-  try {
-    schema.validateSync(formData, { abortEarly: false });
-  } catch (ex) {
-    // it is invalid
-    return (
-      ex &&
-      ex.inner &&
-      ex.inner.reduce((acc, validationError) => {
-        acc[validationError.path] = validationError.message;
-        return acc;
-      }, {})
-    );
-  }
-  // it is valid
-  return undefined;
-};
-
 export const unregisterForm = ({ formId }) => {
   if (formId) {
     removeFormFromRegistry(formId);
   }
 };
+
+export * from './validators/yup';
 
 export default registerForm;

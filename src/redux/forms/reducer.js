@@ -2,89 +2,105 @@ import { flatten } from '@mfs-lib/flat';
 import { getFields } from '@mfs-lib/get-fields';
 import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, RESET_FORM } from './types';
 
-export const reducer = (state = {}, action) => {
+export const myFormStateReducer = (state = {}, action) => {
   const formId = action.options && action.options.formId;
-  const previousFormState = state[formId];
 
+  if (!formId) {
+    return state;
+  }
+
+  const formState = state[formId];
+  const nextFormState = formReducer(formState, action);
+
+  if (nextFormState === undefined) {
+    delete state[formId];
+    return state;
+  }
+
+  state[formId] = nextFormState;
+  return state;
+};
+
+export const formReducer = (state = {}, action) => {
   switch (action.type) {
-    case VALIDATED_FORM:
+    case VALIDATED_FORM: {
       const isInvalid = (action.payload && Object.keys(action.payload).length > 0) || false;
 
-      state[formId] = {
-        ...previousFormState,
+      const nextState = {
+        ...state,
+        errors: flatten(action.payload),
+        isInvalid,
+        isValid: !isInvalid,
+
+        isSubmittable: !!state.isTouched && !!state.isValid,
       };
 
-      state[formId].errors = flatten(action.payload);
-      state[formId].isInvalid = isInvalid;
-      state[formId].isValid = !isInvalid;
-      state[formId].fields = getFields(state[formId]);
-      state[formId].isSubmittable = !!state[formId].isTouched && !!state[formId].isValid;
-
-      return state;
-
-    case UPDATE_FORM:
+      nextState.fields = getFields(nextState);
+      return nextState;
+    }
+    case UPDATE_FORM: {
       if (!!action.payload) {
         const flattenData = flatten(action.payload);
 
-        state[formId] = {
-          ...previousFormState,
-        };
-
-        Object.assign(state[formId].data, flattenData);
-
-        state[formId].dirtyFields = state[formId].dirtyFields || {};
+        const dirtyFields = state.dirtyFields || {};
 
         Object.assign(
-          state[formId].dirtyFields,
+          dirtyFields,
           Object.keys(flattenData).reduce((acc, key) => {
             acc[key] = true;
             return acc;
           }, {}),
         );
 
-        state[formId].isPristine = false;
-        state[formId].isTouched = true;
-        state[formId].isSubmitted = false;
-        state[formId].isSubmittable = !!state[formId].isTouched && !!state[formId].isValid;
-        state[formId].fields = getFields(state[formId], true);
+        const nextState = {
+          ...state,
+          data: Object.assign(state.data, flattenData),
+          dirtyFields,
+          isPristine: false,
+          isTouched: true,
+          isSubmitted: false,
+          isSubmittable: !!state.isTouched && !!state.isValid,
+        };
+
+        nextState.fields = getFields(nextState, true);
+        return nextState;
       }
 
       return state;
+    }
 
     case INITIALIZE_FORM:
-    case RESET_FORM:
-      state[formId] = {
-        ...previousFormState,
+    case RESET_FORM: {
+      const nextState = {
+        ...state,
+        data: flatten(action.payload),
+        isPristine: true,
+        isInitialized: true,
+        isSubmitted: false,
+        isSubmittable: !!state.isTouched && !!state.isValid,
+        isTouched: false,
       };
 
-      state[formId].data = flatten(action.payload);
-      state[formId].isPristine = true;
-      state[formId].isInitialized = true;
-      state[formId].isSubmitted = false;
-      state[formId].isSubmittable = !!state[formId].isTouched && !!state[formId].isValid;
-      state[formId].isTouched = false;
-      state[formId].fields = getFields(state[formId], true);
+      nextState.fields = getFields(nextState, true);
+      return nextState;
+    }
 
-      return state;
-
-    case SUBMIT_FORM:
-      state[formId] = {
-        ...previousFormState,
+    case SUBMIT_FORM: {
+      const nextState = {
+        ...state,
         isSubmitted: true,
       };
 
-      state[formId].fields = getFields(state[formId]);
-
-      return state;
+      nextState.fields = getFields(nextState);
+      return nextState;
+    }
 
     case CLEAR_FORM:
-      state[formId] = undefined;
-
-      return state;
+      return undefined;
 
     default:
       return state;
   }
 };
 
-export default reducer;
+export default myFormStateReducer;

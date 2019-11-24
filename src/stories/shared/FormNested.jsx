@@ -4,9 +4,7 @@ import Button from '@material-ui/core/Button';
 
 const FormNested = ({
   formState: {
-    fields: {
-      profileOne,
-    },
+    fields: { profileOne, profileTwo },
     isSubmittable,
     isPristine,
     isSubmitted,
@@ -25,7 +23,7 @@ const FormNested = ({
           <TextField
             error={profileOne.name.showError}
             required
-            id="name"
+            id={profileOne.name.path}
             label="Name"
             value={profileOne.name.value}
             margin="normal"
@@ -35,7 +33,7 @@ const FormNested = ({
           <TextField
             error={profileOne.familyName.showError}
             required
-            id="familyName"
+            id={profileOne.familyName.path}
             label="Family Name"
             value={profileOne.familyName.value}
             margin="normal"
@@ -45,7 +43,7 @@ const FormNested = ({
           <TextField
             error={profileOne.alias.showError}
             required
-            id="alias"
+            id={profileOne.alias.path}
             label="Alias"
             value={profileOne.alias.value}
             margin="normal"
@@ -55,7 +53,7 @@ const FormNested = ({
           <TextField
             error={profileOne.favoriteColor.showError}
             required
-            id="favoriteColor"
+            id={profileOne.favoriteColor.path}
             label="Favorite Color"
             value={profileOne.favoriteColor.value}
             margin="normal"
@@ -65,50 +63,50 @@ const FormNested = ({
         </div>
       </div>
       <br></br>
-      {/* <div>
+      <div>
         <div>
           <TextField
-            error={name.showError}
+            error={profileTwo.name.showError}
             required
-            id="name"
+            id={profileTwo.name.path}
             label="Name"
-            value={name.value}
+            value={profileTwo.name.value}
             margin="normal"
             onChange={onFieldChangeHandler}
             disabled={isSubmitted}
           />
           <TextField
-            error={familyName.showError}
+            error={profileTwo.familyName.showError}
             required
-            id="familyName"
+            id={profileTwo.familyName.path}
             label="Family Name"
-            value={familyName.value}
+            value={profileTwo.familyName.value}
             margin="normal"
             onChange={onFieldChangeHandler}
             disabled={isSubmitted}
           />
           <TextField
-            error={alias.showError}
+            error={profileTwo.alias.showError}
             required
-            id="alias"
+            id={profileTwo.alias.path}
             label="Alias"
-            value={alias.value}
+            value={profileTwo.alias.value}
             margin="normal"
             onChange={onFieldChangeHandler}
             disabled={isSubmitted}
           />
           <TextField
-            error={favoriteColor.showError}
+            error={profileTwo.favoriteColor.showError}
             required
-            id="favoriteColor"
+            id={profileTwo.favoriteColor.path}
             label="Favorite Color"
-            value={favoriteColor.value}
+            value={profileTwo.favoriteColor.value}
             margin="normal"
             onChange={onFieldChangeHandler}
             disabled={isSubmitted}
           />
         </div>
-      </div> */}
+      </div>
       <br></br>
 
       <div>

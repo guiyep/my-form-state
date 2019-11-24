@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import { unflatten } from '@mfs-lib/flat';
 import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
@@ -22,7 +23,7 @@ export const validateForm = ({ formId }) => (dispatch, getState) => {
 
   const formState = getFormIdState({ formId }, getState());
 
-  const errors = validatorFunction(formState.data);
+  const errors = validatorFunction(unflatten(formState.data));
 
   if (!!errors) {
     dispatch(validateFormAction({ errors, formId }));

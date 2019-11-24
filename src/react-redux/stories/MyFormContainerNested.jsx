@@ -20,7 +20,7 @@ const MyFormContainer = ({ initialState, emptyState, schema }) => {
       onSubmit={submitForm}
       onClear={onEmptyHandler}
       onReset={resetForm}
-    ></FormNested>
+    />
   );
 };
 

@@ -21,6 +21,7 @@ export const getFields = (formState, updateValueOnly = false) =>
           isValid: !formState.errors || !error,
           isInvalid: !!formState.errors && !!error,
           showError: (isTouched || isSubmitted) && !!error,
+          path: fieldName,
         };
         return acc;
       }

@@ -7,16 +7,6 @@ export const addFormToRegistry = (formId, data) => {
   myFormRegistry[formId] = data;
 };
 
-export const updateFormToRegistry = (formId, data) => {
-  if (myFormRegistry[formId]) {
-    throw new Error(`the form ${formId} is already registered, please choose a different name`);
-  }
-  myFormRegistry[formId] = {
-    ...myFormRegistry[formId],
-    ...data,
-  };
-};
-
 export const removeFormFromRegistry = (formId) => {
   delete myFormRegistry[formId];
 };

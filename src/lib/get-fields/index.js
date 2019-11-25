@@ -1,4 +1,5 @@
 import { unflatten } from '../flat';
+import get from 'lodash.get';
 
 export const getFields = (formState, updateValueOnly = false) =>
   formState &&
@@ -26,11 +27,7 @@ export const getFields = (formState, updateValueOnly = false) =>
         return acc;
       }
 
-      let updateValueField = {};
-
-      if (formState.fields && formState.fields[fieldName]) {
-        updateValueField = formState.fields[fieldName];
-      }
+      const updateValueField = get(formState.fields, fieldName) || {};
 
       // before validating only update the value
       updateValueField.value = formState.data[fieldName];

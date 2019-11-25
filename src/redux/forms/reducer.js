@@ -31,7 +31,6 @@ export const formReducer = (state = {}, action) => {
         errors: flatten(action.payload),
         isInvalid,
         isValid: !isInvalid,
-
         isSubmittable: !!state.isTouched && !!state.isValid,
       };
 
@@ -42,25 +41,24 @@ export const formReducer = (state = {}, action) => {
       if (!!action.payload) {
         const flattenData = flatten(action.payload);
 
-        const dirtyFields = state.dirtyFields || {};
+        const nextState = {
+          ...state,
+          isPristine: false,
+          isTouched: true,
+          isSubmitted: false,
+          isSubmittable: !!state.isTouched && !!state.isValid,
+          dirtyFields: state.dirtyFields || {},
+        };
 
         Object.assign(
-          dirtyFields,
+          nextState.dirtyFields,
           Object.keys(flattenData).reduce((acc, key) => {
             acc[key] = true;
             return acc;
           }, {}),
         );
 
-        const nextState = {
-          ...state,
-          data: Object.assign(state.data, flattenData),
-          dirtyFields,
-          isPristine: false,
-          isTouched: true,
-          isSubmitted: false,
-          isSubmittable: !!state.isTouched && !!state.isValid,
-        };
+        Object.assign(state.data, flattenData);
 
         nextState.fields = getFields(nextState, true);
         return nextState;

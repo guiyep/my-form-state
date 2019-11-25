@@ -47,28 +47,6 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
   };
 };
 
-export const updateForm = ({ formId = uuid(), formValidator, initialState }) => {
-  // protect the initial state
-  const initial = Object.freeze({ ...initialState });
-
-  addFormToRegistry(formId, {
-    formValidator,
-    initialState: initial,
-    initialFields: Object.entries(initial).reduce((acc, [key, val]) => {
-      acc[key] = {
-        value: val,
-      };
-      return acc;
-    }, {}),
-  });
-
-  return {
-    operations: scopeModule(operationsRedux, { formId }, asThunk),
-    selectors: scopeModule(selectorsRedux, { formId }),
-    formId,
-  };
-};
-
 export const unregisterForm = ({ formId }) => {
   if (formId) {
     removeFormFromRegistry(formId);

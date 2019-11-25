@@ -1,13 +1,9 @@
 import { getFormFromRegistry } from '@mfs-registry';
-import memoize from 'lodash.memoize';
+import memoize from 'memoize-one';
 
 export const getFormIdState = ({ formId }, state) => (state && state.forms && state.forms[formId]) || {};
 
-const getMemoizeForm = memoize((form) => {});
-
-export const getForm = ({ formId }) => (state) => {
-  const thisFormIdState = getFormIdState({ formId }, state) || {};
-
+const memoizeGetForm = memoize((formId, thisFormIdState) => {
   const { initialFields, initialState } = getFormFromRegistry(formId);
 
   return {
@@ -31,4 +27,9 @@ export const getForm = ({ formId }) => (state) => {
 
     fields: thisFormIdState.fields || initialFields || {},
   };
+});
+
+export const getForm = ({ formId }) => (state) => {
+  const thisFormIdState = getFormIdState({ formId }, state) || {};
+  return memoizeGetForm(formId, thisFormIdState);
 };

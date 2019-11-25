@@ -18,7 +18,8 @@ export const validateForm = ({ formId }) => (dispatch, getState) => {
   const validatorFunction = formData.formValidator;
 
   if (!validatorFunction) {
-    return;
+    dispatch(validateFormAction({ errors: undefined, formId }));
+    return true;
   }
 
   const formState = getFormIdState({ formId }, getState());
@@ -45,19 +46,19 @@ export const updateField = ({ formId, field, value }) => (dispatch) => {
   );
 };
 
+const validateFormDebounced = debounce(
+  (formId, dispatch) => {
+    dispatch(validateForm({ formId }));
+  },
+  // this number need to be bellow 100 so it is not noticeable to the user
+  100,
+  { leading: false, trailing: true },
+);
+
 export const updateForm = ({ formId, data }) => (dispatch) => {
   dispatch(updateFormAction({ data, formId }));
 
-  // debounce the validation of the form so we validate only once on multiple inputs
-  const validateFormDebounced = debounce(
-    () => {
-      dispatch(validateForm({ formId }));
-    },
-    // this number need to be bellow 100 so it is not noticeable to the user
-    10,
-  );
-
-  validateFormDebounced();
+  validateFormDebounced(formId, dispatch);
 };
 
 export const submitForm = ({ formId }) => async (dispatch) => {

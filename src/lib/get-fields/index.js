@@ -1,5 +1,5 @@
 import { unflatten } from '../flat';
-import get from 'lodash.get';
+import { get } from '../get';
 
 export const getFields = (formState, updateValueOnly = false) =>
   formState &&

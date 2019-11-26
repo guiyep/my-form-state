@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce';
+import { debounce } from '@mfs-lib/debounce';
 import { unflatten } from '@mfs-lib/flat';
 import { getFormFromRegistry } from '@mfs-registry';
 

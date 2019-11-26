@@ -1,5 +1,5 @@
 import { getFormFromRegistry } from '@mfs-registry';
-import memoize from 'memoize-one';
+import { memoize } from '@mfs-lib/memoize';
 
 export const getFormIdState = ({ formId }, state) => (state && state.forms && state.forms[formId]) || {};
 

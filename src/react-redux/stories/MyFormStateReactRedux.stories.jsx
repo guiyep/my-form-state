@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withReduxProvider } from '../../stories/shared/withReduxProvider';
-import Form from './MyFormContainer';
-import FormNested from './MyFormContainerNested';
+import Form from './MyForm.container';
+import FormNested from './MyFormNested.container';
 import forms from '../../redux/forms/reducer';
 import * as YUP from 'yup';
 

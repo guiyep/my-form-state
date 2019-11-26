@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
 import { addYUPSchemaValidator } from '../../core';
-import FormNested from '../../stories/shared/FormNested';
+import Form from '../../stories/shared/Form';
 
 const MyFormContainer = ({ initialState, emptyState, schema }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
@@ -14,7 +14,7 @@ const MyFormContainer = ({ initialState, emptyState, schema }) => {
   const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }));
 
   return (
-    <FormNested
+    <Form
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}

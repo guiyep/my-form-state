@@ -3,7 +3,7 @@ import { getFields } from '@mfs-lib/get-fields';
 import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, RESET_FORM } from './types';
 
 export const myFormStateReducer = (state = {}, action) => {
-  const formId = action.options && action.options.formId;
+  const formId = action && action.options && action.options.formId;
 
   if (!formId) {
     return state;

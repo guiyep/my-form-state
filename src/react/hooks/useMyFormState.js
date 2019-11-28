@@ -1,5 +1,5 @@
-import { useMemo, useEffect, useCallback, useReducer } from 'react';
-import myFormStateReducer from '../../redux/forms/reducer';
+import { useMemo, useEffect, useCallback } from 'react';
+import myFormStateReducer from '../reducer';
 import { registerForm, unregisterForm } from '@mfs-core';
 import { useThunkReducer } from '../hooks/useThunkReducer';
 

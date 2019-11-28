@@ -7,12 +7,7 @@ import { flatten, unflatten } from '@mfs-lib/flat';
 const scopeModule = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
     acc[name] = (args = {}) => {
-      const { dispatch, state, ...moreArgs } = args;
-      if (!!dispatch && !!state) {
-        return moduleMap[name]({ ...originalArgs, ...moreArgs })(dispatch, () => state);
-      }
-
-      return moduleMap[name]({ ...originalArgs, ...moreArgs });
+      return moduleMap[name]({ ...originalArgs, ...args });
     };
     return acc;
   }, {});

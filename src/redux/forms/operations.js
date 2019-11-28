@@ -22,7 +22,7 @@ export const validateForm = ({ formId }) => (dispatch, getState) => {
     return true;
   }
 
-  const formState = getFormIdState({ formId }, getState());
+  const formState = getFormIdState({ formId })(getState());
 
   const errors = validatorFunction(unflatten(formState.data));
 

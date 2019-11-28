@@ -1,7 +1,8 @@
 import { getFormFromRegistry } from '@mfs-registry';
 import { memoize } from '@mfs-lib/memoize';
 
-export const getFormIdState = ({ formId }, state) => (state && state.forms && state.forms[formId]) || {};
+// TODO review this, brute force first
+export const getFormIdState = ({ formId }) => (state) => (state && state.forms && state.forms[formId]) || {};
 
 const memoizeGetForm = memoize((formId, thisFormIdState) => {
   const { initialFields, initialState } = getFormFromRegistry(formId);
@@ -30,6 +31,6 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
 });
 
 export const getForm = ({ formId }) => (state) => {
-  const thisFormIdState = getFormIdState({ formId }, state) || {};
+  const thisFormIdState = getFormIdState({ formId })(state) || {};
   return memoizeGetForm(formId, thisFormIdState);
 };

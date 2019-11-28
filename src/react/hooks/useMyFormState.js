@@ -3,7 +3,7 @@ import reducer from '../redux/reducer';
 import { registerForm, unregisterForm } from '@mfs-core';
 import { useThunkReducer } from '../hooks/useThunkReducer';
 
-export const useMyFormState = ({ formId, formValidator, initialState, clearOnUnmount = true }) => {
+export const useMyFormState = ({ formId, formValidator, initialState }) => {
   const {
     operations,
     selectors: { getForm },
@@ -24,9 +24,7 @@ export const useMyFormState = ({ formId, formValidator, initialState, clearOnUnm
     dispatch(operations.initializeForm({ initialState }));
     return () => {
       unregisterForm({ formId: formInfo.formId, dispatch, state });
-      if (clearOnUnmount) {
-        dispatch(operations.clearForm({ dispatch, state }));
-      }
+      dispatch(operations.clearForm({ dispatch, state }));
     };
   }, []);
 

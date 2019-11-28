@@ -15,7 +15,16 @@ export const reducer = (state = {}, action) => {
     return state;
   }
 
-  return nextFormState !== formState ? { forms: { [formId]: nextFormState } } : state;
+  const nextState = nextFormState !== formState ? { forms: { [formId]: nextFormState } } : state;
+
+  // THIS WILL ONLY BE PRESENT IN DEV MODE ON STORYBOOK, IN PRODUCTION BUILD WILL BE REMOVED BY ROLLUP
+  window.__DON_T_USE_PUSH_REDUX_CHANGE_TO_STORYBOOK(action.type, {
+    originalState: formState,
+    payload: action.payload,
+    resultState: nextFormState,
+  });
+
+  return nextState;
 };
 
 export default reducer;

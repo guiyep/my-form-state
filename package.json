@@ -108,7 +108,8 @@
   },
   "peerDependencies": {
     "react": "16.11.0",
-    "react-dom": "16.11.0"
+    "react-dom": "16.11.0",
+    "react-redux": "7.1.1"
   },
   "dependencies": {
     "flat": "5.0.0",

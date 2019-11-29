@@ -8,6 +8,7 @@ import gzipPlugin from 'rollup-plugin-gzip';
 import json from 'rollup-plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import importAlias from 'rollup-plugin-import-alias';
+import strip from '@rollup/plugin-strip';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -45,6 +46,9 @@ export const rollupBase = {
         '@mfs-core': './src/core',
       },
       Extensions: ['js'],
+    }),
+    strip({
+      functions: ['window.__DON_T_USE_PUSH_REDUX_CHANGE_TO_STORYBOOK'],
     }),
     isProd &&
       terser({

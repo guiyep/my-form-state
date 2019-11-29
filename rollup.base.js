@@ -5,32 +5,13 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import gzipPlugin from 'rollup-plugin-gzip';
-import cleaner from 'rollup-plugin-cleaner';
 import json from 'rollup-plugin-json';
 import { terser } from 'rollup-plugin-terser';
-
-import pkg from './package.json';
+import importAlias from 'rollup-plugin-import-alias';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-export default {
-  input: 'src/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true,
-      compact: true,
-      exports: 'named',
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true,
-      compact: true,
-      exports: 'named',
-    },
-  ],
+export const rollupBase = {
   plugins: [
     external(),
     postcss({
@@ -43,7 +24,12 @@ export default {
     resolve({
       extensions: ['.mjs', '.js', '.jsx', '.json'],
     }),
-    commonjs(),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        'node_modules/react-is/index.js': ['isValidElementType', 'isContextConsumer'],
+      },
+    }),
     replace({
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
@@ -60,10 +46,6 @@ export default {
       },
       Extensions: ['js'],
     }),
-    isProd &&
-      cleaner({
-        targets: ['./dist/'],
-      }),
     isProd &&
       terser({
         sourcemap: true,

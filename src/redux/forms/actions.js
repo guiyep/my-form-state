@@ -2,13 +2,11 @@ import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, 
 
 /**
  * A Redux Action.
- *
- * @module my-form-state/redux
- * @typedef {object} Action.
- * @property {type} type - The action type.
+ * @typedef {object} Action
+ * @property {string} type - The action type.
  * @property {object} payload - The changes to be sent to the reducer.
- * @property {object} options.
- * @property {formId} options.formId - The unique form Id.
+ * @property {object} options
+ * @property {object} options.formId - The unique form Id.
  */
 
 /**
@@ -16,11 +14,11 @@ import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, 
  * handled by the operations.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
- * @param {object} [Arguments.errors] - key value pair { [field] : error } with the changes.
+ * @param {Object} Arguments - Arguments as object.
+ * @param {Object} [Arguments.errors] - key value pair { [field] : error } with the changes.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsy.
  *
  * @example
  *
@@ -45,8 +43,8 @@ export const validateForm = ({ errors, formId }) => ({
  * Will also update all the isSubmitted, isValid, etc. props of the form and the fields based on the change.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
- * @param {object} [Arguments.data] - key value pair { [field] : value } with the changes.
+ * @param {Object} Arguments - Arguments as object.
+ * @param {Object} [Arguments.data] - key value pair { [field] : value } with the changes.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -74,7 +72,7 @@ export const updateForm = ({ data, formId }) => ({
  * Will also update all the isSubmitted, isValid, etc. props of the form and the fields based on the change.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
+ * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -98,8 +96,8 @@ export const submitForm = ({ formId }) => ({
  * component has been mounted. It is a good time for sending your initial form values.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
- * @param {object} [Arguments.initialState] - your form initial state as { [props] : value }.
+ * @param {Object} Arguments - Arguments as object.
+ * @param {Object} [Arguments.initialState] - your form initial state as { [props] : value }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -125,7 +123,7 @@ export const initializeForm = ({ initialState, formId }) => ({
  * This remove all references to the form in your store. Normally will be executed when your component was unmounted.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
+ * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -149,8 +147,8 @@ export const clearForm = ({ formId }) => ({
  * form after was submitted. You can re-initialize the form with another initial state if you want.
  *
  * @module my-form-state/redux
- * @param {object} Arguments - Arguments as object.
- * @param {object} [Arguments.initialState] - your form initial state as { [props] : value }.
+ * @param {Object} Arguments - Arguments as object.
+ * @param {Object} [Arguments.initialState] - your form initial state as { [props] : value }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy

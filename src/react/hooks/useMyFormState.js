@@ -77,5 +77,3 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
 
   return [thisForm, { resetForm, updateForm, updateField, submitForm }];
 };
-
-useMyFormState();

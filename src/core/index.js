@@ -4,7 +4,7 @@ import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
 
-const scopeModule = (moduleMap, originalArgs) => {
+const scopeModuleToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
     acc[name] = (args = {}) => {
       return moduleMap[name]({ ...originalArgs, ...args });
@@ -31,8 +31,8 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
   });
 
   return {
-    operations: scopeModule(operationsRedux, { formId }),
-    selectors: scopeModule(selectorsRedux, { formId }),
+    operations: scopeModuleToForm(operationsRedux, { formId }),
+    selectors: scopeModuleToForm(selectorsRedux, { formId }),
     formId,
   };
 };

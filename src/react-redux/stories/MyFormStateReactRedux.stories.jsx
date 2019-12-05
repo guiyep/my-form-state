@@ -25,7 +25,7 @@ storiesOf(`React-Redux/MyFormState`, module)
       maxPropsIntoLine: 1,
     },
   })
-  .add('Basic', () => {
+  .add('Basic - YUP Async Validation', () => {
     const schema = YUP.object().shape({
       name: YUP.string().required(),
       familyName: YUP.string().required(),
@@ -38,7 +38,7 @@ storiesOf(`React-Redux/MyFormState`, module)
 
     return <Form schema={schema} initialState={initialState} emptyState={emptyState} />;
   })
-  .add('Nested state', () => {
+  .add('Nested state- YUP Sync validation', () => {
     const schema = YUP.object().shape({
       profileOne: YUP.object().shape({
         name: YUP.string().required(),

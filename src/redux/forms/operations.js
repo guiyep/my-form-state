@@ -34,7 +34,7 @@ import {
  *     }))
  */
 
-export const validateForm = ({ formId }) => (dispatch, getState) => {
+export const validateForm = ({ formId }) => async (dispatch, getState) => {
   if (!formId || !dispatch || !getState) {
     throw new Error('you need to pass the formId, dispatch, getState');
   }
@@ -49,7 +49,7 @@ export const validateForm = ({ formId }) => (dispatch, getState) => {
 
   const formState = getFormIdState({ formId })(getState());
 
-  const errors = validatorFunction(unflatten(formState.data));
+  const errors = await validatorFunction(unflatten(formState.data));
 
   if (!!errors) {
     dispatch(validateFormAction({ errors, formId }));

@@ -1,8 +1,13 @@
 import * as operationsRedux from '@mfs-redux/forms/operations';
 import * as selectorsRedux from '@mfs-redux/forms/selectors';
-import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
+import {
+  addFormToRegistry,
+  removeFormFromRegistry,
+  getFormFromRegistry as getFormFromInternalRegistry,
+} from '@mfs-registry';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
+import { validateParamAndThrow } from '@mfs-lib/validate-param';
 
 const scopeModuleToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
@@ -14,6 +19,10 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
 };
 
 export const registerForm = ({ formId = uuid(), formValidator, initialState }) => {
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(formValidator, 'function', 'formValidator', false);
+  validateParamAndThrow(initialState, 'function', 'initialState', false);
+
   // protect the initial state
   const initial = Object.freeze({ ...initialState });
 
@@ -38,8 +47,16 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
 };
 
 export const unregisterForm = ({ formId }) => {
-  if (formId) {
-    removeFormFromRegistry(formId);
+  validateParamAndThrow(formId, 'string', 'formId');
+  removeFormFromRegistry(formId);
+};
+
+export const getFormFromRegistry = ({ formId }) => {
+  validateParamAndThrow(formId, 'string', 'formId');
+
+  const form = getFormFromInternalRegistry(formId);
+  if (!form) {
+    throw new Error(`the formId ${formId} is not valid and doesn't exists`);
   }
 };
 

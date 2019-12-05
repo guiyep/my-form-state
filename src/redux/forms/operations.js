@@ -1,5 +1,6 @@
 import { debounce } from '@mfs-lib/debounce';
 import { unflatten } from '@mfs-lib/flat';
+import { validateParamAndThrow } from '@mfs-lib/validate-param';
 import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
@@ -35,9 +36,9 @@ import {
  */
 
 export const validateForm = ({ formId }) => async (dispatch, getState) => {
-  if (!formId || !dispatch || !getState) {
-    throw new Error('you need to pass the formId, dispatch, getState');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(getState, 'function', 'getState');
 
   const formData = getFormFromRegistry(formId);
   const validatorFunction = formData.formValidator;
@@ -81,9 +82,9 @@ export const validateForm = ({ formId }) => async (dispatch, getState) => {
  *     }))
  */
 export const updateField = ({ formId, field, value }) => (dispatch) => {
-  if (!formId || !field || !dispatch) {
-    throw new Error('you need to pass the formId, field and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(field, 'string', 'field');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
 
   dispatch(
     updateForm({
@@ -126,9 +127,9 @@ const validateFormDebounced = debounce(
  */
 
 export const updateForm = ({ formId, data }) => (dispatch) => {
-  if (!formId || !data || !dispatch) {
-    throw new Error('you need to pass the formId, data and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(data, 'object', 'data');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
 
   dispatch(updateFormAction({ data, formId }));
 
@@ -153,9 +154,8 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  */
 
 export const submitForm = ({ formId }) => (dispatch) => {
-  if (!formId || !dispatch) {
-    throw new Error('you need to pass the formId and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
 
   dispatch(submitFormAction({ formId }));
 
@@ -182,9 +182,9 @@ export const submitForm = ({ formId }) => (dispatch) => {
  */
 
 export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
-  if (!formId || !dispatch) {
-    throw new Error('you need to pass the formId and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(initialState, 'object', 'initialState');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
 
   dispatch(initializeFormAction({ initialState, formId }));
 
@@ -209,9 +209,9 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  */
 
 export const clearForm = ({ formId }) => (dispatch) => {
-  if (!formId || !dispatch) {
-    throw new Error('you need to pass the formId and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
+
   return dispatch(clearFormAction({ formId }));
 };
 
@@ -233,9 +233,10 @@ export const clearForm = ({ formId }) => (dispatch) => {
  */
 
 export const resetForm = ({ formId, initialState }) => (dispatch) => {
-  if (!formId || !dispatch) {
-    throw new Error('you need to pass the formId and dispatch');
-  }
+  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(initialState, 'object', 'initialState', false);
+  validateParamAndThrow(dispatch, 'function', 'dispatch');
+
   const formData = getFormFromRegistry(formId);
   dispatch(clearFormAction({ formId }));
   dispatch(resetFormAction({ formId, initialState: initialState || formData.initialState }));

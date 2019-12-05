@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerForm, unregisterForm } from '@mfs-core';
+import { registerForm, unregisterForm, getFormFromRegistry } from '@mfs-core';
 
 /**
  * @typedef {object} formState
@@ -18,6 +18,7 @@ import { registerForm, unregisterForm } from '@mfs-core';
  * - updateForm
  * - submitForm : Promise. (will be resolve when the form is locked)
  * - updateField
+ * - clearForm
  *
  * @module my-form-state/react-redux
  *
@@ -26,6 +27,7 @@ import { registerForm, unregisterForm } from '@mfs-core';
  * @param {Function} [Arguments.formValidator] - the form validator.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
  * @param {boolean} [Arguments.clearOnUnmount=true] - the unique form id indicator.
+ * @param {isGlobalForm} [Arguments.isGlobalForm=false] - tells if the form is defined global or not. If that is the case we will just reuse it.
  * @return {MyFormStateHook} hook to be use in a react component.
  *
  * @example
@@ -36,14 +38,20 @@ import { registerForm, unregisterForm } from '@mfs-core';
  *});
  */
 
-export const useMyFormState = ({ formId, formValidator, initialState, clearOnUnmount = true }) => {
+export const useMyFormState = ({
+  formId,
+  formValidator,
+  initialState,
+  clearOnUnmount = true,
+  isGlobalForm = false,
+}) => {
   const {
     operations,
     selectors: { getForm },
     ...formInfo
   } = useMemo(
     () =>
-      registerForm({
+      ((!isGlobalForm && registerForm) || getFormFromRegistry)({
         formId,
         formValidator,
         initialState,
@@ -76,6 +84,8 @@ export const useMyFormState = ({ formId, formValidator, initialState, clearOnUnm
     operations.updateField,
   ]);
 
+  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
+
   return [
     formState,
     {
@@ -83,6 +93,7 @@ export const useMyFormState = ({ formId, formValidator, initialState, clearOnUnm
       updateForm,
       updateField,
       submitForm,
+      clearForm,
     },
   ];
 };

@@ -19,6 +19,7 @@ import { useThunkReducer } from '../hooks/useThunkReducer';
  * - updateForm
  * - submitForm : Promise. (will be resolve when the form is locked)
  * - updateField
+ * - clearForm
  *
  * @module my-form-state/react
  *
@@ -73,7 +74,18 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
     operations.updateField,
   ]);
 
+  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
+
   const thisForm = getForm()(state);
 
-  return [thisForm, { resetForm, updateForm, updateField, submitForm }];
+  return [
+    thisForm,
+    {
+      resetForm,
+      updateForm,
+      updateField,
+      submitForm,
+      clearForm,
+    },
+  ];
 };

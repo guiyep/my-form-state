@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import reducer from '../redux/reducer';
-import { registerForm, unregisterForm } from '@mfs-core';
+import { registerForm } from '@mfs-core';
 import { useThunkReducer } from '../hooks/useThunkReducer';
 
 /**
@@ -41,7 +41,7 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
   const {
     operations,
     selectors: { getForm },
-    ...formInfo
+    unregister,
   } = useMemo(
     () =>
       registerForm({
@@ -57,7 +57,7 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
   useEffect(() => {
     dispatch(operations.initializeForm({ initialState }));
     return () => {
-      unregisterForm({ formId: formInfo.formId, dispatch, state });
+      unregister();
       dispatch(operations.clearForm({ dispatch, state }));
     };
   }, []);

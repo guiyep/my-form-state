@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerForm, unregisterForm, getFormFromRegistry } from '@mfs-core';
+import { registerForm, getFormFromRegistry } from '@mfs-core';
 
 /**
  * @typedef {object} formState
@@ -48,7 +48,7 @@ export const useMyFormState = ({
   const {
     operations,
     selectors: { getForm },
-    ...formInfo
+    unregister,
   } = useMemo(
     () =>
       ((!isGlobalForm && registerForm) || getFormFromRegistry)({
@@ -65,7 +65,7 @@ export const useMyFormState = ({
   useEffect(() => {
     dispatch(operations.initializeForm({ initialState }));
     return () => {
-      unregisterForm({ formId: formInfo.formId });
+      unregister();
       if (clearOnUnmount) {
         dispatch(operations.clearForm());
       }

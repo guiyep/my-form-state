@@ -28,6 +28,27 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  */
 
 /**
+ * Remove a registered form from the forms registry.
+ *
+ * @module my-form-state/core
+ * @param {Object} Arguments - Arguments as object.
+ * @param {string} [Arguments.formId] - the unique form id indicator.
+ * @return undefined
+ * @throws if formId is falsy
+ *
+ * @example
+ *
+ * unregisterForm({
+ *    formId,
+ *});
+ */
+
+const unregisterForm = ({ formId }) => {
+  validateParamAndThrow(formId, 'string', 'formId');
+  removeFormFromRegistry(formId);
+};
+
+/**
  * Register a form and expose all the functionality available for being used in redux.
  *
  * @module my-form-state/core
@@ -39,7 +60,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  *
  * @example
  *
- *const { formId, operations, selectors } = registerForm({
+ *const { formId, operations, selectors, unregister } = registerForm({
  *    initialState: {},
  *    formValidator: addYUPSyncSchemaValidator(schema),
  *});
@@ -70,30 +91,8 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
     operations: scopeModuleToForm(operationsRedux, { formId }),
     selectors: scopeModuleToForm(selectorsRedux, { formId }),
     formId,
+    unregister: ({ formId }) => unregisterForm(formId),
   };
-};
-
-registerForm();
-
-/**
- * Remove a registered form from the forms registry.
- *
- * @module my-form-state/core
- * @param {Object} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id indicator.
- * @return undefined
- * @throws if formId is falsy
- *
- * @example
- *
- * unregisterForm({
- *    formId,
- *});
- */
-
-export const unregisterForm = ({ formId }) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  removeFormFromRegistry(formId);
 };
 
 /**

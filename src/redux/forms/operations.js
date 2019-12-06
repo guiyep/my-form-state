@@ -5,6 +5,8 @@ import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
 
+const IS_NOT_REQUIRED = false;
+
 import {
   validateForm as validateFormAction,
   updateForm as updateFormAction,
@@ -234,7 +236,7 @@ export const clearForm = ({ formId }) => (dispatch) => {
 
 export const resetForm = ({ formId, initialState }) => (dispatch) => {
   validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(initialState, 'object', 'initialState', false);
+  validateParamAndThrow(initialState, 'object', 'initialState', IS_NOT_REQUIRED);
   validateParamAndThrow(dispatch, 'function', 'dispatch');
 
   const formData = getFormFromRegistry(formId);

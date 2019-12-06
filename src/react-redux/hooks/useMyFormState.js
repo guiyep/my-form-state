@@ -27,14 +27,14 @@ import { registerForm, unregisterForm, getFormFromRegistry } from '@mfs-core';
  * @param {Function} [Arguments.formValidator] - the form validator.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
  * @param {boolean} [Arguments.clearOnUnmount=true] - the unique form id indicator.
- * @param {isGlobalForm} [Arguments.isGlobalForm=false] - tells if the form is defined global or not. If that is the case we will just reuse it.
- * @return {MyFormStateHook} hook to be use in a react component.
+ * @param {boolean} [Arguments.isGlobalForm=false] - tells if the form is defined global or not. If that is the case we will just reuse it.
+ * @return {MyFormStateHook} hook to be use in a react component {@link MyFormStateHook}.
  *
  * @example
  *
  *const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
  *    initialState: {},
- *    formValidator: addYUPSchemaValidator(schema),
+ *    formValidator: addYUPSyncSchemaValidator(schema),
  *});
  */
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as YUP from 'yup';
-import { addYUPSchemaValidator, registerForm } from '../../core';
+import { addYUPSyncSchemaValidator, registerForm } from '../../core';
 
 const formId = 'my-form-state-form-id';
 
@@ -15,7 +15,7 @@ const {
   selectors: { getForm },
 } = registerForm({
   formId,
-  formValidator: addYUPSchemaValidator(schema),
+  formValidator: addYUPSyncSchemaValidator(schema),
 });
 
 const MyFormStateStory = () => {

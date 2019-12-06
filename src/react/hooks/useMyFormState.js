@@ -27,13 +27,13 @@ import { useThunkReducer } from '../hooks/useThunkReducer';
  * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - the form validator.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
- * @return {MyFormStateHook} hook to be use in a react component.
+ * @return {MyFormStateHook} hook to be use in a react component {@link MyFormStateHook}.
  *
  * @example
  *
  *const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
  *    initialState: {},
- *    formValidator: addYUPSchemaValidator(schema),
+ *    formValidator: addYUPSyncSchemaValidator(schema),
  *});
  */
 

@@ -7,7 +7,7 @@ import {
 } from '@mfs-registry';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
-import { validateParamAndThrow } from '@mfs-lib/validate-param';
+import { validateParamAndThrow, Types } from '@mfs-lib/validate-param';
 
 const IS_NOT_REQUIRED = false;
 
@@ -44,7 +44,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  */
 
 const unregisterForm = ({ formId }) => {
-  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
   removeFormFromRegistry(formId);
 };
 
@@ -67,9 +67,9 @@ const unregisterForm = ({ formId }) => {
  */
 
 export const registerForm = ({ formId = uuid(), formValidator, initialState }) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(formValidator, 'function', 'formValidator', IS_NOT_REQUIRED);
-  validateParamAndThrow(initialState, 'function', 'initialState', IS_NOT_REQUIRED);
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(formValidator, Types.FUNCTION, 'formValidator', IS_NOT_REQUIRED);
+  validateParamAndThrow(initialState, Types.OBJECT, 'initialState', IS_NOT_REQUIRED);
 
   // protect the initial state
   const initial = Object.freeze({ ...initialState });
@@ -91,7 +91,7 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
     operations: scopeModuleToForm(operationsRedux, { formId }),
     selectors: scopeModuleToForm(selectorsRedux, { formId }),
     formId,
-    unregister: ({ formId }) => unregisterForm(formId),
+    unregister: () => unregisterForm({ formId }),
   };
 };
 
@@ -113,7 +113,7 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
  */
 
 export const getFormFromRegistry = ({ formId }) => {
-  validateParamAndThrow(formId, 'string', 'formId');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
 
   const form = getFormFromInternalRegistry(formId);
   if (!form) {

@@ -1,6 +1,6 @@
 import { debounce } from '@mfs-lib/debounce';
 import { unflatten } from '@mfs-lib/flat';
-import { validateParamAndThrow } from '@mfs-lib/validate-param';
+import { validateParamAndThrow, Types } from '@mfs-lib/validate-param';
 import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
@@ -38,9 +38,9 @@ import {
  */
 
 export const validateForm = ({ formId }) => async (dispatch, getState) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
-  validateParamAndThrow(getState, 'function', 'getState');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  validateParamAndThrow(getState, Types.FUNCTION, 'getState');
 
   const formData = getFormFromRegistry(formId);
   const validatorFunction = formData.formValidator;
@@ -84,9 +84,9 @@ export const validateForm = ({ formId }) => async (dispatch, getState) => {
  *     }))
  */
 export const updateField = ({ formId, field, value }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(field, 'string', 'field');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(field, Types.STRING, 'field');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   dispatch(
     updateForm({
@@ -129,9 +129,9 @@ const validateFormDebounced = debounce(
  */
 
 export const updateForm = ({ formId, data }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(data, 'object', 'data');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(data, Types.OBJECT, 'data');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   dispatch(updateFormAction({ data, formId }));
 
@@ -156,8 +156,8 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  */
 
 export const submitForm = ({ formId }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   dispatch(submitFormAction({ formId }));
 
@@ -184,9 +184,9 @@ export const submitForm = ({ formId }) => (dispatch) => {
  */
 
 export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(initialState, 'object', 'initialState');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(initialState, Types.OBJECT, 'initialState');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   dispatch(initializeFormAction({ initialState, formId }));
 
@@ -211,8 +211,8 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  */
 
 export const clearForm = ({ formId }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   return dispatch(clearFormAction({ formId }));
 };
@@ -235,9 +235,9 @@ export const clearForm = ({ formId }) => (dispatch) => {
  */
 
 export const resetForm = ({ formId, initialState }) => (dispatch) => {
-  validateParamAndThrow(formId, 'string', 'formId');
-  validateParamAndThrow(initialState, 'object', 'initialState', IS_NOT_REQUIRED);
-  validateParamAndThrow(dispatch, 'function', 'dispatch');
+  validateParamAndThrow(formId, Types.STRING, 'formId');
+  validateParamAndThrow(initialState, Types.OBJECT, 'initialState', IS_NOT_REQUIRED);
+  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
 
   const formData = getFormFromRegistry(formId);
   dispatch(clearFormAction({ formId }));

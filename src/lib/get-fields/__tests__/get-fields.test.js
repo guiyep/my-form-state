@@ -146,3 +146,9 @@ it('getFields, submitted', () => {
     value: 'test',
   });
 });
+
+it('getFields, returns new object as fields', () => {
+  const thisData = { ...data };
+  const fields = getFields(thisData);
+  expect(fields).not.toBe(thisData.field);
+});

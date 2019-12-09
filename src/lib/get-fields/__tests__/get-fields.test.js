@@ -36,6 +36,14 @@ it('getFields, update only value passing updateValueOnly true', () => {
     value: 'guiyepss',
   });
 
+  expect(fields.familyName).toEqual({
+    value: 'Doe',
+  });
+
+  expect(fields.favoriteColor).toEqual({
+    value: 'red',
+  });
+
   expect(fields.name).toEqual({
     isInitialized: true,
     isInvalid: false,

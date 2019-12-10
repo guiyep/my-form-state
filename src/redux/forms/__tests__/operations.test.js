@@ -1,34 +1,33 @@
-// import { validateForm, updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
+import { validateForm, updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
 
-// const formId = undefined;
+const formId = undefined;
 
-// it('validateForm with no formId to throw', () => {
-//   expect(() => validateForm()).toThrow();
-// });
+it('validateForm to throw with wrong params', () => {
+  expect(() => validateForm()).toThrow();
+  expect(() => validateForm({ formId })()).toThrow();
+  expect(() => validateForm({ formId })(() => {})).toThrow();
+  expect(() => validateForm({ formId })(undefined, () => {})).toThrow();
+});
 
-// it('updateField with no formId to throw', () => {
-//   expect(() => updateField()).toThrow();
-// });
+it('updateField to throw with wrong params', () => {
+  expect(() => updateField()).toThrow();
+});
 
-// it('updateForm with no formId to throw', () => {
-//   expect(() => updateForm()).toThrow();
-// });
+it('updateForm to throw with wrong params', () => {
+  expect(() => updateForm()).toThrow();
+});
 
-// it('submitForm with no formId to throw', () => {
-//   expect(() => submitForm()).toThrow();
-// });
+it('submitForm to throw with wrong params', () => {
+  expect(() => submitForm()).toThrow();
+});
 
-// it('initializeForm with no formId to throw', () => {
-//   expect(() => initializeForm()).toThrow();
-// });
-// it('clearForm with no formId to throw', () => {
-//   expect(() => clearForm()).toThrow();
-// });
+it('initializeForm to throw with wrong params', () => {
+  expect(() => initializeForm()).toThrow();
+});
+it('clearForm to throw with wrong params', () => {
+  expect(() => clearForm()).toThrow();
+});
 
-// it('resetForm with no formId to throw', () => {
-//   expect(() => resetForm()).toThrow();
-// });
-
-it('resetForm with no formId to throw', () => {
-  expect(true).toBe(true);
+it('resetForm to throw with wrong params', () => {
+  expect(() => resetForm()).toThrow();
 });

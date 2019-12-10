@@ -102,17 +102,6 @@
   "files": [
     "dist"
   ],
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sss|style)$": "<rootDir>/node_modules/jest-css-modules",
-      "^@mfs-lib": "<rootDir>/src/lib",
-      "^@mfs-react": "<rootDir>/src/react",
-      "^@mfs-react-redux": "<rootDir>/src/react-redux",
-      "^@mfs-redux": "<rootDir>/src/redux",
-      "^@mfs-registry": "<rootDir>/src/registry",
-      "^@mfs-core": "<rootDir>/src/core"
-    }
-  },
   "peerDependencies": {
     "react": "16.11.0",
     "react-dom": "16.11.0",

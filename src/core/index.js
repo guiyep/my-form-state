@@ -7,9 +7,7 @@ import {
 } from '@mfs-registry';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
-import { validateParamAndThrow, Types } from '@mfs-lib/validate-param';
-
-const IS_NOT_REQUIRED = false;
+import { isFunctionParam, isStringParam, isObjectParam, IS_NOT_REQ } from '@mfs-lib/validate-param';
 
 const scopeModuleToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
@@ -44,7 +42,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  */
 
 const unregisterForm = ({ formId }) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
+  isStringParam(formId, 'formId');
   removeFormFromRegistry(formId);
 };
 
@@ -67,9 +65,9 @@ const unregisterForm = ({ formId }) => {
  */
 
 export const registerForm = ({ formId = uuid(), formValidator, initialState }) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(formValidator, Types.FUNCTION, 'formValidator', IS_NOT_REQUIRED);
-  validateParamAndThrow(initialState, Types.OBJECT, 'initialState', IS_NOT_REQUIRED);
+  isStringParam(formId, 'formId');
+  isFunctionParam(formValidator, 'formValidator', IS_NOT_REQ);
+  isObjectParam(initialState, 'initialState', IS_NOT_REQ);
 
   // protect the initial state
   const initial = Object.freeze({ ...initialState });
@@ -113,7 +111,7 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
  */
 
 export const getFormFromRegistry = ({ formId }) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
+  isStringParam(formId, 'formId');
 
   const form = getFormFromInternalRegistry(formId);
   if (!form) {

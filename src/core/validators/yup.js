@@ -1,4 +1,4 @@
-import { validateParamAndThrow, Types } from '@mfs-lib/validate-param';
+import { isObjectParam } from '@mfs-lib/validate-param';
 
 const findErrorsFromException = (ex) =>
   ex &&
@@ -21,7 +21,7 @@ const findErrorsFromException = (ex) =>
  * addYUPSyncSchemaValidator(schema);
  */
 export const addYUPSyncSchemaValidator = (schema) => {
-  validateParamAndThrow(schema, Types.OBJECT, 'schema');
+  isObjectParam(schema, 'schema');
   return (formData) => {
     try {
       schema.validateSync(formData, { abortEarly: false });
@@ -50,7 +50,7 @@ export const addYUPSyncSchemaValidator = (schema) => {
  * addYUPAsyncSchemaValidator(schema);
  */
 export const addYUPAsyncSchemaValidator = (schema) => {
-  validateParamAndThrow(schema, Types.OBJECT, 'schema');
+  isObjectParam(schema, 'schema');
   return async (formData) => {
     try {
       await schema.validate(formData, { abortEarly: false });

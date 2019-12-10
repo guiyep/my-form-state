@@ -1,11 +1,9 @@
 import { debounce } from '@mfs-lib/debounce';
 import { unflatten } from '@mfs-lib/flat';
-import { validateParamAndThrow, Types } from '@mfs-lib/validate-param';
+import { IS_NOT_REQ, isStringParam, isFunctionParam, isObjectParam } from '@mfs-lib/validate-param';
 import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
-
-const IS_NOT_REQUIRED = false;
 
 import {
   validateForm as validateFormAction,
@@ -38,9 +36,9 @@ import {
  */
 
 export const validateForm = ({ formId }) => async (dispatch, getState) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
-  validateParamAndThrow(getState, Types.FUNCTION, 'getState');
+  isStringParam(formId, 'formId');
+  isFunctionParam(dispatch, 'dispatch');
+  isFunctionParam(getState, 'getState');
 
   const formData = getFormFromRegistry(formId);
   const validatorFunction = formData.formValidator;
@@ -84,9 +82,9 @@ export const validateForm = ({ formId }) => async (dispatch, getState) => {
  *     }))
  */
 export const updateField = ({ formId, field, value }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(field, Types.STRING, 'field');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isStringParam(field, 'field');
+  isFunctionParam(dispatch, 'dispatch');
 
   dispatch(
     updateForm({
@@ -129,9 +127,9 @@ const validateFormDebounced = debounce(
  */
 
 export const updateForm = ({ formId, data }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(data, Types.OBJECT, 'data');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isObjectParam(data, 'data');
+  isFunctionParam(dispatch, 'dispatch');
 
   dispatch(updateFormAction({ data, formId }));
 
@@ -156,8 +154,8 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  */
 
 export const submitForm = ({ formId }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isFunctionParam(dispatch, 'dispatch');
 
   dispatch(submitFormAction({ formId }));
 
@@ -184,9 +182,9 @@ export const submitForm = ({ formId }) => (dispatch) => {
  */
 
 export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(initialState, Types.OBJECT, 'initialState');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isObjectParam(initialState, 'initialState');
+  isFunctionParam(dispatch, 'dispatch');
 
   dispatch(initializeFormAction({ initialState, formId }));
 
@@ -211,8 +209,8 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  */
 
 export const clearForm = ({ formId }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isFunctionParam(dispatch, 'dispatch');
 
   return dispatch(clearFormAction({ formId }));
 };
@@ -235,9 +233,9 @@ export const clearForm = ({ formId }) => (dispatch) => {
  */
 
 export const resetForm = ({ formId, initialState }) => (dispatch) => {
-  validateParamAndThrow(formId, Types.STRING, 'formId');
-  validateParamAndThrow(initialState, Types.OBJECT, 'initialState', IS_NOT_REQUIRED);
-  validateParamAndThrow(dispatch, Types.FUNCTION, 'dispatch');
+  isStringParam(formId, 'formId');
+  isObjectParam(initialState, 'initialState', IS_NOT_REQ);
+  isFunctionParam(dispatch, 'dispatch');
 
   const formData = getFormFromRegistry(formId);
   dispatch(clearFormAction({ formId }));

@@ -13,7 +13,7 @@ const coreConfig = {
       sourcemap: !isProd,
       compact: true,
       exports: 'named',
-    }
+    },
   ],
   ...rollupBase,
 };

@@ -12,7 +12,7 @@ export default {
       sourcemap: !isProd,
       compact: true,
       exports: 'named',
-    }
+    },
   ],
   ...rollupBase,
 };

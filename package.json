@@ -38,7 +38,8 @@
     "start": "rollup -c -w",
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "preetier": "prettier --write **/*.{js,jsx}"
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
@@ -66,6 +67,7 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",

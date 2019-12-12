@@ -17,6 +17,7 @@
         "arrowParens": "always"
       }
     ],
+    "no-console": "error",
     "eol-last": ["error", "always"],
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",

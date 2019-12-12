@@ -4,7 +4,6 @@ import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
-import gzipPlugin from 'rollup-plugin-gzip';
 import json from 'rollup-plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import importAlias from 'rollup-plugin-import-alias';
@@ -35,7 +34,7 @@ export const rollupBase = {
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     json(),
-    gzipPlugin(),
+    // gzipPlugin(),
     importAlias({
       Paths: {
         '@mfs-lib': './src/lib',

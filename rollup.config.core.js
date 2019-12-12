@@ -10,17 +10,10 @@ const coreConfig = {
     {
       file: pkg.core,
       format: 'cjs',
-      sourcemap: true,
+      sourcemap: !isProd,
       compact: true,
       exports: 'named',
-    },
-    {
-      file: pkg['core-module'],
-      format: 'es',
-      sourcemap: true,
-      compact: true,
-      exports: 'named',
-    },
+    }
   ],
   ...rollupBase,
 };

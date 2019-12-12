@@ -72,10 +72,11 @@
     "eslint-plugin-standard": "4.0.1",
     "extend-shallow": "3.0.2",
     "generate-random-data": "0.0.3",
-    "husky": "^3.1.0",
+    "husky": "3.1.0",
     "jest": "24.9.0",
     "jest-css-modules": "2.1.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "9.5.0",
+    "prettier": "^1.19.1",
     "prop-types": "15.7.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -111,8 +112,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm test; lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": "prettier --write && git add"
   },
   "dependencies": {
     "flat": "5.0.0",

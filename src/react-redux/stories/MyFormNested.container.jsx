@@ -9,9 +9,9 @@ const MyFormNestedContainer = ({ initialState, emptyState, schema }) => {
     formValidator: addYUPSyncSchemaValidator(schema),
   });
 
-  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }));
+  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
 
-  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }));
+  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }), [resetForm, emptyState]);
 
   return (
     <FormNested

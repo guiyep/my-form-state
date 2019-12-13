@@ -39,7 +39,8 @@
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -c .storybook",
-    "prettier": "prettier --write src/**/**/*.{js,jsx}"
+    "prettier": "prettier --write src/**/**/*.{js,jsx}",
+    "eslint": "eslint --fix src/**/**/*.{js,jsx}"
   },
   "devDependencies": {
     "@babel/core": "7.6.4",

@@ -6,7 +6,7 @@ class ParamValidationError extends Error {
 }
 
 const Types = {
-  FUNCTION: typeof function() {},
+  FUNCTION: typeof function empty() {},
   NUMBER: typeof 1,
   BOOLEAN: typeof true,
   STRING: typeof 'string',
@@ -23,6 +23,7 @@ const validateParamAndThrow = (param, type, name = 'UNDEFINED_FIELD', isRequired
         'not required'} parameter`,
     );
   }
+  // eslint-disable-next-line
   if (typeof param !== type && (isRequired || (param !== undefined && !isRequired))) {
     throw new ParamValidationError(
       `Invalid ${name} param, expected ${type} and received ${typeof param}. ${name} is a ${(isRequired &&

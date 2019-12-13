@@ -53,7 +53,7 @@ export const addYUPAsyncSchemaValidator = (schema) => {
   ParamValidator.isObject(schema, 'schema');
   return async (formData) => {
     try {
-      await schema.validate(formData, { abortEarly: false });
+      return await schema.validate(formData, { abortEarly: false });
     } catch (ex) {
       // it is invalid
       if (ex.name === 'ValidationError') {

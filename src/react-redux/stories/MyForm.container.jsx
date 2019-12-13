@@ -9,9 +9,9 @@ const MyFormContainer = ({ initialState, emptyState, schema }) => {
     formValidator: addYUPAsyncSchemaValidator(schema),
   });
 
-  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }));
+  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
 
-  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }));
+  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }), [resetForm, emptyState]);
 
   return (
     <Form

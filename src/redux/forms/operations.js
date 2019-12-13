@@ -17,15 +17,16 @@ import {
 /**
  * A Redux Thunk. Function that returns a Promise
  * @typedef {function} Thunk
+ * @returns {Promise}
  */
 
 /**
  * Will validate the form state based on your validation function and update the form state and props.
  *
- * @module my-form-state/redux
+ * @name validateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -62,14 +63,15 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
 };
 
 /**
- * Will update the field state inside the form, after that will validate the form and update all the form state and field props.
+ * This operation update one field and inside the my-form-state redux state. Will also update all the
+ * form related props like isValid, isInvalid, etc. Normally it is triggered once an input value in the form changes.
  *
- * @module my-form-state/redux
+ * @name updateField
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  * @throws Arguments.field is falsy
  *
@@ -106,13 +108,14 @@ const validateFormDebounced = debounce(
 );
 
 /**
- * Will update the form data, validate the form and update all the form state and field props.
+ * This operation update one/more fields inside the my-form-state redux state. Will also update all the
+ * form related props like isValid, isInvalid, isSubmittable, etc. Normally it is triggered once an input value in the form changes.
  *
- * @module my-form-state/redux
+ * @name updateForm
  * @param {Object} Arguments - Arguments as object.
- * @param {Object} Arguments.data -  a ke value pair with the form data.
+ * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  * @throws Arguments.data is falsy
  *
@@ -137,13 +140,13 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
 };
 
 /**
- * Will submit and lock the form.
+ * This operation wil submit and lock the form. Will set the isSubmitted form prop to true.
  * You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
  *
- * @module my-form-state/redux
+ * @name submitForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -163,14 +166,14 @@ export const submitForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * Will initialize the form. Normally use after the component that uses this operation is mounted.
+ * This operation wil initialize the form. Normally use after the component that uses this operation is mounted.
  * You can await for this operation and will resolve the promise once the validation is completed after the form is initialized.
  *
- * @module my-form-state/redux
+ * @name initializeForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -193,12 +196,12 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
 };
 
 /**
- * Will clear the form state from the store. Normally use after the component that uses this operation is unmounted.
+ * This operation will clear the form state from the store. Normally use after the component that uses this operation is unmounted.
  *
- * @module my-form-state/redux
+ * @name clearForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -216,13 +219,13 @@ export const clearForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * Will reset the form state to the initial state. You can also change the initialState using the operation.
+ * This operation will reset the form state to the initial state. You can also change the initialState using the operation.
  *
- * @module my-form-state/redux
+ * @name resetForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a thunk.
+ * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
  * @throws Arguments.formId is falsy
  *
  * @example

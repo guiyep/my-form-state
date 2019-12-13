@@ -17,6 +17,7 @@
         "arrowParens": "always"
       }
     ],
+    "import/no-named-as-default" : "off",
     "no-console": "error",
     "eol-last": ["error", "always"],
     "import/prefer-default-export": "off",
@@ -28,6 +29,7 @@
     "react/no-unused-prop-types": "off",
     "react/no-array-index-key": "off",
     "react/jsx-one-expression-per-line": "off",
+    "react/button-has-type" : "off",
     "react/sort-comp": [
       2,
       {

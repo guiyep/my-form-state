@@ -52,7 +52,7 @@ export const validateForm = ({ formId }) => async (dispatch, getState) => {
 
   const errors = await validatorFunction(unflatten(formState.data));
 
-  if (!!errors) {
+  if (errors) {
     dispatch(validateFormAction({ errors, formId }));
     return false;
   }

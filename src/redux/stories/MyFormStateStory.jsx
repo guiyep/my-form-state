@@ -51,14 +51,8 @@ const MyFormStateStory = () => {
       </li>
       <li>
         UPDATE FORM:
-        <input
-          value={formState.data.testData1 || ''}
-          onChange={(e) => onInputChange('testData1', e.target.value)}
-        ></input>
-        <input
-          value={formState.data.testData2 || ''}
-          onChange={(e) => onInputChange('testData2', e.target.value)}
-        ></input>
+        <input value={formState.data.testData1 || ''} onChange={(e) => onInputChange('testData1', e.target.value)} />
+        <input value={formState.data.testData2 || ''} onChange={(e) => onInputChange('testData2', e.target.value)} />
       </li>
       <li>
         <button onClick={onSubmitForm}>SUBMIT FORM</button>

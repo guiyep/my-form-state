@@ -10,11 +10,11 @@ const MyFormNestedContainer = ({ initialState, emptyState, schema, onFormWasUpda
   });
 
   // this is only for testing purposes
-  useEffect(() => onFormWasUpdated(formState), [formState]);
+  useEffect(() => onFormWasUpdated(formState), [formState, onFormWasUpdated]);
 
-  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }));
+  const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
 
-  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }));
+  const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }), [emptyState, resetForm]);
 
   return (
     <FormNested

@@ -1,7 +1,5 @@
 import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, RESET_FORM } from './types';
 
-console.log(123434);
-
 /**
  * A Redux Action.
  * @typedef {object} Action

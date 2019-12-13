@@ -1,7 +1,7 @@
 import React from 'react';
+import { withState } from '@dump247/storybook-state';
 import Provider from './Provider';
 import configureStore from './configureStore';
-import { withState } from '@dump247/storybook-state';
 
 export const withReduxProvider = ({ reducer, initialState }) => {
   const reduxStore = configureStore({ reducer, initialState });

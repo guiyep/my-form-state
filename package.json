@@ -39,7 +39,7 @@
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -c .storybook",
-    "preetier": "prettier --write **/*.{js,jsx}"
+    "prettier": "prettier --write src/**/**/*.{js,jsx}"
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
@@ -114,11 +114,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test; lint-staged"
+      "pre-commit": "npm test && lint-staged"
     }
   },
   "lint-staged": {
-    "*": "prettier --write && git add"
+    "src/**/**/*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "flat": "5.0.0",

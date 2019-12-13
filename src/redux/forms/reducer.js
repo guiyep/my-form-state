@@ -13,10 +13,12 @@ export const myFormStateReducer = (state = {}, action) => {
   const nextFormState = formReducer(formState, action);
 
   if (nextFormState === undefined) {
+    // eslint-disable-next-line
     delete state[formId];
     return state;
   }
 
+  // eslint-disable-next-line
   state[formId] = nextFormState;
   return state;
 };
@@ -38,7 +40,7 @@ export const formReducer = (state = {}, action) => {
       return nextState;
     }
     case UPDATE_FORM: {
-      if (!!action.payload) {
+      if (action.payload) {
         const flattenData = flatten(action.payload);
 
         const nextState = {

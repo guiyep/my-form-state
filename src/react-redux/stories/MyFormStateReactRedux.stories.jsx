@@ -2,11 +2,11 @@ import React from 'react';
 import { combineReducers } from 'redux';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import * as YUP from 'yup';
 import { withReduxProvider } from '../../stories/shared/withReduxProvider';
 import Form from './MyForm.container';
 import FormNested from './MyFormNested.container';
 import forms from '../../redux/forms/reducer';
-import * as YUP from 'yup';
 
 const initialState = {};
 
@@ -33,10 +33,10 @@ storiesOf(`React-Redux/MyFormState`, module)
       alias: YUP.string().required(),
     });
 
-    const initialState = { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' };
+    const initialState2 = { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' };
     const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
 
-    return <Form schema={schema} initialState={initialState} emptyState={emptyState} />;
+    return <Form schema={schema} initialState={initialState2} emptyState={emptyState} />;
   })
   .add('Nested state- YUP Sync validation', () => {
     const schema = YUP.object().shape({
@@ -54,7 +54,7 @@ storiesOf(`React-Redux/MyFormState`, module)
       }),
     });
 
-    const initialState = {
+    const initialState3 = {
       profileOne: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
       profileTwo: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
     };
@@ -63,5 +63,5 @@ storiesOf(`React-Redux/MyFormState`, module)
       profileTwo: { name: '', familyName: '', alias: '', favoriteColor: '' },
     };
 
-    return <FormNested schema={schema} initialState={initialState} emptyState={emptyState} />;
+    return <FormNested schema={schema} initialState={initialState3} emptyState={emptyState} />;
   });

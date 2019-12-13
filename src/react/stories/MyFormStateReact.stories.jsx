@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import Form from './MyForm.container';
-import FormNested from './MyFormNested.container';
 import * as YUP from 'yup';
 import { action as actionAddon } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
+import FormNested from './MyFormNested.container';
+import Form from './MyForm.container';
 
+// eslint-disable-next-line
 window.__DON_T_USE_PUSH_REDUX_CHANGE_TO_STORYBOOK = (type, data) => {
   actionAddon(`REDUCER-ACTION/${type}`)(data);
 };

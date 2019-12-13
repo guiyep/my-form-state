@@ -1,6 +1,6 @@
-import { getFormFromRegistry } from '@mfs-registry';
 import { memoize } from '@mfs-lib/memoize';
 import ParamValidator from '@mfs-lib/param-validator';
+import { getFormFromRegistry } from '@mfs-registry';
 
 export const getFormIdState = ({ formId }) => (state) => {
   ParamValidator.isString(formId, 'formId');

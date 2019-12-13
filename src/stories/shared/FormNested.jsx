@@ -62,7 +62,7 @@ const FormNested = ({
           />
         </div>
       </div>
-      <br></br>
+      <br />
       <div>
         <div>
           <TextField
@@ -107,7 +107,7 @@ const FormNested = ({
           />
         </div>
       </div>
-      <br></br>
+      <br />
 
       <div>
         <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>

@@ -35,7 +35,7 @@ import {
  *     }))
  */
 
-export const validateForm = ({ formId }) => async (dispatch, getState) => {
+const validateForm = ({ formId }) => async (dispatch, getState) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isFunction(dispatch, 'dispatch');
   ParamValidator.isFunction(getState, 'getState');

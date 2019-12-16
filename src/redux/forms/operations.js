@@ -63,8 +63,10 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
 };
 
 /**
- * This operation update one field and inside the my-form-state redux state. Will also update all the
- * form related props like isValid, isInvalid, etc. Normally it is triggered once an input value in the form changes.
+ * Operation that updates one field value inside the `my-form-state` redux state. Will update any form/field property
+ * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name updateField
  * @param {Object} Arguments - Arguments as object.
@@ -108,8 +110,10 @@ const validateFormDebounced = debounce(
 );
 
 /**
- * This operation update one/more fields inside the my-form-state redux state. Will also update all the
- * form related props like isValid, isInvalid, isSubmittable, etc. Normally it is triggered once an input value in the form changes.
+ * Operation that updates one/more field/s value/s inside the `my-form-state` redux state. Will update any form/field property
+ * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name updateForm
  * @param {Object} Arguments - Arguments as object.
@@ -140,8 +144,10 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
 };
 
 /**
- * This operation wil submit and lock the form. Will set the isSubmitted form prop to true.
+ * Operation that will submit and lock the form state. Will set the isSubmitted form property to true.
  * You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name submitForm
  * @param {Object} Arguments - Arguments as object.
@@ -166,8 +172,10 @@ export const submitForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * This operation wil initialize the form. Normally use after the component that uses this operation is mounted.
- * You can await for this operation and will resolve the promise once the validation is completed after the form is initialized.
+ * Operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
+ * You can await for this operation and will resolve the promise once the form is initialized.
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name initializeForm
  * @param {Object} Arguments - Arguments as object.
@@ -196,7 +204,9 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
 };
 
 /**
- * This operation will clear the form state from the store. Normally use after the component that uses this operation is unmounted.
+ * Operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name clearForm
  * @param {Object} Arguments - Arguments as object.
@@ -219,7 +229,9 @@ export const clearForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * This operation will reset the form state to the initial state. You can also change the initialState using the operation.
+ * Operation that will reset the form state to the initial state. You can also change the initialState using the operation.
+ *
+ * @see formId is not required when used using `/core/registerForm` or `hooks`.
  *
  * @name resetForm
  * @param {Object} Arguments - Arguments as object.

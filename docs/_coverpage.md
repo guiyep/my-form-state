@@ -1,12 +1,11 @@
 ![logo](media/logo.png)
 
 # my-form-state
-
-> form state management library.
+> Form state management library. One library to rule them all.
 
 - Simple , easy to use and lightweight (~21kB gzipped)
-- works with react or redux seamlessly using hooks.
-- YUP or JOI for data validation.
+- Works with react or redux seamlessly using hooks.
+- Use YUP/JOI/'your-custom-framework-here' for schema validations.
 
 [GitHub](https://github.com/guiyep/my-form-state)
 [Getting Started](#my-form-state)

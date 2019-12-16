@@ -1,13 +1,13 @@
 import * as operationsRedux from '@mfs-redux/forms/operations';
 import * as selectorsRedux from '@mfs-redux/forms/selectors';
+import { uuid } from '@mfs-lib/uuid';
+import { flatten, unflatten } from '@mfs-lib/flat';
+import ParamValidator, { IS_NOT_REQ } from '@mfs-lib/param-validator';
 import {
   addFormToRegistry,
   removeFormFromRegistry,
   getFormFromRegistry as getFormFromInternalRegistry,
 } from '@mfs-registry';
-import { uuid } from '@mfs-lib/uuid';
-import { flatten, unflatten } from '@mfs-lib/flat';
-import ParamValidator, { IS_NOT_REQ } from '@mfs-lib/param-validator';
 
 const scopeModuleToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
@@ -26,7 +26,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  */
 
 /**
- * Remove a registered form from the forms registry.
+ * Remove a registered form from the `my-form-state` registry.
  *
  * @module my-form-state/core
  * @param {Object} Arguments - Arguments as object.
@@ -47,12 +47,12 @@ const unregisterForm = ({ formId }) => {
 };
 
 /**
- * Register a form and expose all the functionality available for being used in redux.
+ * Register a form in the `my-form-state` registry and expose all the functionality available for being used in redux.
  *
  * @module my-form-state/core
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formValidator] - the form validator.
+ * @param {Function} [Arguments.formValidator] - the form validator function.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
  * @return {MyForm} - available functionality for the form {@link MyForm}
  *
@@ -94,7 +94,7 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
 };
 
 /**
- * Get an already registered form from the forms registry.
+ * Get an already registered form from the `my-form-state` registry.
  *
  * @module my-form-state/core
  * @param {Object} Arguments - Arguments as object.

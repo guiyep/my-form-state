@@ -10,6 +10,7 @@ const findErrorsFromException = (ex) =>
 
 /**
  * Creates a SYNC Yup schema validator to be used inside the operations.
+ * Usually this function is passed to `registerForm` from `my-form-state/core`
  *
  * @module my-form-state/core
  * @param {object} schema - a YUP schema
@@ -22,6 +23,7 @@ const findErrorsFromException = (ex) =>
  */
 export const addYUPSyncSchemaValidator = (schema) => {
   ParamValidator.isObject(schema, 'schema');
+
   return (formData) => {
     try {
       schema.validateSync(formData, { abortEarly: false });
@@ -38,7 +40,8 @@ export const addYUPSyncSchemaValidator = (schema) => {
 };
 
 /**
- * Creates a ASYNC Yup schema validator to be used inside the operations.
+ * Creates an ASYNC Yup schema validator to be used inside the operations.
+ * Usually this function is passed to `registerForm` from `my-form-state/core`
  *
  * @module my-form-state/core
  * @param {object} schema - a YUP schema
@@ -51,6 +54,7 @@ export const addYUPSyncSchemaValidator = (schema) => {
  */
 export const addYUPAsyncSchemaValidator = (schema) => {
   ParamValidator.isObject(schema, 'schema');
+
   return async (formData) => {
     try {
       return await schema.validate(formData, { abortEarly: false });

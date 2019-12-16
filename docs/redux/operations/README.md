@@ -3,7 +3,7 @@
 ## Members
 
 <dl>
-<dt><a href="?id=updateField">updateField</a> ⇒ <code><a href="#Thunk">Thunk</a></code></dt>
+<dt><a href="#updateField">updateField</a> ⇒ <code><a href="#Thunk">Thunk</a></code></dt>
 <dd><p>This operation update one field and inside the my-form-state redux state. Will also update all the
 form related props like isValid, isInvalid, etc. Normally it is triggered once an input value in the form changes.</p>
 </dd>
@@ -39,7 +39,7 @@ You can await for this operation and will resolve the promise once the validatio
 
 ## updateField ⇒ [<code>Thunk</code>](#Thunk)
 
-This operation update one field and inside the my-form-state redux state. Will also update all the
+Operation that updates one field inside the `my-form-state` redux state. Will also update all the
 form related props like isValid, isInvalid, etc. Normally it is triggered once an input value in the form changes.
 
 **Kind**: function

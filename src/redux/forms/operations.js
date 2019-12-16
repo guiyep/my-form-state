@@ -15,7 +15,7 @@ import {
 } from './actions';
 
 /**
- * A Redux Thunk. Function that returns a Promise
+ * A Redux Thunk. A function that returns a Promise
  * @typedef {function} Thunk
  * @returns {Promise}
  */
@@ -23,10 +23,11 @@ import {
 /**
  * Will validate the form state based on your validation function and update the form state and props.
  *
+ * @kind function
  * @name validateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -66,14 +67,14 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  * Operation that updates one field value inside the `my-form-state` redux state. Will update any form/field property
  * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name updateField
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  * @throws Arguments.field is falsy
  *
@@ -113,13 +114,13 @@ const validateFormDebounced = debounce(
  * Operation that updates one/more field/s value/s inside the `my-form-state` redux state. Will update any form/field property
  * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name updateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  * @throws Arguments.data is falsy
  *
@@ -147,12 +148,12 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  * Operation that will submit and lock the form state. Will set the isSubmitted form property to true.
  * You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name submitForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -175,13 +176,13 @@ export const submitForm = ({ formId }) => (dispatch) => {
  * Operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
  * You can await for this operation and will resolve the promise once the form is initialized.
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name initializeForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -206,12 +207,12 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
 /**
  * Operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name clearForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -231,13 +232,13 @@ export const clearForm = ({ formId }) => (dispatch) => {
 /**
  * Operation that will reset the form state to the initial state. You can also change the initialState using the operation.
  *
- * @see formId is not required when used using `/core/registerForm` or `hooks`.
- *
+ * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
+ * @kind function
  * @name resetForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk} a function to be executed passing dispatch and getState that returns a Promise.
+ * @returns {Thunk}
  * @throws Arguments.formId is falsy
  *
  * @example

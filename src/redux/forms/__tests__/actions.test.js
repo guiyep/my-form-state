@@ -1,4 +1,4 @@
-import { validateForm, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../actions';
+import { validateForm, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../action-creators';
 
 const formId = 'test-form-id';
 

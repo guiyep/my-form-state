@@ -28,7 +28,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
 /**
  * Remove a registered form from the `my-form-state` registry.
  *
- * @module my-form-state/core
+ * @kind function
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator.
  * @return undefined
@@ -48,8 +48,11 @@ const unregisterForm = ({ formId }) => {
 
 /**
  * Register a form in the `my-form-state` registry and expose all the functionality available for being used in redux.
+ * This is used for reusing the selectors and operations for a particular form in any place of an app. Once is not used remember to
+ * remove the reference with `unregisterForm`.
  *
- * @module my-form-state/core
+ *
+ * @kind function
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - the form validator function.
@@ -96,7 +99,7 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
 /**
  * Get an already registered form from the `my-form-state` registry.
  *
- * @module my-form-state/core
+ * @kind function
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id.
  * @return {MyForm} - available functionality for the form {@link MyForm}

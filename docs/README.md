@@ -12,15 +12,24 @@ If you use Redux or just React, this library is for you! Yes, it is not a typo. 
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
+
+
+
 ## Note
 
 The library is fully tested using Jest and fully documented using JsDoc.
+
+
+
 
 ## Getting Started
 
 ```bash
 npm install --save my-form-state
 ```
+
+
+
 
 ### Peer Dependencies
 
@@ -35,7 +44,10 @@ They depend on how you want to use the library:
 }
 ```
 
-#### React-Redux
+
+
+
+#### With React-Redux
 
 ```bash
 {
@@ -45,6 +57,9 @@ They depend on how you want to use the library:
     "react-redux",
 }
 ```
+
+
+
 
 ## Quick Example with React-Redux
 
@@ -62,7 +77,7 @@ const MyFormContainer = () => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: emptyState });
+  const onEmptyHandler = () => resetForm({ initialState: {} );
 
   return (
     <Form
@@ -78,9 +93,12 @@ const MyFormContainer = () => {
 export default MyFormContainer;
 ```
 
+
+
+
 ## Quick Example with JUST React
 
-The library  will keep the state internal to your component.
+The library will keep the state internal to your component.
 
 ```js
 import React from 'react';
@@ -94,7 +112,7 @@ const MyFormContainer = () => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: emptyState });
+  const onEmptyHandler = () => resetForm({ initialState: {} });
 
   return (
     <Form
@@ -109,7 +127,3 @@ const MyFormContainer = () => {
 
 export default MyFormContainer;
 ```
-
-## Storybook
-
-Check [Storybook](https://serene-hawking-021d7a.netlify.com/) for more examples

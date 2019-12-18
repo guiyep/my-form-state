@@ -12,7 +12,7 @@ import {
   clearForm as clearFormAction,
   initializeForm as initializeFormAction,
   resetForm as resetFormAction,
-} from './actions';
+} from './action-creators';
 
 /**
  * A Redux Thunk. A function that returns a Promise

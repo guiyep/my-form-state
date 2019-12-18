@@ -1,4 +1,4 @@
-# my-form-state library
+# my-form-state
 
 ![logo](logo.png)
 
@@ -37,7 +37,7 @@ They depend on how you want to use the library:
 }
 ```
 
-#### React-Redux
+#### With React-Redux
 
 ```bash
 {
@@ -64,7 +64,7 @@ const MyFormContainer = () => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: emptyState });
+  const onEmptyHandler = () => resetForm({ initialState: {} });
 
   return (
     <Form
@@ -96,7 +96,7 @@ const MyFormContainer = () => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: emptyState });
+  const onEmptyHandler = () => resetForm({ initialState: {} });
 
   return (
     <Form

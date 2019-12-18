@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-- [Home](#my-form-state-library)
+- [Home](/)
 
   - [Getting started](#getting-started 'Getting started')
   - [Peer dependencies](#peer-dependencies 'Peer dependencies')
@@ -8,7 +8,13 @@
   - [Quick Example with JUST React](#quick-example-with-just-react 'Getting Started')
 
 - Storybook
-  - [Examples](#Storybook 'Storybook')
+
+  - [Examples](/storybook/README.md 'Storybook')
+
+- Validators
+
+  - [YUP and JOI](/core/validators/predefined/README.md 'YUP and JOI')
+  - [Custom](/core/validators/custom/README.md'Custom')
 
 - React
 
@@ -22,9 +28,9 @@
 
   - [Operations](/redux/operations/README.md 'Redux Operations')
   - [Selectors](/redux/selectors/README.md 'Redux Selectors')
+  - [Advance Example](./core/README.md 'Advance Example')
 
 - Core Module
 
   - [Core](./core/README.md 'Core')
-  - [YUP Validator](/core/validators/yup/README.md 'YUP Validator')
-  - [JOI Validator](/core/validators/joi/README.md 'JOI Validator')
+  - [Advance Example](./core/advance/README.md 'Advance Example')

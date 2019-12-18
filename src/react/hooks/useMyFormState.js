@@ -21,13 +21,12 @@ import { useThunkReducer } from './useThunkReducer';
  * - updateField
  * - clearForm
  *
- * @module my-form-state/react
- *
+ * @kind React Hook
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - the form validator.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
- * @return {MyFormStateHook} hook to be use in a react component {@link MyFormStateHook}.
+ * @return {MyFormStateHook} Hook to be use in a React component.
  *
  * @example
  *

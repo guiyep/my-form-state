@@ -6,7 +6,10 @@
       "jsx": true
     }
   },
-  "plugins": ["prettier", "react", "react-hooks"],
+  "env": {
+    "jest/globals": true
+  },
+  "plugins": ["prettier", "react", "react-hooks", "jest"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -17,7 +20,7 @@
         "arrowParens": "always"
       }
     ],
-    "import/no-named-as-default" : "off",
+    "import/no-named-as-default": "off",
     "no-console": "error",
     "eol-last": ["error", "always"],
     "import/prefer-default-export": "off",
@@ -29,7 +32,7 @@
     "react/no-unused-prop-types": "off",
     "react/no-array-index-key": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/button-has-type" : "off",
+    "react/button-has-type": "off",
     "react/sort-comp": [
       2,
       {
@@ -41,6 +44,11 @@
     "no-use-before-define": "off",
     "prefer-destructuring": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error"
+    "react-hooks/exhaustive-deps": "error",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   }
 }

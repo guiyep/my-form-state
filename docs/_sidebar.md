@@ -15,9 +15,9 @@
 
 - Validators
 
-  - [Validation Function](/core/validators/README.md 'Validation Function')
+  - [Validator Function](/core/validators/README.md 'Validator Function')
   - [YUP](/core/validators/README.md 'YUP')
-  - [JOI](/core/validators/README.md 'JOI')
+  - [JOI](/core/validators/README/#JOI 'JOI')
   - [Custom](/core/validators/README.md 'Custom')
 
 - React

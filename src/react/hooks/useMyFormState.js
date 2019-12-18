@@ -32,7 +32,7 @@ import { useThunkReducer } from './useThunkReducer';
  *
  *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm}] = useMyFormState({
  *    initialState: {},
- *    formValidator: addYUPSyncSchemaValidator(schema),
+ *    formValidator: yupSyncSchemaValidator(schema),
  *});
  */
 

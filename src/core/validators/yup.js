@@ -19,9 +19,9 @@ const findErrorsFromException = (ex) =>
  *
  * @example
  *
- * addYUPSyncSchemaValidator(schema);
+ * yupSyncSchemaValidator(schema);
  */
-export const addYUPSyncSchemaValidator = (schema) => {
+export const yupSyncSchemaValidator = (schema) => {
   ParamValidator.isObject(schema, 'schema');
 
   return (formData) => {
@@ -50,9 +50,9 @@ export const addYUPSyncSchemaValidator = (schema) => {
  *
  * @example
  *
- * addYUPAsyncSchemaValidator(schema);
+ * yupAsyncSchemaValidator(schema);
  */
-export const addYUPAsyncSchemaValidator = (schema) => {
+export const yupAsyncSchemaValidator = (schema) => {
   ParamValidator.isObject(schema, 'schema');
 
   return async (formData) => {

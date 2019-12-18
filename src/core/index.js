@@ -63,7 +63,7 @@ const unregisterForm = ({ formId }) => {
  *
  *const { formId, operations, selectors, unregister } = registerForm({
  *    initialState: {},
- *    formValidator: addYUPSyncSchemaValidator(schema),
+ *    formValidator: yupSyncSchemaValidator(schema),
  *});
  */
 

@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
-import { addYUPSyncSchemaValidator } from '../../core';
+import { yupSyncSchemaValidator } from '../../core';
 import FormNested from '../../stories/shared/FormNested';
 
 const MyFormNestedContainer = ({ initialState, emptyState, schema, onFormWasUpdated }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formValidator: addYUPSyncSchemaValidator(schema),
+    formValidator: yupSyncSchemaValidator(schema),
   });
 
   // this is only for testing purposes

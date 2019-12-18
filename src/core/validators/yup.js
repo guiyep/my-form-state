@@ -10,9 +10,9 @@ const findErrorsFromException = (ex) =>
 
 /**
  * Creates a SYNC Yup schema validator to be used inside the operations.
- * Usually this function is passed to `registerForm` from `my-form-state/core`
+ * This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  *
- * @module my-form-state/core
+ * @kind function
  * @param {object} schema - a YUP schema
  * @return {function} - function to be use inside operations for validating the schema against the form state
  * @throws if schema is falsy and not a YUP schema.
@@ -41,9 +41,9 @@ export const addYUPSyncSchemaValidator = (schema) => {
 
 /**
  * Creates an ASYNC Yup schema validator to be used inside the operations.
- * Usually this function is passed to `registerForm` from `my-form-state/core`
+ * This is used in  `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @module my-form-state/core
+ * @kind function
  * @param {object} schema - a YUP schema
  * @return {function} - function to be use inside operations for validating the schema against the form state
  * @throws if schema is falsy and not a YUP schema.

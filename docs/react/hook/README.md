@@ -30,9 +30,9 @@ perform any of the next actions:
 | Param                     | Type                  | Description                                                                             |
 | ------------------------- | --------------------- | --------------------------------------------------------------------------------------- |
 | Arguments                 | <code>Object</code>   | Arguments as object.                                                                    |
-| [Arguments.formId]        | <code>string</code>   | the unique form id indicator, will generate a unique id if not.                         |
-| [Arguments.formValidator] | <code>function</code> | the form validator. <a href="/#/core/validators/predefined/README">Check Validators</a> |
-| [Arguments.initialState]  | <code>Object</code>   | the initial state you want to use.                                                      |
+| [Arguments.formId]        | <code>string</code>   | The unique form id indicator, will generate a unique id if not.                         |
+| [Arguments.formValidator] | <code>function</code> | The form validator. <a href="/#/core/validators/README">Check Validators</a> |
+| [Arguments.initialState]  | <code>Object</code>   | The initial state you want to use.                                                      |
 
 **Example**
 

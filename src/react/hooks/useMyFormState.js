@@ -23,9 +23,9 @@ import { useThunkReducer } from './useThunkReducer';
  *
  * @kind React Hook
  * @param {Object} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formValidator] - the form validator.
- * @param {Object} [Arguments.initialState] - the initial state you want to use.
+ * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
+ * @param {Function} [Arguments.formValidator] - The form validator.
+ * @param {Object} [Arguments.initialState] - The initial state you want to use.
  * @return {MyFormStateHook} Hook to be use in a React component.
  *
  * @example

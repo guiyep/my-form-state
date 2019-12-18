@@ -22,11 +22,11 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  *
  * @kind react-redux hook.
  * @param {Object} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formValidator] - the form validator.
- * @param {Object} [Arguments.initialState] - the initial state you want to use.
- * @param {boolean} [Arguments.clearOnUnmount=true] - the unique form id indicator.
- * @param {boolean} [Arguments.isGlobalForm=false] - tells if the form is defined global or not. If that is the case we will just reuse it.
+ * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
+ * @param {Function} [Arguments.formValidator] - The form validator.
+ * @param {Object} [Arguments.initialState] - The initial state you want to use.
+ * @param {boolean} [Arguments.clearOnUnmount=true] - When the component unmounts it will remove the form reference.
+ * @param {boolean} [Arguments.isGlobalForm=false] - Tells if the form is defined global or not. If that is the case we will just reuse it.
  * @return {MyFormStateHook} hook to be use in a react component.
  *
  * @example

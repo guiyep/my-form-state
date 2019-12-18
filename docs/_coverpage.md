@@ -8,4 +8,4 @@
 - Use YUP/JOI/'your-custom-framework-here' for schema validations.
 
 [GitHub](https://github.com/guiyep/my-form-state)
-[Getting Started](#my-form-state)
+[Getting Started](#the-library)

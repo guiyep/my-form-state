@@ -35,6 +35,23 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
   };
 });
 
+/**
+ * Memoize selector that return a function that will get the current state of the form from the Redux/React store. This state can come from React or Redux.
+ * Passing formId is not required when used using `registerForm` from `my-form-state/core`.
+ *
+ * @kind function
+ * @name getForm
+ * @param {Object} Arguments - Arguments as object.
+ * @param {string} Arguments.formId - The unique form id indicator.
+ * @returns {function} It is a function to be executed with the state.
+ * @throws Arguments.formId is falsy
+ *
+ * @example
+ *
+ *     getForm({ formId: 'unique-form-id' })(state)
+ *
+ */
+
 export const getForm = ({ formId }) => (state) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');

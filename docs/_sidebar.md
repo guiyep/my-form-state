@@ -1,11 +1,13 @@
 <!-- docs/_sidebar.md -->
 
-- [Home](/)
+- [Home](/#the-library)
 
-  - [Getting started](#getting-started 'Getting started')
-  - [Peer dependencies](#peer-dependencies 'Peer dependencies')
-  - [Quick example react-redux](#quick-example-with-react-redux 'Quick example react-redux')
-  - [Quick Example with JUST React](#quick-example-with-just-react 'Getting Started')
+- Start
+
+  - [Getting started](/#getting-started 'Getting started')
+  - [Peer dependencies](/#peer-dependencies 'Peer dependencies')
+  - [Quick example react-redux](/#quick-example-with-react-redux 'Quick example react-redux')
+  - [Quick Example with JUST React](/#quick-example-with-just-react 'Getting Started')
 
 - Storybook
 
@@ -13,8 +15,10 @@
 
 - Validators
 
-  - [YUP and JOI](/core/validators/predefined/README.md 'YUP and JOI')
-  - [Custom](/core/validators/custom/README.md'Custom')
+  - [Validation Function](/core/validators/README.md 'Validation Function')
+  - [YUP](/core/validators/README.md 'YUP')
+  - [JOI](/core/validators/README.md 'JOI')
+  - [Custom](/core/validators/README.md 'Custom')
 
 - React
 

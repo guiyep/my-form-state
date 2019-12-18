@@ -1,4 +1,4 @@
-# my-form-state library
+# The Library
 
 > react/redux form state management library.
 

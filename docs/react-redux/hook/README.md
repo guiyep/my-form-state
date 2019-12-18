@@ -29,11 +29,11 @@ perform any of the next actions:
 | Param                      | Type                  | Default            | Description                                                                            |
 | -------------------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------- |
 | Arguments                  | <code>Object</code>   |                    | Arguments as object.                                                                   |
-| [Arguments.formId]         | <code>string</code>   |                    | the unique form id indicator, will generate a unique id if not.                        |
-| [Arguments.formValidator]  | <code>function</code> |                    | the form validator.<a href="/#/core/validators/predefined/README">Check Validators</a> |
-| [Arguments.initialState]   | <code>Object</code>   |                    | the initial state you want to use.                                                     |
-| [Arguments.clearOnUnmount] | <code>boolean</code>  | <code>true</code>  | the unique form id indicator.                                                          |
-| [Arguments.isGlobalForm]   | <code>boolean</code>  | <code>false</code> | tells if the form is defined global or not. If that is the case we will just reuse it. |
+| [Arguments.formId]         | <code>string</code>   |                    | The unique form id indicator, will generate a unique id if not.                        |
+| [Arguments.formValidator]  | <code>function</code> |                    | The form validator.<a href="/#/core/validators/README">Check Validators</a>            |
+| [Arguments.initialState]   | <code>Object</code>   |                    | The initial state you want to use.                                                     |
+| [Arguments.clearOnUnmount] | <code>boolean</code>  | <code>true</code>  | When the component unmounts, it will remove the form reference.                        |
+| [Arguments.isGlobalForm]   | <code>boolean</code>  | <code>false</code> | Tells if the form is defined global or not. If that is the case we will just reuse it. |
 
 **Example**
 

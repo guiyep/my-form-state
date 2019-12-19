@@ -4,9 +4,9 @@ Validators functions provide the ability to validate the form state within redux
 
 There are 3 different ways you can create these functions:
 
-- [x] Using YUP Schema. Pre-defined functions.
-- [x] Using JOI Schema. Pre-defined functions.
-- [x] Using Custom validations.
+- [x] Using the pre-defined function for YUP Schema.
+- [x] Using pre-defined function for JOI Schema.
+- [x] Using Custom validators.
 
 # YUP
 
@@ -71,8 +71,48 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 yupAsyncSchemaValidator(schema);
 ```
 
-# JOI
+## JOI
 
-# Custom
+## Custom
 
+You can build your own validations using your framework of choice.
+You need to create a function that can be async or not, that will return `undefined` when is valid, or a flat object with the errors when it is not.
 
+More precise the newFormState is the `state.data` field from the form state.
+
+```js
+const yourCustomFormValidator = (newFormState) => {
+  // is valid
+  if (yourCustomValidation(newFormState)) {
+    return undefined;
+  }
+  // is invalid
+  return {
+      yourField1: 'has an error',
+      yourField2: 'has an error',
+      yourField3.anotherField: 'has an error',
+      yourField4.anotherField.another: 'has an error',
+  };
+};
+```
+
+or
+
+```js
+const yourCustomFormValidator = async (newFormState) => {
+  try {
+    // is valid
+    if (await yourCustomValidation(newFormState)) {
+      return undefined;
+    }
+  } catch (ex) {
+    // is invalid
+    return {
+      yourField1: 'has an error',
+      yourField2: 'has an error',
+      yourField3.anotherField: 'has an error',
+      yourField4.anotherField.another: 'has an error',
+    };
+  }
+};
+```

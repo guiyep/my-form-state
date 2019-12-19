@@ -13,12 +13,16 @@
 
   - [Examples](/storybook/README.md 'Storybook')
 
+- Data Structure
+
+  - [Form State](/STATE.md)
+
 - Validators
 
-  - [Validator Function](/core/validators/README.md 'Validator Function')
-  - [YUP](/core/validators/README.md 'YUP')
+  - [Validator Functions](/core/validators/README 'Validator Function')
+  - [YUP](/core/validators/README 'YUP')
   - [JOI](/core/validators/README/#JOI 'JOI')
-  - [Custom](/core/validators/README.md 'Custom')
+  - [Custom](/core/validators/README 'Custom')
 
 - React
 
@@ -30,7 +34,7 @@
 
 - Redux
 
-  - [Operations](/redux/operations/README.md 'Redux Operations')
+  - [Dispatchable operations](/redux/operations/README.md 'Redux Dispatchable operations')
   - [Selectors](/redux/selectors/README.md 'Redux Selectors')
   - [Advance Example](./core/README.md 'Advance Example')
 

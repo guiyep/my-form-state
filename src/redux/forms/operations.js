@@ -64,10 +64,10 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
 };
 
 /**
- * Operation that updates one field value inside the `my-form-state` redux state. Will update any form/field property
- * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
+ * Dispatchable operation that updates one field value inside the `my-form-state` redux state. Will update any form/field property
+ * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name updateField
  * @param {Object} Arguments - Arguments as object.
@@ -111,10 +111,10 @@ const validateFormDebounced = debounce(
 );
 
 /**
- * Operation that updates one/more field/s value/s inside the `my-form-state` redux state. Will update any form/field property
- * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc)
+ * Dispatchable operation that updates one/more field/s value/s inside the `my-form-state` redux state. Will update any form/field property
+ * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name updateForm
  * @param {Object} Arguments - Arguments as object.
@@ -145,10 +145,10 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
 };
 
 /**
- * Operation that will submit and lock the form state. Will set the isSubmitted form property to true.
+ * Dispatchable operation that will submit and lock the form state. Will set the isSubmitted form property to true.
  * You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name submitForm
  * @param {Object} Arguments - Arguments as object.
@@ -173,10 +173,10 @@ export const submitForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * Operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
+ * Dispatchable operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
  * You can await for this operation and will resolve the promise once the form is initialized.
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name initializeForm
  * @param {Object} Arguments - Arguments as object.
@@ -205,9 +205,9 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
 };
 
 /**
- * Operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
+ * Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name clearForm
  * @param {Object} Arguments - Arguments as object.
@@ -230,9 +230,9 @@ export const clearForm = ({ formId }) => (dispatch) => {
 };
 
 /**
- * Operation that will reset the form state to the initial state. You can also change the initialState using the operation.
+ * Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
+ * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @desc formId is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
  * @kind function
  * @name resetForm
  * @param {Object} Arguments - Arguments as object.

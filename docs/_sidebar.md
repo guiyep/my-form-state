@@ -15,14 +15,14 @@
 
 - Data Structure
 
-  - [Form State](/STATE.md)
+  - [Form State](/state/README.md)
 
 - Validators
 
-  - [Validator Functions](/core/validators/README 'Validator Function')
-  - [YUP](/core/validators/README 'YUP')
-  - [JOI](/core/validators/README/#JOI 'JOI')
-  - [Custom](/core/validators/README 'Custom')
+  - [Validator Functions](/core/validators/README#validator-function 'Validator Function')
+  - [YUP](/core/validators/README#yup 'YUP')
+  - [JOI](/core/validators/README#joi 'JOI')
+  - [Custom](/core/validators/README#custom 'Custom')
 
 - React
 
@@ -34,7 +34,7 @@
 
 - Redux
 
-  - [Dispatchable operations](/redux/operations/README.md 'Redux Dispatchable operations')
+  - [Operations](/redux/operations/README.md 'Redux operations')
   - [Selectors](/redux/selectors/README.md 'Redux Selectors')
   - [Advance Example](./core/README.md 'Advance Example')
 

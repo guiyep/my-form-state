@@ -31,23 +31,16 @@ The <code>formId</code> is not required when used using <code>registerForm</code
 </dd>
 </dl>
 
-## Typedefs
-
-<dl>
-<dt><a href="#Thunk">Thunk</a> ⇒ <code>Promise</code></dt>
-<dd><p>A Redux Thunk. A function that returns a Promise</p>
-</dd>
-</dl>
-
 <a name="updateField"></a>
 
-## updateField(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## updateField
 
 Dispatchable operation that updates one field value inside the `my-form-state` redux state. Will update any form/field property
-that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
+that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy
@@ -74,13 +67,14 @@ dispatch(
 
 <a name="updateForm"></a>
 
-## updateForm(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## updateForm
 
 Dispatchable operation that updates one/more field/s value/s inside the `my-form-state` redux state. Will update any form/field property
-that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
+that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy
@@ -107,13 +101,14 @@ dispatch(
 
 <a name="submitForm"></a>
 
-## submitForm(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## submitForm
 
-Dispatchable operation that will submit and lock the form state. Will set the isSubmitted form property to true.
+Dispatchable operation that will submit and lock the form state. Will set the isSubmitted form property to true (<a href="/#/state/README#form-state">See the form state</a>).
 You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy
@@ -135,13 +130,14 @@ dispatch(
 
 <a name="initializeForm"></a>
 
-## initializeForm(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## initializeForm
 
 Dispatchable operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
 You can await for this operation and will resolve the promise once the form is initialized.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy
@@ -164,12 +160,13 @@ dispatch(
 
 <a name="clearForm"></a>
 
-## clearForm(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## clearForm
 
 Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy
@@ -191,12 +188,13 @@ dispatch(
 
 <a name="resetForm"></a>
 
-## resetForm(Arguments) ⇒ [<code>Thunk</code>](#Thunk)
+## resetForm
 
 Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: global function  
+**Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
 - Arguments.formId is falsy

@@ -27,7 +27,7 @@ import {
  * @name validateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk}.
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -74,7 +74,7 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  * @throws Arguments.field is falsy
  *
@@ -120,7 +120,7 @@ const validateFormDebounced = debounce(
  * @param {Object} Arguments - Arguments as object.
  * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  * @throws Arguments.data is falsy
  *
@@ -153,7 +153,7 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  * @name submitForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -182,7 +182,7 @@ export const submitForm = ({ formId }) => (dispatch) => {
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -212,7 +212,7 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  * @name clearForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -238,7 +238,7 @@ export const clearForm = ({ formId }) => (dispatch) => {
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Thunk}
+ * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
  *
  * @example

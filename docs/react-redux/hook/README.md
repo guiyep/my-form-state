@@ -17,11 +17,11 @@
 React-redux hook that will execute an update each time the redux form state changes. you will be able to
 perform any of the next actions:
 
-- resetForm
-- updateForm
-- submitForm : Promise. (will be resolve when the form is locked)
-- updateField
-- clearForm
+- <a href="/#/redux/operations/README#resetform">resetForm</a>
+- <a href="/#/redux/operations/README#updateform">updateForm</a>
+- <a href="/#/redux/operations/README#submitform">submitForm</a>
+- <a href="/#/redux/operations/README#updatefield">updateField</a>
+- <a href="/#/redux/operations/README#clearform">clearForm</a>
 
 **Kind**: React-Redux Hook.  
 **Returns**: <code>MyFormStateHook</code> - hook to be use in a react component.

@@ -36,9 +36,9 @@
 
   - [Operations](/redux/operations/README.md 'Redux operations')
   - [Selectors](/redux/selectors/README.md 'Redux Selectors')
-  - [Advance Example](./core/README.md 'Advance Example')
 
-- Core Module
+- Advance
 
   - [Core](./core/README.md 'Core')
   - [Advance Example](./core/advance/README.md 'Advance Example')
+  - [Global form schema](./core/advance/README.md 'Global form schema')

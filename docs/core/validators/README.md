@@ -1,6 +1,6 @@
 # Validator Function
 
-Validators functions provide the ability to validate the form state within redux/react. This is what the library uses to determine if a change in the form fields need to mark it as with an error or not.
+Validators functions provide the ability to validate the form state within redux/react. This is what the library uses to determine if a change in the form fields need to be marked as with an error or not.
 
 There are 3 different ways you can create these functions:
 
@@ -33,14 +33,14 @@ Creates a SYNC Yup schema validator to be used inside the operations.
 This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
 
 **Kind**: function  
-**Returns**: <code>function</code> - function to be use inside operations for validating the schema against the form state  
+**Returns**: <code>function</code> - Function to be use inside operations for validating the schema against the form state  
 **Throws**:
 
 - if schema is falsy and not a YUP schema.
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
-| schema | <code>object</code> | a YUP schema |
+| schema | <code>object</code> | YUP schema |
 
 **Example**
 
@@ -56,14 +56,14 @@ Creates an ASYNC Yup schema validator to be used inside the operations.
 This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
 **Kind**: function  
-**Returns**: <code>function</code> - function to be use inside operations for validating the schema against the form state  
+**Returns**: <code>function</code> - Function to be use inside operations for validating the schema against the form state  
 **Throws**:
 
 - if schema is falsy and not a YUP schema.
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
-| schema | <code>object</code> | a YUP schema |
+| schema | <code>object</code> | YUP schema |
 
 **Example**
 
@@ -90,8 +90,8 @@ const yourCustomFormValidator = (newFormState) => {
   return {
       yourField1: 'has an error',
       yourField2: 'has an error',
-      yourField3.anotherField: 'has an error',
-      yourField4.anotherField.another: 'has an error',
+      'yourField3.anotherField': 'has an error',
+      'yourField4.anotherField.another': 'has an error',
   };
 };
 ```
@@ -110,8 +110,8 @@ const yourCustomFormValidator = async (newFormState) => {
     return {
       yourField1: 'has an error',
       yourField2: 'has an error',
-      yourField3.anotherField: 'has an error',
-      yourField4.anotherField.another: 'has an error',
+      'yourField3.anotherField': 'has an error',
+      'yourField4.anotherField.another': 'has an error',
     };
   }
 };

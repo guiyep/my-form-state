@@ -1,5 +1,7 @@
 # React Hooks
 
+We provide an unified API to use this library, and this API is using <a href="https://reactjs.org/docs/hooks-intro.html">HOOKS</a>. The hooks state will be updated with any from change and the underlying actions can be used at any given time.
+
 ## Typedefs
 
 <dl>
@@ -38,7 +40,7 @@ perform any of the next actions:
 
 ```js
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
-  initialState: {},
-  formValidator: yupSyncSchemaValidator(schema),
+  initialState: { varA: 123 },
+  formValidator: yupSyncSchemaValidator(YUPSchema),
 });
 ```

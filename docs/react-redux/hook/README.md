@@ -1,5 +1,7 @@
 # React-Redux Hooks
 
+We provide an unified API to use this library, and this API is using <a href="https://react-redux.js.org/next/api/hooks">HOOKS</a>. The hooks state will be updated with any from change and the underlying actions can be used at any given time.
+
 ## Typedefs
 
 <dl>

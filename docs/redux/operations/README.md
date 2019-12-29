@@ -1,4 +1,4 @@
-## Functions
+# Operations
 
 <dl>
 <dt><a>updateField(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
@@ -39,7 +39,7 @@ Dispatchable operation that updates one field value inside the `my-form-state` r
 that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -73,7 +73,7 @@ Dispatchable operation that updates one/more field/s value/s inside the `my-form
 that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -107,7 +107,7 @@ Dispatchable operation that will submit and lock the form state. Will set the is
 You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -136,7 +136,7 @@ Dispatchable operation that will initialize the form state. Normally use it afte
 You can await for this operation and will resolve the promise once the form is initialized.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -165,7 +165,7 @@ dispatch(
 Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -193,7 +193,7 @@ dispatch(
 Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: global function  
+**Kind**: function  
 **Returns**: When dispatched returns a <code>Promise</code>  
 **Throws**:
 
@@ -214,11 +214,3 @@ dispatch(
   }),
 );
 ```
-
-<a name="Thunk"></a>
-
-## Thunk ⇒ <code>Promise</code>
-
-A Redux Thunk. A function that returns a Promise
-
-**Kind**: global typedef

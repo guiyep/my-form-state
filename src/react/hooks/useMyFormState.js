@@ -48,7 +48,7 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
         formValidator,
         initialState,
       }),
-    [formId, formValidator, initialState],
+    [],
   );
 
   const [state, dispatch] = useThunkReducer(reducer, { forms: {} });
@@ -59,20 +59,19 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
       unregister();
       dispatch(operations.clearForm({ dispatch, state }));
     };
-  }, [dispatch, initialState, operations, state, unregister]);
+  }, []);
 
-  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [dispatch, operations]);
+  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [operations.resetForm]);
 
-  const updateForm = useCallback(({ data }) => dispatch(operations.updateForm({ data })), [dispatch, operations]);
+  const updateForm = useCallback(({ data }) => dispatch(operations.updateForm({ data })), [operations.updateForm]);
 
-  const submitForm = useCallback(() => dispatch(operations.submitForm()), [dispatch, operations]);
+  const submitForm = useCallback(() => dispatch(operations.submitForm()), [operations.submitForm]);
 
   const updateField = useCallback(({ field, value }) => dispatch(operations.updateField({ field, value })), [
-    dispatch,
-    operations,
+    operations.updateField,
   ]);
 
-  const clearForm = useCallback(() => dispatch(operations.clearForm()), [dispatch, operations]);
+  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
 
   const thisForm = getForm()(state);
 

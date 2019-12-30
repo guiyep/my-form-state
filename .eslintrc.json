@@ -33,6 +33,7 @@
     "react/no-array-index-key": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/button-has-type": "off",
+    "react-hooks/exhaustive-deps": "off",
     "react/sort-comp": [
       2,
       {
@@ -44,7 +45,6 @@
     "no-use-before-define": "off",
     "prefer-destructuring": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",

@@ -10,7 +10,7 @@ const MyFormNestedContainer = ({ initialState, emptyState, schema, onFormWasUpda
   });
 
   // this is only for testing purposes
-  useEffect(() => onFormWasUpdated(formState), [formState, onFormWasUpdated]);
+  useEffect(() => onFormWasUpdated(formState), [formState]);
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
 

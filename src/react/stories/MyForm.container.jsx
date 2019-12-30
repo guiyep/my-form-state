@@ -14,7 +14,7 @@ const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated })
   const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }), [resetForm, emptyState]);
 
   // this is only for testing purposes
-  useEffect(() => onFormWasUpdated(formState), [formState, onFormWasUpdated]);
+  useEffect(() => onFormWasUpdated(formState), [formState]);
 
   return (
     <Form

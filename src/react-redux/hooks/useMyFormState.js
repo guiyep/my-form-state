@@ -55,7 +55,7 @@ export const useMyFormState = ({
         formValidator,
         initialState,
       }),
-    [formId, formValidator, initialState, isGlobalForm],
+    [],
   );
 
   const formState = useSelector(getForm());
@@ -69,20 +69,19 @@ export const useMyFormState = ({
         dispatch(operations.clearForm());
       }
     };
-  }, [clearOnUnmount, dispatch, initialState, operations, unregister]);
+  }, []);
 
-  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [dispatch, operations]);
+  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [operations.resetForm]);
 
-  const updateForm = useCallback(({ data }) => dispatch(operations.updateForm(data)), [dispatch, operations]);
+  const updateForm = useCallback(({ data }) => dispatch(operations.updateForm(data)), [operations.updateForm]);
 
-  const submitForm = useCallback(() => dispatch(operations.submitForm()), [dispatch, operations]);
+  const submitForm = useCallback(() => dispatch(operations.submitForm()), [operations.submitForm]);
 
   const updateField = useCallback(({ field, value }) => dispatch(operations.updateField({ field, value })), [
-    dispatch,
-    operations,
+    operations.updateField,
   ]);
 
-  const clearForm = useCallback(() => dispatch(operations.clearForm()), [dispatch, operations]);
+  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
 
   return [
     formState,

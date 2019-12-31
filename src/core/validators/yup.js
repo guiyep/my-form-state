@@ -57,7 +57,8 @@ export const yupAsyncSchemaValidator = (schema) => {
 
   return async (formData) => {
     try {
-      return await schema.validate(formData, { abortEarly: false });
+      await schema.validate(formData, { abortEarly: false });
+      return undefined;
     } catch (ex) {
       // it is invalid
       if (ex.name === 'ValidationError') {

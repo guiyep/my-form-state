@@ -33,7 +33,7 @@ export const formReducer = (state = {}, action) => {
         errors: flatten(action.payload),
         isInvalid,
         isValid: !isInvalid,
-        isSubmittable: !!state.isTouched && !!state.isValid,
+        isSubmittable: !!state.isTouched && !isInvalid,
       };
 
       nextState.fields = getFields(nextState);
@@ -72,13 +72,16 @@ export const formReducer = (state = {}, action) => {
     case INITIALIZE_FORM:
     case RESET_FORM: {
       const nextState = {
-        ...state,
         data: flatten(action.payload),
         isPristine: true,
         isInitialized: true,
         isSubmitted: false,
-        isSubmittable: !!state.isTouched && !!state.isValid,
+        isSubmittable: false,
         isTouched: false,
+        errors: {},
+        dirtyFields: {},
+        isInvalid: undefined,
+        isValid: undefined,
       };
 
       nextState.fields = getFields(nextState, true);

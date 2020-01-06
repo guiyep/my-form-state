@@ -14,6 +14,10 @@ If you use Redux or just React, this library is for you! Yes, it is not a typo. 
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
+## Documentation
+
+Check the [Documentation](https://docs-my-form-state.netlify.com/#//). The API is easy and fast to develop!
+
 ## Note
 
 The library is fully tested using Jest and fully documented using JsDoc.
@@ -80,7 +84,7 @@ const MyFormContainer = () => {
 export default MyFormContainer;
 ```
 
-## Example with JUST React
+## Example with React (No Redux)
 
 The library will keep the state internal to your component.
 
@@ -114,4 +118,4 @@ export default MyFormContainer;
 
 ## Storybook
 
-Check [Storybook](https://serene-hawking-021d7a.netlify.com/) for more examples.
+Check [Storybook](https://storybook-my-form-state.netlify.com/) for more examples.

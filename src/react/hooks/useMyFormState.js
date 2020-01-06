@@ -2,6 +2,7 @@ import { useMemo, useEffect, useCallback } from 'react';
 import reducer from '../redux/reducer';
 import { registerForm } from '@mfs-core';
 import { useThunkReducer } from './useThunkReducer';
+import { gerDefaultReducerProp } from '../../redux/init';
 
 /**
  * @typedef {object} formState
@@ -51,7 +52,7 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
     [],
   );
 
-  const [state, dispatch] = useThunkReducer(reducer, { forms: {} });
+  const [state, dispatch] = useThunkReducer(reducer, { [gerDefaultReducerProp()]: {} });
 
   useEffect(() => {
     dispatch(operations.initializeForm({ initialState }));

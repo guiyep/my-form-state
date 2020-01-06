@@ -6,7 +6,7 @@ import * as YUP from 'yup';
 import { withReduxProvider } from '../../stories/shared/withReduxProvider';
 import Form from './MyForm.container';
 import FormNested from './MyFormNested.container';
-import forms from '../../redux/forms/reducer';
+import { initializeReducer } from '../../redux';
 
 const initialState = {};
 
@@ -15,7 +15,7 @@ storiesOf(`React-Redux/MyFormState`, module)
   .addDecorator(withInfo)
   .addDecorator(
     withReduxProvider({
-      reducer: combineReducers({ forms }),
+      reducer: combineReducers({ ...initializeReducer() }),
       initialState,
     }),
   )

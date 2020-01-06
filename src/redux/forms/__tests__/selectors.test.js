@@ -1,7 +1,11 @@
-import { addFormToRegistry } from '@mfs-registry';
+import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
 import { getFormIdState, getForm } from '../selectors';
+import { gerDefaultReducerProp, initializeReducer } from '../../init';
 
 const formId = 'unique-form-id';
+
+initializeReducer();
+const formStateProp = gerDefaultReducerProp();
 
 describe('getFormIdState', () => {
   it('getFormIdState to throw with wrong params', () => {
@@ -12,7 +16,7 @@ describe('getFormIdState', () => {
   });
 
   it('getFormIdState to return state', () => {
-    const state = { forms: { [formId]: 'some-date' } };
+    const state = { [formStateProp]: { [formId]: 'some-date' } };
     expect(() => getFormIdState({ formId })({})).not.toThrow();
     expect(getFormIdState({ formId })(state)).toEqual('some-date');
     expect(getFormIdState({ formId: 'invalid' })(state)).toEqual({});
@@ -44,7 +48,7 @@ describe('getForm', () => {
 
   it('getForm to return data', () => {
     const state = {
-      forms: {
+      [formStateProp]: {
         [formId]: {
           data: { someData: 1 },
           isSubmitted: false,
@@ -90,7 +94,7 @@ describe('getForm', () => {
 
   it('getForm to return initial state', () => {
     const state = {
-      forms: {
+      [formStateProp]: {
         [formId]: {
           data: undefined,
           isSubmitted: false,

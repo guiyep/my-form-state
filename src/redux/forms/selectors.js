@@ -1,12 +1,13 @@
 import { memoize } from '@mfs-lib/memoize';
 import ParamValidator from '@mfs-lib/param-validator';
 import { getFormFromRegistry } from '@mfs-registry';
+import { gerReducerProp } from '../init';
 
 export const getFormIdState = ({ formId }) => (state) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');
 
-  return (state && state.forms && state.forms[formId]) || {};
+  return (state && state[gerReducerProp()] && state[gerReducerProp()][formId]) || {};
 };
 
 const memoizeGetForm = memoize((formId, thisFormIdState) => {

@@ -96,7 +96,7 @@ export default MyFormContainer;
 
 
 
-## Quick Example with JUST React
+## Quick Example with React (No Redux)
 
 The library will keep the state internal to your component.
 

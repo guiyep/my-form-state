@@ -16,7 +16,7 @@ It provides a simple hook API that you can initialize in a container component a
 
 ## Documentation
 
-Check the [Documentation](https://docs-my-form-state.netlify.com/#//). The API is easy and fast to develop!
+Check the [Documentation](https://docs-my-form-state.netlify.com/). The API is easy and fast to develop!
 
 ## Note
 
@@ -84,9 +84,9 @@ const MyFormContainer = () => {
 export default MyFormContainer;
 ```
 
-## Example with React (No Redux)
+## Example with only React (No Redux)
 
-The library will keep the state internal to your component.
+The library will keep the state internal to your component. No extra configuration needed.
 
 ```js
 import React from 'react';

@@ -12,24 +12,15 @@ If you use Redux or just React, this library is for you! Yes, it is not a typo. 
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
-
-
-
 ## Note
 
 The library is fully tested using Jest and fully documented using JsDoc.
-
-
-
 
 ## Getting Started
 
 ```bash
 npm install --save my-form-state
 ```
-
-
-
 
 ### Peer Dependencies
 
@@ -44,9 +35,6 @@ They depend on how you want to use the library:
 }
 ```
 
-
-
-
 #### With React-Redux
 
 ```bash
@@ -58,12 +46,11 @@ They depend on how you want to use the library:
 }
 ```
 
-
-
-
 ## Quick Example with React-Redux
 
 The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger update in the `useMyFormState` hook.
+
+Check <a href="/#/redux/get-started/README?id=my-form-library-redux-configuration">Getting Started Redux</a> for the Redux configuration
 
 ```js
 import React from 'react';
@@ -93,12 +80,9 @@ const MyFormContainer = () => {
 export default MyFormContainer;
 ```
 
+## Quick Example with only React (No Redux)
 
-
-
-## Quick Example with React (No Redux)
-
-The library will keep the state internal to your component.
+The library will keep the state internal to your component. No extra configuration needed.
 
 ```js
 import React from 'react';

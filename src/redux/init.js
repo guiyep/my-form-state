@@ -21,9 +21,20 @@ export const gerDefaultReducerProp = () => {
  * @throws if you already initialized the library reducer. This can only be run once!
  *
  * @example
+ * import { combineReducers, createStore } from 'redux';
  *
  * const formsReducer = initializeReducer();
- * const reducers = combineReducers({ ..yourAppReducers, ...formsReducer })
+ * const reducer = combineReducers({ ..yourAppReducer, ...formsReducer })
+ *
+ * const store = createStore(reducer, initialState)
+ *
+ * @example
+ * import { combineReducers, createStore } from 'redux';
+ *
+ * const formsReducer = initializeReducer({ name: 'custom-path'});
+ * const reducer = combineReducers({ ..yourAppReducer, ...formsReducer })
+ *
+ * const store = createStore(reducer, initialState)
  */
 
 export const initializeReducer = ({ name = gerDefaultReducerProp() } = {}) => {

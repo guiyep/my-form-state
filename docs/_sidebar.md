@@ -7,7 +7,7 @@
   - [Getting started](/#getting-started 'Getting started')
   - [Peer dependencies](/#peer-dependencies 'Peer dependencies')
   - [Quick example react-redux](/#quick-example-with-react-redux 'Quick example react-redux')
-  - [Quick Example with JUST React](/#quick-example-with-just-react 'Getting Started')
+  - [Quick Example with only React](/#quick-example-with-just-react 'Getting Started')
 
 - Storybook
 
@@ -34,6 +34,7 @@
 
 - Redux
 
+  - [Getting Started](/redux/get-started/README.md 'Getting started')
   - [Operations](/redux/operations/README.md 'Redux operations')
   - [Selectors](/redux/selectors/README.md 'Redux Selectors')
 

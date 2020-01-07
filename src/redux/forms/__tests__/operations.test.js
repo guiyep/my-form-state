@@ -1,52 +1,299 @@
-import { validateForm, updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
-
-const mockDispatch = jest.fn();
+import { updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
+import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
+import 'babel-polyfill';
 
 const formId = 'unique-form-id';
 
-it('validateForm to throw with wrong params', () => {
-  expect(() => validateForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
-  expect(() => validateForm({ formId })(() => {})).toThrow();
-  expect(() => validateForm({ formId })(undefined, () => {})).toThrow();
-});
-
-it('updateField to throw with wrong params', () => {
-  expect(() => updateField()).toThrow();
-  expect(() => validateForm({ formId })).toThrow();
-  expect(() => validateForm({ formId, field: 'test' })()).toThrow();
-});
-
 describe('updateField, normal flow', () => {
+  const mockDispatch = jest.fn();
+
   it('updateField to not throw', () => {
     expect(() => updateField({ formId, field: 'test' })(mockDispatch)).not.toThrow();
-  });
-
-  it('updateField execute updateForm with good params', () => {
-    expect(mockDispatch.mock.calls.length).toBe(1);
+    expect(mockDispatch.mock.calls).toHaveLength(1);
+    expect(typeof mockDispatch.mock.calls[0][0]).toEqual('function');
   });
 });
 
-it('updateForm to throw with wrong params', () => {
-  expect(() => updateForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
+describe('updateForm', () => {
+  beforeAll(() => {
+    addFormToRegistry(formId, {
+      initialState: { someData: 3 },
+      initialFields: {
+        someData: {
+          value: 3,
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    removeFormFromRegistry(formId);
+  });
+
+  it('updateForm', () => {
+    expect(() => updateForm()).toThrow();
+  });
+
+  it('updateField to not throw', () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(1);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/UPDATE_FORM',
+      payload: data,
+      options: {
+        formId,
+      },
+    });
+  });
+
+  it('timeout validation', async () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(mockDispatch.mock.calls).toHaveLength(2);
+        expect(mockDispatch.mock.calls[0][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+        const validationFunction = mockDispatch.mock.calls[1][0];
+
+        expect(() => validationFunction(mockDispatch, () => {})).not.toThrow();
+
+        expect(mockDispatch.mock.calls[2][0]).toEqual({
+          type: 'MY-FORM-STATE/VALIDATED_FORM',
+          payload: {},
+          options: {
+            formId,
+          },
+        });
+        resolve();
+      }, 200);
+    });
+  }, 300);
+
+  it('debounce validation', async () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(mockDispatch.mock.calls).toHaveLength(4);
+        expect(mockDispatch.mock.calls[0][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+        expect(mockDispatch.mock.calls[1][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+        expect(mockDispatch.mock.calls[2][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+
+        const validationFunction = mockDispatch.mock.calls[3][0];
+
+        expect(() => validationFunction(mockDispatch, () => {})).not.toThrow();
+
+        expect(mockDispatch.mock.calls[4][0]).toEqual({
+          type: 'MY-FORM-STATE/VALIDATED_FORM',
+          payload: {},
+          options: {
+            formId,
+          },
+        });
+        resolve();
+      }, 700);
+    });
+  }, 800);
 });
 
-it('submitForm to throw with wrong params', () => {
-  expect(() => submitForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
+describe('submitForm', () => {
+  const mockDispatch = jest.fn();
+
+  beforeAll(() => {
+    addFormToRegistry(formId, {
+      initialState: { someData: 3 },
+      initialFields: {
+        someData: {
+          value: 3,
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    removeFormFromRegistry(formId);
+  });
+
+  it('submitForm to throw with wrong params', () => {
+    expect(() => submitForm()).toThrow();
+  });
+
+  it('submitForm to not throw', () => {
+    expect(() => submitForm({ formId })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(2);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/SUBMIT_FORM',
+      options: {
+        formId,
+      },
+    });
+
+    const validationFunction = mockDispatch.mock.calls[1][0];
+    expect(() => validationFunction(mockDispatch, () => {})).not.toThrow();
+    expect(mockDispatch.mock.calls[2][0]).toEqual({
+      type: 'MY-FORM-STATE/VALIDATED_FORM',
+      payload: {},
+      options: {
+        formId,
+      },
+    });
+  });
 });
 
-it('initializeForm to throw with wrong params', () => {
-  expect(() => initializeForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
-});
-it('clearForm to throw with wrong params', () => {
-  expect(() => clearForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
+describe('initializeForm', () => {
+  const mockDispatch = jest.fn();
+
+  beforeAll(() => {
+    addFormToRegistry(formId, {
+      initialState: { someData: 3 },
+      initialFields: {
+        someData: {
+          value: 3,
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    removeFormFromRegistry(formId);
+  });
+
+  it('initializeForm to throw with wrong params', () => {
+    expect(() => initializeForm()).toThrow();
+  });
+
+  it('initializeForm to not throw', () => {
+    const initialState = {};
+    expect(() => initializeForm({ formId, initialState })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(2);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/INITIALIZE_FORM',
+      payload: initialState,
+      options: {
+        formId,
+      },
+    });
+
+    const validationFunction = mockDispatch.mock.calls[1][0];
+    expect(() => validationFunction(mockDispatch, () => {})).not.toThrow();
+    expect(mockDispatch.mock.calls[2][0]).toEqual({
+      type: 'MY-FORM-STATE/VALIDATED_FORM',
+      payload: {},
+      options: {
+        formId,
+      },
+    });
+  });
 });
 
-it('resetForm to throw with wrong params', () => {
-  expect(() => resetForm()).toThrow();
-  expect(() => validateForm({ formId })()).toThrow();
+describe('clearForm', () => {
+  const mockDispatch = jest.fn();
+
+  it('clearForm to throw with wrong params', () => {
+    expect(() => clearForm()).toThrow();
+  });
+
+  it('clearForm to not throw', () => {
+    expect(() => clearForm({ formId })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(1);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/CLEAR_FORM',
+      options: {
+        formId,
+      },
+    });
+  });
+});
+
+describe('resetForm', () => {
+  beforeAll(() => {
+    addFormToRegistry(formId, {
+      initialState: { someData: 3 },
+      initialFields: {
+        someData: {
+          value: 3,
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    removeFormFromRegistry(formId);
+  });
+
+  it('resetForm to throw with wrong params', () => {
+    expect(() => resetForm()).toThrow();
+  });
+
+  it('resetForm to not throw without initial state', () => {
+    const mockDispatch = jest.fn();
+    expect(() => resetForm({ formId })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(2);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/CLEAR_FORM',
+      options: {
+        formId,
+      },
+    });
+    expect(mockDispatch.mock.calls[1][0]).toEqual({
+      type: 'MY-FORM-STATE/RESET_FORM',
+      payload: {
+        someData: 3,
+      },
+      options: {
+        formId,
+      },
+    });
+  });
+
+  it('resetForm to not throw, with initial state', () => {
+    const mockDispatch = jest.fn();
+    expect(() => resetForm({ formId, initialState: { var: 3 } })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(2);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/CLEAR_FORM',
+      options: {
+        formId,
+      },
+    });
+    expect(mockDispatch.mock.calls[1][0]).toEqual({
+      type: 'MY-FORM-STATE/RESET_FORM',
+      payload: {
+        var: 3,
+      },
+      options: {
+        formId,
+      },
+    });
+  });
 });

@@ -72,7 +72,7 @@ export const formReducer = (state = {}, action) => {
     case INITIALIZE_FORM:
     case RESET_FORM: {
       const nextState = {
-        data: flatten(action.payload),
+        data: flatten(action.payload || {}),
         isPristine: true,
         isInitialized: true,
         isSubmitted: false,

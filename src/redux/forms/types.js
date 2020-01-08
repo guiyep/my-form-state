@@ -1,6 +1,5 @@
 const prefix = 'MY-FORM-STATE';
 
-export const START_VALIDATE_FORM = `${prefix}/START_VALIDATE_FORM`;
 export const VALIDATED_FORM = `${prefix}/VALIDATED_FORM`;
 export const UPDATE_FORM = `${prefix}/UPDATE_FORM`;
 export const SUBMIT_FORM = `${prefix}/SUBMIT_FORM`;

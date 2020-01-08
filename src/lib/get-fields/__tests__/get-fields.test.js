@@ -9,9 +9,6 @@ const data = {
   isTouched: true,
   fields: {
     name: {
-      alias: 'test',
-    },
-    name: {
       value: 'test',
       isPristine: false,
       isTouched: true,

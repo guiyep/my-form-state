@@ -14,6 +14,12 @@ describe('reducer', () => {
     const nextState = reducer(state, { type: 'MY-FORM-STATE/CLEAR_FORM', options: { formId } });
     expect(nextState[formId]).toEqual(undefined);
   });
+
+  it('on update updates form inside form id', () => {
+    const state = { [formId]: { a: 123 } };
+    const nextState = reducer(state, { type: 'MY-FORM-STATE/INITIALIZE_FORM', options: { formId }, payload: {} });
+    expect(nextState[formId].isInitialized).toEqual(true);
+  });
 });
 
 describe('formReducer', () => {

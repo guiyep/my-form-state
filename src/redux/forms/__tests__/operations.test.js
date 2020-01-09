@@ -1,5 +1,6 @@
 import { updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
 import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
+import { initializeReducer } from '../../init';
 import 'babel-polyfill';
 
 const formId = 'unique-form-id';
@@ -124,6 +125,118 @@ describe('updateForm', () => {
       }, 700);
     });
   }, 800);
+});
+
+describe('updateForm - with validation function', () => {
+  beforeAll(() => {
+    initializeReducer({ name: 'my-form-state' });
+    addFormToRegistry(formId, {
+      initialState: { someData: 3 },
+      formValidator: (data) =>
+        data && data.pass
+          ? undefined
+          : {
+              someData: 'has-an-error',
+            },
+      initialFields: {
+        someData: {
+          value: 3,
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    removeFormFromRegistry(formId);
+  });
+
+  it('updateForm', () => {
+    expect(() => updateForm()).toThrow();
+  });
+
+  it('updateField to not throw', () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    expect(mockDispatch.mock.calls).toHaveLength(1);
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'MY-FORM-STATE/UPDATE_FORM',
+      payload: data,
+      options: {
+        formId,
+      },
+    });
+  });
+
+  it('with errors after validating', async () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(mockDispatch.mock.calls).toHaveLength(2);
+        expect(mockDispatch.mock.calls[0][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+
+        const validationFunction = mockDispatch.mock.calls[1][0];
+        expect(() => validationFunction(mockDispatch, () => ({ 'my-form-state': { [formId]: {} } }))).not.toThrow();
+
+        setTimeout(() => {
+          expect(mockDispatch.mock.calls[2][0]).toEqual({
+            type: 'MY-FORM-STATE/VALIDATED_FORM',
+            payload: {
+              someData: 'has-an-error',
+            },
+            options: {
+              formId,
+            },
+          });
+          resolve();
+        }, 100);
+      }, 200);
+    });
+  }, 350);
+
+  it('no errors after validating', async () => {
+    const mockDispatch = jest.fn();
+    const data = { field: 'test' };
+    expect(() => updateForm({ formId, data })(mockDispatch)).not.toThrow();
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(mockDispatch.mock.calls).toHaveLength(2);
+        expect(mockDispatch.mock.calls[0][0]).toEqual({
+          type: 'MY-FORM-STATE/UPDATE_FORM',
+          payload: data,
+          options: {
+            formId,
+          },
+        });
+
+        const validationFunction = mockDispatch.mock.calls[1][0];
+        expect(() =>
+          validationFunction(mockDispatch, () => ({ 'my-form-state': { [formId]: { pass: true } } })),
+        ).not.toThrow();
+
+        setTimeout(() => {
+          expect(mockDispatch.mock.calls[2][0]).toEqual({
+            type: 'MY-FORM-STATE/VALIDATED_FORM',
+            payload: {
+              someData: 'has-an-error',
+            },
+            options: {
+              formId,
+            },
+          });
+          resolve();
+        }, 100);
+      }, 200);
+    });
+  }, 350);
 });
 
 describe('submitForm', () => {

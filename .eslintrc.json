@@ -34,6 +34,7 @@
     "react/jsx-one-expression-per-line": "off",
     "react/button-has-type": "off",
     "react-hooks/exhaustive-deps": "off",
+    "import/no-named-as-default-member": "off",
     "react/sort-comp": [
       2,
       {

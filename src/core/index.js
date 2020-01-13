@@ -2,7 +2,7 @@ import * as operationsRedux from '@mfs-redux/forms/operations';
 import * as selectorsRedux from '@mfs-redux/forms/selectors';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
-import ParamValidator, { IS_NOT_REQ } from '@mfs-lib/param-validator';
+import ParamValidator from '@mfs-lib/param-validator';
 import {
   addFormToRegistry,
   removeFormFromRegistry,
@@ -69,8 +69,8 @@ const unregisterForm = ({ formId }) => {
 
 export const registerForm = ({ formId = uuid(), formValidator, initialState }) => {
   ParamValidator.isString(formId, 'formId');
-  ParamValidator.isFunction(formValidator, 'formValidator', IS_NOT_REQ);
-  ParamValidator.isObject(initialState, 'initialState', IS_NOT_REQ);
+  ParamValidator.notRequired.isFunction(formValidator, 'formValidator');
+  ParamValidator.notRequired.isObject(initialState, 'initialState');
 
   // protect the initial state
   const initial = Object.freeze({ ...initialState });

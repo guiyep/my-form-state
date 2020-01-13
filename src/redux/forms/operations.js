@@ -1,6 +1,6 @@
 import { debounce } from '@mfs-lib/debounce';
 import { unflatten } from '@mfs-lib/flat';
-import ParamValidator, { IS_NOT_REQ } from '@mfs-lib/param-validator';
+import ParamValidator from '@mfs-lib/param-validator';
 import { getFormFromRegistry } from '@mfs-registry';
 
 import { getFormIdState } from './selectors';
@@ -250,7 +250,7 @@ export const clearForm = ({ formId }) => (dispatch) => {
 
 export const resetForm = ({ formId, initialState }) => (dispatch) => {
   ParamValidator.isString(formId, 'formId');
-  ParamValidator.isObject(initialState, 'initialState', IS_NOT_REQ);
+  ParamValidator.notRequired.isObject(initialState, 'initialState');
   ParamValidator.isFunction(dispatch, 'dispatch');
 
   const formData = getFormFromRegistry(formId);

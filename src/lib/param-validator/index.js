@@ -13,9 +13,6 @@ const Types = {
   OBJECT: typeof {},
 };
 
-export const IS_REQ = true;
-export const IS_NOT_REQ = false;
-
 const validateParamAndThrow = (param, type, name = 'UNDEFINED_FIELD', isRequired = true) => {
   if (type && Types[type.toUpperCase()] === undefined) {
     throw new ParamValidationError(
@@ -44,6 +41,13 @@ export const isObject = (value, name, isRequired) => validateParamAndThrow(value
 export const isNumber = (value, name, isRequired) => validateParamAndThrow(value, Types.NUMBER, name, isRequired);
 
 export default {
+  notRequired: {
+    isBoolean: (...args) => isBoolean(...args, false),
+    isString: (...args) => isString(...args, false),
+    isFunction: (...args) => isFunction(...args, false),
+    isObject: (...args) => isObject(...args, false),
+    isNumber: (...args) => isNumber(...args, false),
+  },
   isBoolean,
   isString,
   isFunction,

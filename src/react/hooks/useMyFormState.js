@@ -33,7 +33,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  *
  *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm}] = useMyFormState({
  *    initialState: {},
- *    formValidator: yupSyncSchemaValidator(schema),
+ *    formValidator: formValidator(schema),
  *});
  */
 

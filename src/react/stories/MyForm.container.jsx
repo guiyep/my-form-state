@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
-import { yupSyncSchemaValidator } from '../../core';
+import { formValidator } from '../../core/validators/yup/form-validator/sync';
 import Form from '../../stories/shared/Form';
 
 const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formValidator: yupSyncSchemaValidator(schema),
+    formValidator: formValidator(schema),
   });
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);

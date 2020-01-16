@@ -10,9 +10,11 @@ Form libraries are complex, they don't make a separation between state and UI. Y
 
 This library was built for the sole purpose of unifying and simplifying the way we manage the state with React and/or Redux.
 
-If you use Redux or just React, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with DUCKS under the hood.
+If you use Redux or just React, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with [Ducks](https://github.com/erikras/ducks-modular-redux) under the hood.
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
+
+It provides an integration with [Yup](https://github.com/jquense/yup)/[Joi](https://github.com/hapijs/joi)/[JsonSchema](https://json-schema.org/) for data validation.
 
 ## Documentation
 

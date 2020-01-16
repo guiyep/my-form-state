@@ -14,7 +14,7 @@ If you use Redux or just React, this library is for you! Yes, it is not a typo. 
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
-It provides an integration with [Yup](https://github.com/jquense/yup)/[Joi](https://github.com/hapijs/joi)/[JsonSchema](https://json-schema.org/) for data validation.
+Last but not least it integrates with [Yup](https://github.com/jquense/yup)/[Joi](https://github.com/hapijs/joi)/[JsonSchema](https://json-schema.org/) for data validation.
 
 ## Documentation
 

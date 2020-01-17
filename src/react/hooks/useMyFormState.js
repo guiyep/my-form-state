@@ -25,6 +25,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  * @kind React Hook
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
+ * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
  * @param {Function} [Arguments.formValidator] - The form validator.
  * @param {Object} [Arguments.initialState] - The initial state you want to use.
  * @return {MyFormStateHook} Hook to be use in a React component.
@@ -37,7 +38,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  *});
  */
 
-export const useMyFormState = ({ formId, formValidator, initialState }) => {
+export const useMyFormState = ({ formId, formValidator, formSchema, initialState }) => {
   const {
     operations,
     selectors: { getForm },
@@ -48,6 +49,7 @@ export const useMyFormState = ({ formId, formValidator, initialState }) => {
         formId,
         formValidator,
         initialState,
+        formSchema,
       }),
     [],
   );

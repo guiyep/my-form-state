@@ -2,6 +2,7 @@ import * as operationsRedux from '@mfs-redux/forms/operations';
 import * as selectorsRedux from '@mfs-redux/forms/selectors';
 import { uuid } from '@mfs-lib/uuid';
 import { flatten, unflatten } from '@mfs-lib/flat';
+import { getFlatMap } from '@mfs-lib/json-schema-parser';
 import ParamValidator from '@mfs-lib/param-validator';
 import {
   addFormToRegistry,
@@ -63,11 +64,11 @@ const unregisterForm = ({ formId }) => {
  *
  *const { formId, operations, selectors, unregister } = registerForm({
  *    initialState: {},
- *    formValidator: formValidator(schema),
+ *    formSchema: formSchema(schema),
  *});
  */
 
-export const registerForm = ({ formId = uuid(), formValidator, initialState }) => {
+export const registerForm = ({ formId = uuid(), formValidator, formSchema, initialState }) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.notRequired.isFunction(formValidator, 'formValidator');
   ParamValidator.notRequired.isObject(initialState, 'initialState');
@@ -75,11 +76,26 @@ export const registerForm = ({ formId = uuid(), formValidator, initialState }) =
   // protect the initial state
   const initial = Object.freeze({ ...initialState });
 
+  const formSchemaResolved =
+    typeof formSchema === 'function'
+      ? formSchema()
+      : {
+          jsonSchema: formSchema,
+        };
+
+  if (formSchemaResolved.jsonSchema) {
+    formSchemaResolved.fieldsDefinition = getFlatMap({ jsonSchema: formSchemaResolved.jsonSchema });
+  }
+
+  if (formValidator) {
+    formSchemaResolved.formValidator = formValidator;
+  }
+
   addFormToRegistry(formId, {
-    formValidator,
+    ...formSchemaResolved,
     initialState: initial,
     initialFields: unflatten(
-      Object.entries(flatten(initial)).reduce((acc, [key, val]) => {
+      Object.entries(flatten(initial, formSchemaResolved.jsonSchemaFlatMap)).reduce((acc, [key, val]) => {
         acc[key] = {
           value: val,
         };

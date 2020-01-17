@@ -16,7 +16,7 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  * perform any of the next actions:
  * - resetForm
  * - updateForm
- * - submitForm : Promise. (will be resolve when the form is locked)
+ * - submitForm : Promise. (will be resolve when the form is locked and will return the result)
  * - updateField
  * - clearForm
  *
@@ -24,6 +24,7 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  * @param {Object} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - The form validator.
+ * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
  * @param {Object} [Arguments.initialState] - The initial state you want to use.
  * @param {boolean} [Arguments.clearOnUnmount=true] - When the component unmounts it will remove the form reference.
  * @param {boolean} [Arguments.isGlobalForm=false] - Tells if the form is defined global or not. If that is the case we will just reuse it.
@@ -33,13 +34,14 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  *
  *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
  *    initialState: {},
- *    formValidator: formValidator(schema),
+ *    formSchema: formSchema(schema),
  *});
  */
 
 export const useMyFormState = ({
   formId,
   formValidator,
+  formSchema,
   initialState,
   clearOnUnmount = true,
   isGlobalForm = false,
@@ -54,6 +56,7 @@ export const useMyFormState = ({
         formId,
         formValidator,
         initialState,
+        formSchema,
       }),
     [],
   );

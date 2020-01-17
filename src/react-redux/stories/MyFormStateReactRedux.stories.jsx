@@ -25,7 +25,7 @@ storiesOf(`React-Redux/MyFormState`, module)
       maxPropsIntoLine: 1,
     },
   })
-  .add('Basic - YUP Async Validation', () => {
+  .add('Basic - YUP Schema', () => {
     const schema = YUP.object().shape({
       name: YUP.string().required(),
       familyName: YUP.string().required(),
@@ -38,7 +38,7 @@ storiesOf(`React-Redux/MyFormState`, module)
 
     return <Form schema={schema} initialState={initialState2} emptyState={emptyState} />;
   })
-  .add('Nested state- YUP Sync validation', () => {
+  .add('Nested state - YUP Schema', () => {
     const schema = YUP.object().shape({
       profileOne: YUP.object().shape({
         name: YUP.string().required(),
@@ -47,6 +47,27 @@ storiesOf(`React-Redux/MyFormState`, module)
         alias: YUP.string().required(),
       }),
       profileTwo: YUP.object().shape({
+        name: YUP.string().required(),
+        familyName: YUP.string().required(),
+        favoriteColor: YUP.string().required(),
+        alias: YUP.string().required(),
+      }),
+    });
+
+    const initialState3 = {
+      profileOne: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
+      profileTwo: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
+    };
+    const emptyState = {
+      profileOne: { name: '', familyName: '', alias: '', favoriteColor: '' },
+      profileTwo: { name: '', familyName: '', alias: '', favoriteColor: '' },
+    };
+
+    return <FormNested schema={schema} initialState={initialState3} emptyState={emptyState} />;
+  })
+  .add('Nested state - YUP schema - only one profile', () => {
+    const schema = YUP.object().shape({
+      profileOne: YUP.object().shape({
         name: YUP.string().required(),
         familyName: YUP.string().required(),
         favoriteColor: YUP.string().required(),

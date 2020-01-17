@@ -1,5 +1,5 @@
 import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
-import { getFormIdState, getForm } from '../selectors';
+import { getFormIdState, getForm, getFormResult } from '../selectors';
 import { gerDefaultReducerProp, initializeReducer } from '../../init';
 
 const formId = 'unique-form-id';
@@ -124,5 +124,19 @@ describe('getForm', () => {
         value: 3,
       },
     });
+  });
+
+  it('getFormResult to return resultData', () => {
+    const state = {
+      [formStateProp]: {
+        [formId]: {
+          resultData: {
+            a: 1,
+          },
+        },
+      },
+    };
+    const formResultData = getFormResult({ formId })(state);
+    expect(formResultData.a).toEqual(1);
   });
 });

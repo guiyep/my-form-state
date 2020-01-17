@@ -3,12 +3,17 @@ import { combineReducers } from 'redux';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import * as YUP from 'yup';
+import { action as actionAddon } from '@storybook/addon-actions';
 import { withReduxProvider } from '../../stories/shared/withReduxProvider';
 import Form from './MyForm.container';
 import FormNested from './MyFormNested.container';
 import { initializeReducer } from '../../redux';
 
 const initialState = {};
+
+const onSubmit = (data) => {
+  actionAddon(`FORM-SUBMITTED`)(data);
+};
 
 storiesOf(`React-Redux/MyFormState`, module)
   .addDecorator((story) => <div style={{ width: '30em' }}> {story()} </div>)
@@ -36,7 +41,7 @@ storiesOf(`React-Redux/MyFormState`, module)
     const initialState2 = { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' };
     const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
 
-    return <Form schema={schema} initialState={initialState2} emptyState={emptyState} />;
+    return <Form schema={schema} onSubmit={onSubmit} initialState={initialState2} emptyState={emptyState} />;
   })
   .add('Nested state - YUP Schema', () => {
     const schema = YUP.object().shape({
@@ -63,7 +68,7 @@ storiesOf(`React-Redux/MyFormState`, module)
       profileTwo: { name: '', familyName: '', alias: '', favoriteColor: '' },
     };
 
-    return <FormNested schema={schema} initialState={initialState3} emptyState={emptyState} />;
+    return <FormNested onSubmit={onSubmit} schema={schema} initialState={initialState3} emptyState={emptyState} />;
   })
   .add('Nested state - YUP schema - only one profile', () => {
     const schema = YUP.object().shape({
@@ -84,5 +89,5 @@ storiesOf(`React-Redux/MyFormState`, module)
       profileTwo: { name: '', familyName: '', alias: '', favoriteColor: '' },
     };
 
-    return <FormNested schema={schema} initialState={initialState3} emptyState={emptyState} />;
+    return <FormNested onSubmit={onSubmit} schema={schema} initialState={initialState3} emptyState={emptyState} />;
   });

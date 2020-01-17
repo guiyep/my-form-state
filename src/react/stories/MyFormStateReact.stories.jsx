@@ -12,6 +12,10 @@ window.__DON_T_USE_PUSH_REDUX_CHANGE_TO_STORYBOOK = (type, data) => {
   actionAddon(`REDUCER-ACTION/${type}`)(data);
 };
 
+const onSubmit = (data) => {
+  actionAddon(`FORM-SUBMITTED`)(data);
+};
+
 storiesOf(`React/MyFormState`, module)
   .addDecorator((story) => <div style={{ width: '30em' }}> {story()} </div>)
   .addDecorator(withInfo)
@@ -21,7 +25,7 @@ storiesOf(`React/MyFormState`, module)
       maxPropsIntoLine: 1,
     },
   })
-  .add('Basic', () =>
+  .add('Basic, YUP schema', () =>
     withState({})(({ store }) => {
       const schema = YUP.object().shape({
         name: YUP.string().required(),
@@ -39,12 +43,13 @@ storiesOf(`React/MyFormState`, module)
           initialState={initialState}
           emptyState={emptyState}
           onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
         />
       );
     })(),
   )
   .add(
-    'Nested state',
+    'Nested state, YUP schema',
     withState({})(({ store }) => {
       const schema = YUP.object().shape({
         profileOne: YUP.object().shape({
@@ -76,6 +81,39 @@ storiesOf(`React/MyFormState`, module)
           initialState={initialState}
           emptyState={emptyState}
           onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
+        />
+      );
+    }),
+  )
+  .add(
+    'Nested state, YUP schema - only one profile',
+    withState({})(({ store }) => {
+      const schema = YUP.object().shape({
+        profileOne: YUP.object().shape({
+          name: YUP.string().required(),
+          familyName: YUP.string().required(),
+          favoriteColor: YUP.string().required(),
+          alias: YUP.string().required(),
+        }),
+      });
+
+      const initialState = {
+        profileOne: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
+        profileTwo: { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' },
+      };
+      const emptyState = {
+        profileOne: { name: '', familyName: '', alias: '', favoriteColor: '' },
+        profileTwo: { name: '', familyName: '', alias: '', favoriteColor: '' },
+      };
+
+      return (
+        <FormNested
+          schema={schema}
+          initialState={initialState}
+          emptyState={emptyState}
+          onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
         />
       );
     }),

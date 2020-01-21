@@ -9,7 +9,7 @@ import { jsonSchema } from './json-schema';
  * @kind function
  * @name formSchema
  * @param {Object} schema - a YUP schema object.
- * @param {Object} options - options as object.
+ * @param {Object} [options] - options as object.
  * @param {string} [options.async=false] - if the validation need to happen sync or async.
  * @returns {Function} a function that will be used inside for validating the form.
  * @throws Arguments.schema is falsy

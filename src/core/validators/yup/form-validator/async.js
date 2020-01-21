@@ -30,3 +30,5 @@ export const formValidator = (schema) => {
     }
   };
 };
+
+export default formValidator;

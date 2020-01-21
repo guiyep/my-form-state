@@ -1,11 +1,9 @@
-import * as async from './form-validator/async';
-import * as sync from './form-validator/sync';
-import * as formSchema from './form-schema';
+import async from './form-validator/async';
+import sync from './form-validator/sync';
 
-export const yup = {
-  formValidators: {
-    async,
-    sync,
-  },
-  formSchema,
+export * from './form-schema';
+
+export const formValidators = {
+  async,
+  sync,
 };

@@ -13,11 +13,11 @@ There are 3 different ways you can create these functions:
 ### Validators
 
 <dl>
-<dt><a>yupSyncSchemaValidator(schema)</a> ⇒ <code>function</code></dt>
+<dt><a>formValidator(schema)</a> ⇒ <code>function</code></dt>
 <dd><p>Creates a SYNC Yup schema validator to be used inside the operations.
 This is used in <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code> .</p>
 </dd>
-<dt><a>yupAsyncSchemaValidator(schema)</a> ⇒ <code>function</code></dt>
+<dt><a>formValidator(schema)</a> ⇒ <code>function</code></dt>
 <dd><p>Creates an ASYNC Yup schema validator to be used inside the operations.
 This is used in  <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
@@ -25,9 +25,9 @@ This is used in  <code>registerForm</code> from <code>my-form-state/core</code> 
 
 ### Description
 
-<a name="yupSyncSchemaValidator"></a>
+<a name="formValidator"></a>
 
-## yupSyncSchemaValidator(schema) ⇒ <code>function</code>
+## formValidator(schema) ⇒ <code>function</code>
 
 Creates a SYNC Yup schema validator to be used inside the operations.
 This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
@@ -45,12 +45,12 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 **Example**
 
 ```js
-yupSyncSchemaValidator(schema);
+formValidator(schema);
 ```
 
-<a name="yupAsyncSchemaValidator"></a>
+<a name="formValidator"></a>
 
-## yupAsyncSchemaValidator(schema) ⇒ <code>function</code>
+## formValidator(schema) ⇒ <code>function</code>
 
 Creates an ASYNC Yup schema validator to be used inside the operations.
 This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
@@ -68,7 +68,7 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 **Example**
 
 ```js
-yupAsyncSchemaValidator(schema);
+formValidator(schema);
 ```
 
 ## JOI

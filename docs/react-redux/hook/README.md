@@ -42,6 +42,6 @@ perform any of the next actions:
 ```js
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
   initialState: {},
-  formValidator: yupSyncSchemaValidator(schema),
+  formValidator: formValidator(schema),
 });
 ```

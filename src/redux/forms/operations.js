@@ -3,7 +3,7 @@ import { unflatten } from '@mfs-lib/flat';
 import ParamValidator from '@mfs-lib/param-validator';
 import { getFormFromRegistry } from '@mfs-registry';
 
-import { getFormIdState } from './selectors';
+import { getFormIdState, getFormResult } from './selectors';
 
 import {
   validateForm as validateFormAction,
@@ -163,13 +163,15 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  *     }))
  */
 
-export const submitForm = ({ formId }) => (dispatch) => {
+export const submitForm = ({ formId }) => async (dispatch, getState) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isFunction(dispatch, 'dispatch');
 
   dispatch(submitFormAction({ formId }));
 
-  return dispatch(validateForm({ formId }));
+  await dispatch(validateForm({ formId }));
+
+  return getFormResult({ formId })(getState());
 };
 
 /**
@@ -198,7 +200,9 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
   ParamValidator.isObject(initialState, 'initialState');
   ParamValidator.isFunction(dispatch, 'dispatch');
 
-  dispatch(initializeFormAction({ initialState, formId }));
+  const { fieldsDefinition } = getFormFromRegistry(formId);
+
+  dispatch(initializeFormAction({ initialState, formId, fieldsDefinition }));
 
   // it is not always the case we need to validate the schema on initialization
   return dispatch(validateForm({ formId }));
@@ -255,5 +259,11 @@ export const resetForm = ({ formId, initialState }) => (dispatch) => {
 
   const formData = getFormFromRegistry(formId);
   dispatch(clearFormAction({ formId }));
-  dispatch(resetFormAction({ formId, initialState: initialState || formData.initialState }));
+  dispatch(
+    resetFormAction({
+      formId,
+      initialState: initialState || formData.initialState,
+      fieldsDefinition: formData.fieldsDefinition,
+    }),
+  );
 };

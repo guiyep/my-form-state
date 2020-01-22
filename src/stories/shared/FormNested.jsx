@@ -63,50 +63,52 @@ const FormNested = ({
         </div>
       </div>
       <br />
-      <div>
+      {profileTwo && (
         <div>
-          <TextField
-            error={profileTwo.name.showError}
-            required
-            id={profileTwo.name.path}
-            label="Name"
-            value={profileTwo.name.value}
-            margin="normal"
-            onChange={onFieldChangeHandler}
-            disabled={isSubmitted}
-          />
-          <TextField
-            error={profileTwo.familyName.showError}
-            required
-            id={profileTwo.familyName.path}
-            label="Family Name"
-            value={profileTwo.familyName.value}
-            margin="normal"
-            onChange={onFieldChangeHandler}
-            disabled={isSubmitted}
-          />
-          <TextField
-            error={profileTwo.alias.showError}
-            required
-            id={profileTwo.alias.path}
-            label="Alias"
-            value={profileTwo.alias.value}
-            margin="normal"
-            onChange={onFieldChangeHandler}
-            disabled={isSubmitted}
-          />
-          <TextField
-            error={profileTwo.favoriteColor.showError}
-            required
-            id={profileTwo.favoriteColor.path}
-            label="Favorite Color"
-            value={profileTwo.favoriteColor.value}
-            margin="normal"
-            onChange={onFieldChangeHandler}
-            disabled={isSubmitted}
-          />
+          <div>
+            <TextField
+              error={profileTwo.name.showError}
+              required
+              id={profileTwo.name.path}
+              label="Name"
+              value={profileTwo.name.value}
+              margin="normal"
+              onChange={onFieldChangeHandler}
+              disabled={isSubmitted}
+            />
+            <TextField
+              error={profileTwo.familyName.showError}
+              required
+              id={profileTwo.familyName.path}
+              label="Family Name"
+              value={profileTwo.familyName.value}
+              margin="normal"
+              onChange={onFieldChangeHandler}
+              disabled={isSubmitted}
+            />
+            <TextField
+              error={profileTwo.alias.showError}
+              required
+              id={profileTwo.alias.path}
+              label="Alias"
+              value={profileTwo.alias.value}
+              margin="normal"
+              onChange={onFieldChangeHandler}
+              disabled={isSubmitted}
+            />
+            <TextField
+              error={profileTwo.favoriteColor.showError}
+              required
+              id={profileTwo.favoriteColor.path}
+              label="Favorite Color"
+              value={profileTwo.favoriteColor.value}
+              margin="normal"
+              onChange={onFieldChangeHandler}
+              disabled={isSubmitted}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <br />
 
       <div>

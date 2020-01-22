@@ -262,7 +262,7 @@ describe('submitForm', () => {
   });
 
   it('submitForm to not throw', () => {
-    expect(() => submitForm({ formId })(mockDispatch)).not.toThrow();
+    expect(() => submitForm({ formId })(mockDispatch, () => ({}))).not.toThrow();
     expect(mockDispatch.mock.calls).toHaveLength(2);
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: 'MY-FORM-STATE/SUBMIT_FORM',

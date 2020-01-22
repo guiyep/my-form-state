@@ -98,6 +98,7 @@ export const submitForm = ({ formId }) => ({
  * @module my-form-state/redux
  * @param {Object} Arguments - Arguments as object.
  * @param {Object} [Arguments.initialState] - your form initial state as { [props] : value }.
+ * @param {Object} [Arguments.fieldsDefinition] - your form fields structure state as { [props] : boolean }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -111,11 +112,12 @@ export const submitForm = ({ formId }) => ({
  *     }))
  */
 
-export const initializeForm = ({ initialState, formId }) => ({
+export const initializeForm = ({ initialState, formId, fieldsDefinition }) => ({
   type: INITIALIZE_FORM,
   payload: initialState,
   options: {
     formId,
+    fieldsDefinition,
   },
 });
 
@@ -149,6 +151,7 @@ export const clearForm = ({ formId }) => ({
  * @module my-form-state/redux
  * @param {Object} Arguments - Arguments as object.
  * @param {Object} [Arguments.initialState] - your form initial state as { [props] : value }.
+ * @param {Object} [Arguments.fieldsDefinition] - your form fields structure state as { [props] : boolean }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
  * @throws Arguments.formId is falsy
@@ -160,10 +163,11 @@ export const clearForm = ({ formId }) => ({
  *     }))
  */
 
-export const resetForm = ({ formId, initialState }) => ({
+export const resetForm = ({ formId, initialState, fieldsDefinition }) => ({
   type: RESET_FORM,
   payload: initialState,
   options: {
     formId,
+    fieldsDefinition,
   },
 });

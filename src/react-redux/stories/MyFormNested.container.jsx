@@ -1,23 +1,28 @@
 import React, { useCallback } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
-import { yupSyncSchemaValidator } from '../../core';
+import { formSchema } from '../../core/validators/yup/form-schema';
 import FormNested from '../../stories/shared/FormNested';
 
-const MyFormNestedContainer = ({ initialState, emptyState, schema }) => {
+const MyFormNestedContainer = ({ initialState, emptyState, schema, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formValidator: yupSyncSchemaValidator(schema),
+    formSchema: formSchema(schema),
   });
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
 
   const onEmptyHandler = useCallback(() => resetForm({ initialState: emptyState }), [resetForm, emptyState]);
 
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
   return (
     <FormNested
       formState={formState}
       onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
+      onSubmit={onSubmitHandler}
       onClear={onEmptyHandler}
       onReset={resetForm}
     />

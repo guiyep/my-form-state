@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
-import { yupSyncSchemaValidator } from '../../core';
+import { formSchema } from '../../core/validators/yup/form-schema';
 import Form from '../../stories/shared/Form';
 
-const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated }) => {
+const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formValidator: yupSyncSchemaValidator(schema),
+    formSchema: formSchema(schema),
   });
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);
@@ -16,11 +16,16 @@ const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated })
   // this is only for testing purposes
   useEffect(() => onFormWasUpdated(formState), [formState]);
 
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
   return (
     <Form
       formState={formState}
       onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
+      onSubmit={onSubmitHandler}
       onClear={onEmptyHandler}
       onReset={resetForm}
     />

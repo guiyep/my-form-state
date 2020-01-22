@@ -1,4 +1,4 @@
-import { flatten } from '@mfs-lib/flat';
+import { flatten, unflatten } from '@mfs-lib/flat';
 import { getFields } from '@mfs-lib/get-fields';
 import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, RESET_FORM } from './types';
 
@@ -72,7 +72,8 @@ export const formReducer = (state = {}, action) => {
     case INITIALIZE_FORM:
     case RESET_FORM: {
       const nextState = {
-        data: flatten(action.payload || {}),
+        data: action.payload ? flatten(action.payload, action.options && action.options.fieldsDefinition) : {},
+        initialData: action.payload ? flatten(action.payload) : {},
         isPristine: true,
         isInitialized: true,
         isSubmitted: false,
@@ -91,6 +92,10 @@ export const formReducer = (state = {}, action) => {
     case SUBMIT_FORM: {
       const nextState = {
         ...state,
+        resultData: unflatten({
+          ...state.initialData,
+          ...state.data,
+        }),
         isSubmitted: true,
       };
 

@@ -60,3 +60,28 @@ export const getForm = ({ formId }) => (state) => {
   const thisFormIdState = getFormIdState({ formId })(state) || {};
   return memoizeGetForm(formId, thisFormIdState);
 };
+
+/**
+ * Gets the forms result data. This result data is the merge between the form changes and the initial state.
+ * Passing formId is not required when used using `registerForm` from `my-form-state/core`.
+ *
+ * @kind function
+ * @name getForm
+ * @param {Object} Arguments - Arguments as object.
+ * @param {string} Arguments.formId - The unique form id indicator.
+ * @returns {function} It is a function to be executed with the state.
+ * @throws Arguments.formId is falsy
+ *
+ * @example
+ *
+ *     getForm({ formId: 'unique-form-id' })(state)
+ *
+ */
+
+export const getFormResult = ({ formId }) => (state) => {
+  ParamValidator.isString(formId, 'formId');
+  ParamValidator.isObject(state, 'state');
+
+  const thisFormIdState = getFormIdState({ formId })(state) || {};
+  return thisFormIdState && thisFormIdState.resultData;
+};

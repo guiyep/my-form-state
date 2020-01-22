@@ -28,6 +28,7 @@ import { jsonSchema } from './json-schema';
  */
 export const formSchema = (schema, { async = false } = {}) => {
   ParamValidator.isObject(schema, 'schema');
+  ParamValidator.notRequired.isBoolean(async, 'async');
 
   return () => ({
     formValidator: (!async && formValidatorSync(schema)) || formValidatorAsync(schema),

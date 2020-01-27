@@ -22,6 +22,7 @@
   - [Validator Functions](/core/validators/README#validator-function 'Validator Function')
   - [YUP](/core/validators/README#yup 'YUP')
   - [JOI](/core/validators/README#joi 'JOI')
+  - [JSON SCHEMA](/core/validators/README#json-schema 'JOI')
   - [Custom](/core/validators/README#custom 'Custom')
 
 - React
@@ -42,4 +43,4 @@
 
   - [Core](./core/README.md 'Core')
   - [Advance Example](./core/advance/README.md 'Advance Example')
-  - [Global form schema](./core/advance/README.md 'Global form schema')
+  - [Global form schema](./core/global/README.md 'Global form schema')

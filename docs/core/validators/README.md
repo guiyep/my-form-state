@@ -8,6 +8,10 @@ There are 3 different ways you can create these functions:
 - [x] Using pre-defined function for JOI Schema.
 - [x] Using Custom validators.
 
+IMPORTANT:
+
+Validation functions will validate the entire form data model and treat every single property as a field. If you initialize 
+
 # YUP
 
 ### Validators
@@ -38,9 +42,9 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 
 - if schema is falsy and not a YUP schema.
 
-| Param  | Type                | Description  |
-| ------ | ------------------- | ------------ |
-| schema | <code>object</code> | YUP schema |
+| Param  | Type                | Description |
+| ------ | ------------------- | ----------- |
+| schema | <code>object</code> | YUP schema  |
 
 **Example**
 
@@ -61,9 +65,9 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 
 - if schema is falsy and not a YUP schema.
 
-| Param  | Type                | Description  |
-| ------ | ------------------- | ------------ |
-| schema | <code>object</code> | YUP schema |
+| Param  | Type                | Description |
+| ------ | ------------------- | ----------- |
+| schema | <code>object</code> | YUP schema  |
 
 **Example**
 
@@ -72,6 +76,12 @@ formValidator(schema);
 ```
 
 ## JOI
+
+UNDER DEVELOPMENT
+
+## JSON SCHEMA
+
+UNDER DEVELOPMENT
 
 ## Custom
 
@@ -88,10 +98,10 @@ const yourCustomFormValidator = (newFormState) => {
   }
   // is invalid
   return {
-      yourField1: 'has an error',
-      yourField2: 'has an error',
-      'yourField3.anotherField': 'has an error',
-      'yourField4.anotherField.another': 'has an error',
+    yourField1: 'has an error',
+    yourField2: 'has an error',
+    'yourField3.anotherField': 'has an error',
+    'yourField4.anotherField.another': 'has an error',
   };
 };
 ```

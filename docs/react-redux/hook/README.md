@@ -28,6 +28,8 @@ perform any of the next actions:
 **Kind**: React-Redux Hook.  
 **Returns**: <code>MyFormStateHook</code> - hook to be use in a react component.
 
+**Params**:
+
 | Param                      | Type                  | Default            | Description                                                                            |
 | -------------------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------- |
 | Arguments                  | <code>Object</code>   |                    | Arguments as object.                                                                   |
@@ -40,8 +42,10 @@ perform any of the next actions:
 **Example**
 
 ```js
+import { formSchema } from 'my-form-state/core/validators/yup';
+
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
   initialState: {},
-  formValidator: formValidator(schema),
+  formSchema: formSchema(YUPSchema),
 });
 ```

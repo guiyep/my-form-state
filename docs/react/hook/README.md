@@ -29,6 +29,8 @@ perform any of the next actions:
 
 **Returns**: <code>MyFormStateHook</code> - Hook to be use in a React component.
 
+**Params**:
+
 | Param                     | Type                  | Description                                                                  |
 | ------------------------- | --------------------- | ---------------------------------------------------------------------------- |
 | Arguments                 | <code>Object</code>   | Arguments as object.                                                         |
@@ -39,8 +41,10 @@ perform any of the next actions:
 **Example**
 
 ```js
+import { formSchema } from 'my-form-state/core/validators/yup';
+
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
   initialState: { varA: 123 },
-  formValidator: formValidator(YUPSchema),
+  formSchema: formSchema(YUPSchema),
 });
 ```

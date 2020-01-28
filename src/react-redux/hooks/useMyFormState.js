@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useThunks } from './useThunks';
 import { registerForm, getFormFromRegistry } from '@mfs-core';
 
 /**
@@ -62,7 +63,7 @@ export const useMyFormState = ({
   );
 
   const formState = useSelector(getForm());
-  const dispatch = useDispatch();
+  const dispatch = useThunks();
 
   useEffect(() => {
     dispatch(operations.initializeForm({ initialState }));

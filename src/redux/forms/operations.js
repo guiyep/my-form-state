@@ -15,15 +15,15 @@ import {
 } from './action-creators';
 
 /**
- * A Redux Thunk. A function that returns a Promise
+ * A function that returns an expression to be executed later.
  * @typedef {function} Thunk
- * @returns {Promise}
+ * @returns {Function}
  */
 
 /**
  * Will validate the form state based on your validation function and update the form state and props.
  *
- * @kind function
+ * @kind Thunk
  * @name validateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
@@ -68,13 +68,13 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name updateField
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
- * @returns {Promise} Promise when dispatched
+ * @returns Nothing.
  * @throws Arguments.formId is falsy
  * @throws Arguments.field is falsy
  *
@@ -115,12 +115,12 @@ const validateFormDebounced = debounce(
  * that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name updateForm
  * @param {Object} Arguments - Arguments as object.
  * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Promise} Promise when dispatched
+ * @returns Nothing.
  * @throws Arguments.formId is falsy
  * @throws Arguments.data is falsy
  *
@@ -149,11 +149,11 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  * You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name submitForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Promise} Promise when dispatched
+ * @returns {Promise} Promise when dispatched.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -179,12 +179,12 @@ export const submitForm = ({ formId }) => async (dispatch, getState) => {
  * You can await for this operation and will resolve the promise once the form is initialized.
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name initializeForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Promise} Promise when dispatched
+ * @returns {Promise} Promise when dispatched.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -212,11 +212,11 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  * Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name clearForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
- * @returns {Promise} Promise when dispatched
+ * @returns Nothing.
  * @throws Arguments.formId is falsy
  *
  * @example
@@ -237,12 +237,12 @@ export const clearForm = ({ formId }) => (dispatch) => {
  * Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
- * @kind function
+ * @kind Thunk
  * @name resetForm
  * @param {Object} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
- * @returns {Promise} Promise when dispatched
+ * @returns Nothing.
  * @throws Arguments.formId is falsy
  *
  * @example

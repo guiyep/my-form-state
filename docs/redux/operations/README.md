@@ -39,12 +39,14 @@ Dispatchable operation that updates one field value inside the `my-form-state` r
 that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
+**Kind**: Thunk.
+**Returns**: Nothing.
 **Throws**:
 
 - Arguments.formId is falsy
 - Arguments.field is falsy
+
+**Params**:
 
 | Param            | Type                | Description                     |
 | ---------------- | ------------------- | ------------------------------- |
@@ -73,12 +75,14 @@ Dispatchable operation that updates one/more field/s value/s inside the `my-form
 that is being affected by this field (<a href="/#/state/README#form-state">See the form state</a>).
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
+**Kind**: Thunk.
+**Returns**: Nothing.
 **Throws**:
 
 - Arguments.formId is falsy
 - Arguments.data is falsy
+
+**Params**:
 
 | Param            | Type                | Description                                                           |
 | ---------------- | ------------------- | --------------------------------------------------------------------- |
@@ -107,11 +111,11 @@ Dispatchable operation that will submit and lock the form state. Will set the is
 You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
-**Throws**:
+**Kind**: Thunk.
+**Returns**: When dispatched returns a <code>Promise</code>.
+**Throws**: Arguments.formId is falsy.
 
-- Arguments.formId is falsy
+**Params**:
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
@@ -121,11 +125,20 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
-dispatch(
-  submitForm({
-    formId: 'unique-form-id',
-  }),
-);
+const submit = async () => {
+  try {
+    const formValues = await dispatch(
+      submitForm({
+        formId: 'unique-form-id',
+      }),
+    );
+    // valid state
+    return formValues;
+  }
+  catch(ex) {
+    // not valid state
+  }
+}
 ```
 
 <a name="initializeForm"></a>
@@ -136,11 +149,11 @@ Dispatchable operation that will initialize the form state. Normally use it afte
 You can await for this operation and will resolve the promise once the form is initialized.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
-**Throws**:
+**Kind**: Thunk.
+**Returns**: When dispatched returns a <code>Promise</code>.
+**Throws**: Arguments.formId is falsy.
 
-- Arguments.formId is falsy
+**Params**:
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |
@@ -165,11 +178,11 @@ dispatch(
 Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
-**Throws**:
+**Kind**: Thunk.
+**Returns**: Nothing.
+**Throws**: Arguments.formId is falsy.
 
-- Arguments.formId is falsy
+**Params**:
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
@@ -193,11 +206,11 @@ dispatch(
 Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
 
-**Kind**: function  
-**Returns**: When dispatched returns a <code>Promise</code>  
-**Throws**:
+**Kind**: Thunk.
+**Returns**: Nothing.
+**Throws**: Arguments.formId is falsy.
 
-- Arguments.formId is falsy
+**Params**:
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |
@@ -214,3 +227,7 @@ dispatch(
   }),
 );
 ```
+
+# Note
+
+When using the operation outside this library hooks, you need to have the <a href="https://github.com/reduxjs/redux-thunk">Thunk Middleware</a> applied into your redux store.

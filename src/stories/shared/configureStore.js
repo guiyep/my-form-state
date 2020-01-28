@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reduxThunkMiddleware from 'redux-thunk';
 import { action as actionAddon } from '@storybook/addon-actions';
 
 function logger(store) {
@@ -19,7 +18,7 @@ function logger(store) {
 }
 
 const configureStore = ({ reducer, initialState = {} }) => {
-  return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(reduxThunkMiddleware, logger)));
+  return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(logger)));
 };
 
 export default configureStore;

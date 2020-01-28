@@ -10,7 +10,7 @@ There are 3 different ways you can create these functions:
 
 IMPORTANT:
 
-Validation functions will validate the entire form data model and treat every single property as a field. If you initialize 
+Validation functions will validate the entire form data model and treat every single property as a field. If you initialize
 
 # YUP
 
@@ -42,6 +42,8 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 
 - if schema is falsy and not a YUP schema.
 
+**Params**:
+
 | Param  | Type                | Description |
 | ------ | ------------------- | ----------- |
 | schema | <code>object</code> | YUP schema  |
@@ -64,6 +66,8 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 **Throws**:
 
 - if schema is falsy and not a YUP schema.
+
+**Params**:
 
 | Param  | Type                | Description |
 | ------ | ------------------- | ----------- |

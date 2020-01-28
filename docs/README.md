@@ -66,11 +66,16 @@ const MyFormContainer = () => {
 
   const onEmptyHandler = () => resetForm({ initialState: {} );
 
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
   return (
     <Form
       formState={formState}
       onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
+      onSubmit={onSubmitHandler}
       onClear={onEmptyHandler}
       onReset={resetForm}
     />
@@ -98,11 +103,16 @@ const MyFormContainer = () => {
 
   const onEmptyHandler = () => resetForm({ initialState: {} });
 
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
   return (
     <Form
       formState={formState}
       onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
+      onSubmit={onSubmitHandler}
       onClear={onEmptyHandler}
       onReset={resetForm}
     />

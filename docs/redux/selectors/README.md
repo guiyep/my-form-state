@@ -13,6 +13,8 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 
 - Arguments.formId is falsy
 
+**Params**:
+
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
 | Arguments        | <code>Object</code> | Arguments as object.          |

@@ -1,6 +1,6 @@
 # React Hooks
 
-We provide an unified API to use this library, and this API is using <a href="https://reactjs.org/docs/hooks-intro.html">HOOKS</a>. The hooks state will be updated with any from change and the underlying actions can be used at any given time.
+We provide an unified API to use this library, and this API is using <a href="https://reactjs.org/docs/hooks-intro.html">HOOKS</a>. The hooks state will be updated with any form change and the underlying operations can be used at any given time.
 
 ## Typedefs
 

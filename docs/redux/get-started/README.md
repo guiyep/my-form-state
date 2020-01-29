@@ -4,7 +4,7 @@
 
 <dl>
 <dt><a href="#initializeReducer">initializeReducer(Arguments)</a> ⇒ <code>object</code></dt>
-<dd><p>Initialize the my-form-state reducer into redux. All the forms created will be under the provided name. Uses the <code>my-form-state</code> property
+<dd><p>Initialize the my-form-state reducer into the redux store. All the forms created will be under the provided name. Uses the <code>my-form-state</code> property
 as default name if name is not provided.</p>
 </dd>
 </dl>
@@ -13,7 +13,7 @@ as default name if name is not provided.</p>
 
 ## initializeReducer(Arguments) ⇒ <code>object</code>
 
-Initialize the my-form-state reducer into redux. All the forms created will be under the provided name. Uses the `my-form-state` property
+Initialize the my-form-state reducer into the redux store. All the forms created will be under the provided name. Uses the `my-form-state` property
 as default name if name is not provided.
 
 **Kind**: function  
@@ -21,6 +21,8 @@ as default name if name is not provided.
 **Throws**:
 
 - If you already initialized the library reducer. This can only be run once!
+
+**Params**:
 
 | Param          | Type                | Default                                | Description                                                                                    |
 | -------------- | ------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |

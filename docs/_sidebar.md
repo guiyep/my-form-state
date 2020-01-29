@@ -15,7 +15,8 @@
 
 - Data Structure
 
-  - [Form State](/state/README.md)
+  - [Form State](/state/README#form-state)
+  - [Redux State](/state/README#redux-state)
 
 - Validators
 
@@ -27,17 +28,23 @@
 
 - React
 
-  - [Hooks](/react/hook/README.md 'React Hooks')
+  - [Hooks](/react/hook/README#react-hooks 'React Hooks')
 
 - React-Redux
 
-  - [Hooks](/react-redux/hook/README.md 'React-Redux Hooks')
+  - [Hooks](/react-redux/hook/README#react-redux-hooks  'React-Redux Hooks')
 
 - Redux
 
-  - [Getting Started](/redux/get-started/README.md 'Getting started')
-  - [Operations](/redux/operations/README.md 'Redux operations')
-  - [Selectors](/redux/selectors/README.md 'Redux Selectors')
+  - [Getting Started](/redux/get-started/README#my-form-library-redux-configuration 'Getting started')
+  - [Operations](/redux/operations/README#operations 'Redux operations')
+    - [Update Field](/redux/operations/README#updatefield 'Update Field')
+    - [Update Form](/redux/operations/README#updateform 'Update Form')
+    - [Submit Form](/redux/operations/README#submitform 'Submit Form')
+    - [Initialize Form](/redux/operations/README#initializeform 'Initialize Form')
+    - [Clear Form](/redux/operations/README#clearform 'Clear Form')
+    - [Reset Form](/redux/operations/README#resetform 'Reset Form')
+  - [Selectors](/redux/selectors/README#selectors 'Redux Selectors')
 
 - Advance
 

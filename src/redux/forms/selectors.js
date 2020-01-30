@@ -3,7 +3,7 @@ import ParamValidator from '@mfs-lib/param-validator';
 import { getFormFromRegistry } from '@mfs-registry';
 import { gerReducerProp } from '../init';
 
-export const getFormIdState = ({ formId }) => (state) => {
+export const getFormIdState = (state, { formId }) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');
 
@@ -43,27 +43,27 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
 });
 
 /**
- * Memoize selector that return a function that will get the current state of the form from the Redux/React store. This state can come from React or Redux.
+ * Selector that returns the current state of the form.
  * Passing formId is not required when used using `registerForm` from `my-form-state/core`.
  *
  * @kind function
  * @name getForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - The unique form id indicator.
- * @returns {function} It is a function to be executed with the state.
+ * @returns {object} form state.
  * @throws Arguments.formId is falsy
  *
  * @example
  *
- *     getForm({ formId: 'unique-form-id' })(state)
+ *     getForm(state, { formId: 'unique-form-id' })
  *
  */
 
-export const getForm = ({ formId }) => (state) => {
+export const getForm = (state, { formId }) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');
 
-  const thisFormIdState = getFormIdState({ formId })(state) || {};
+  const thisFormIdState = getFormIdState(state, { formId }) || {};
   return memoizeGetForm(formId, thisFormIdState);
 };
 
@@ -72,22 +72,22 @@ export const getForm = ({ formId }) => (state) => {
  * Passing formId is not required when used using `registerForm` from `my-form-state/core`.
  *
  * @kind function
- * @name getForm
- * @param {Object} Arguments - Arguments as object.
+ * @name getFormResult
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - The unique form id indicator.
- * @returns {function} It is a function to be executed with the state.
+ * @returns {object} form state.
  * @throws Arguments.formId is falsy
  *
  * @example
  *
- *     getForm({ formId: 'unique-form-id' })(state)
+ *     getFormResult(state, { formId: 'unique-form-id' })
  *
  */
 
-export const getFormResult = ({ formId }) => (state) => {
+export const getFormResult = (state, { formId }) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');
 
-  const thisFormIdState = getFormIdState({ formId })(state) || {};
+  const thisFormIdState = getFormIdState(state, { formId }) || {};
   return thisFormIdState && thisFormIdState.resultData;
 };

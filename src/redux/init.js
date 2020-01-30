@@ -15,7 +15,7 @@ export const gerDefaultReducerProp = () => {
  * as default name if name is not provided.
  *
  * @kind function
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.name='my-form-state' - The redux state property from which all the forms will be stored. Defaults to `my-form-state`.
  * @return {object} - the reducer object to combine with the all of your reducers
  * @throws if you already initialized the library reducer. This can only be run once!

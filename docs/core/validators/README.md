@@ -1,6 +1,6 @@
-# Validator Function
+# Validators
 
-Validators functions provide the ability to validate the form state within redux/react. This is what the library uses to determine if a change in the form fields need to be marked as with an error or not.
+Validators provide the ability to validate the form state within redux/react. This is what the library uses to determine if a change in the form fields need to be marked as with an error or not.
 
 There are 3 different ways you can create these functions:
 
@@ -14,70 +14,7 @@ Validation functions will validate the entire form data model and treat every si
 
 # YUP
 
-### Validators
 
-<dl>
-<dt><a>formValidator(schema)</a> ⇒ <code>function</code></dt>
-<dd><p>Creates a SYNC Yup schema validator to be used inside the operations.
-This is used in <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code> .</p>
-</dd>
-<dt><a>formValidator(schema)</a> ⇒ <code>function</code></dt>
-<dd><p>Creates an ASYNC Yup schema validator to be used inside the operations.
-This is used in  <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
-</dd>
-</dl>
-
-### Description
-
-<a name="formValidator"></a>
-
-## formValidator(schema) ⇒ <code>function</code>
-
-Creates a SYNC Yup schema validator to be used inside the operations.
-This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux` .
-
-**Kind**: function  
-**Returns**: <code>function</code> - Function to be use inside operations for validating the schema against the form state  
-**Throws**:
-
-- if schema is falsy and not a YUP schema.
-
-**Params**
-
-| Param  | Type                | Description |
-| ------ | ------------------- | ----------- |
-| schema | <code>object</code> | YUP schema  |
-
-**Example**
-
-```js
-formValidator(schema);
-```
-
-<a name="formValidator"></a>
-
-## formValidator(schema) ⇒ <code>function</code>
-
-Creates an ASYNC Yup schema validator to be used inside the operations.
-This is used in `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
-
-**Kind**: function  
-**Returns**: <code>function</code> - Function to be use inside operations for validating the schema against the form state  
-**Throws**:
-
-- if schema is falsy and not a YUP schema.
-
-**Params**
-
-| Param  | Type                | Description |
-| ------ | ------------------- | ----------- |
-| schema | <code>object</code> | YUP schema  |
-
-**Example**
-
-```js
-formValidator(schema);
-```
 
 ## JOI
 

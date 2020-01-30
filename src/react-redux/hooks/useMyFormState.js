@@ -22,7 +22,7 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  * - clearForm
  *
  * @kind react-redux hook.
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - The form validator.
  * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
@@ -62,7 +62,7 @@ export const useMyFormState = ({
     [],
   );
 
-  const formState = useSelector(getForm());
+  const formState = useSelector(getForm);
   const dispatch = useThunks();
 
   useEffect(() => {

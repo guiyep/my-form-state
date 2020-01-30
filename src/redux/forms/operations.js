@@ -25,7 +25,7 @@ import {
  *
  * @kind Thunk
  * @name validateForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched
  * @throws Arguments.formId is falsy
@@ -50,7 +50,7 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
     return true;
   }
 
-  const formState = getFormIdState({ formId })(getState());
+  const formState = getFormIdState(getState(), { formId });
 
   const errors = await validatorFunction(unflatten(formState.data));
 
@@ -70,7 +70,7 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  *
  * @kind Thunk
  * @name updateField
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
@@ -117,7 +117,7 @@ const validateFormDebounced = debounce(
  *
  * @kind Thunk
  * @name updateForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns Nothing.
@@ -151,7 +151,7 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  *
  * @kind Thunk
  * @name submitForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched.
  * @throws Arguments.formId is falsy
@@ -171,7 +171,7 @@ export const submitForm = ({ formId }) => async (dispatch, getState) => {
 
   await dispatch(validateForm({ formId }));
 
-  return getFormResult({ formId })(getState());
+  return getFormResult(getState(), { formId });
 };
 
 /**
@@ -181,7 +181,7 @@ export const submitForm = ({ formId }) => async (dispatch, getState) => {
  *
  * @kind Thunk
  * @name initializeForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
  * @returns {Promise} Promise when dispatched.
@@ -214,7 +214,7 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  *
  * @kind Thunk
  * @name clearForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns Nothing.
  * @throws Arguments.formId is falsy
@@ -239,7 +239,7 @@ export const clearForm = ({ formId }) => (dispatch) => {
  *
  * @kind Thunk
  * @name resetForm
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
  * @returns Nothing.

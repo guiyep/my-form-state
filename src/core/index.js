@@ -10,10 +10,19 @@ import {
   getFormFromRegistry as getFormFromInternalRegistry,
 } from '@mfs-registry';
 
-const scopeModuleToForm = (moduleMap, originalArgs) => {
+const scopeOperationToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
     acc[name] = (args = {}) => {
       return moduleMap[name]({ ...originalArgs, ...args });
+    };
+    return acc;
+  }, {});
+};
+
+const scopeSelectorToForm = (moduleMap, originalArgs) => {
+  return Object.keys(moduleMap).reduce((acc, name) => {
+    acc[name] = (state) => {
+      return moduleMap[name](state, { ...originalArgs });
     };
     return acc;
   }, {});
@@ -30,7 +39,7 @@ const scopeModuleToForm = (moduleMap, originalArgs) => {
  * Remove a registered form from the `my-form-state` registry.
  *
  * @kind function
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator.
  * @return undefined
  * @throws if formId is falsy
@@ -54,9 +63,10 @@ const unregisterForm = ({ formId }) => {
  *
  *
  * @kind function
- * @param {Object} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
+ * @param {*} Arguments - Arguments as object.
+ * @param {String} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formValidator] - the form validator function.
+ * @param {Function} [Arguments.formSchema] - the form schema function.
  * @param {Object} [Arguments.initialState] - the initial state you want to use.
  * @return {MyForm} - available functionality for the form {@link MyForm}
  *
@@ -105,8 +115,8 @@ export const registerForm = ({ formId = uuid(), formValidator, formSchema, initi
   });
 
   return {
-    operations: scopeModuleToForm(operationsRedux, { formId }),
-    selectors: scopeModuleToForm(selectorsRedux, { formId }),
+    operations: scopeOperationToForm(operationsRedux, { formId }),
+    selectors: scopeSelectorToForm(selectorsRedux, { formId }),
     formId,
     unregister: () => unregisterForm({ formId }),
   };
@@ -116,7 +126,7 @@ export const registerForm = ({ formId = uuid(), formValidator, formSchema, initi
  * Get an already registered form from the `my-form-state` registry.
  *
  * @kind function
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id.
  * @return {MyForm} - available functionality for the form {@link MyForm}
  * @throws if formId is falsy.

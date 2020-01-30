@@ -23,7 +23,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  * - clearForm
  *
  * @kind React Hook
- * @param {Object} Arguments - Arguments as object.
+ * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
  * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
  * @param {Function} [Arguments.formValidator] - The form validator.
@@ -76,7 +76,7 @@ export const useMyFormState = ({ formId, formValidator, formSchema, initialState
 
   const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
 
-  const thisForm = getForm()(state);
+  const thisForm = getForm(state);
 
   return [
     thisForm,

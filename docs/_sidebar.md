@@ -20,7 +20,7 @@
 
 - Validators
 
-  - [Validator Functions](/core/validators/README#validator-function 'Validator Function')
+  - [Getting Started](/core/validators/README#validators 'Validators')
   - [YUP](/core/validators/README#yup 'YUP')
   - [JOI](/core/validators/README#joi 'JOI')
   - [Json Schema](/core/validators/README#json-schema 'Json Schema')

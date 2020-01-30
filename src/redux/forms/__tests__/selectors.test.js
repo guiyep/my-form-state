@@ -11,15 +11,15 @@ describe('getFormIdState', () => {
   it('getFormIdState to throw with wrong params', () => {
     expect(() => getFormIdState()).toThrow();
     expect(() => getFormIdState({ formId })()).toThrow();
-    expect(() => getFormIdState({ formId })(() => {})).toThrow();
-    expect(() => getFormIdState({ formId })('string')).toThrow();
+    expect(() => getFormIdState(() => {}, { formId })).toThrow();
+    expect(() => getFormIdState('string', { formId })).toThrow();
   });
 
   it('getFormIdState to return state', () => {
     const state = { [formStateProp]: { [formId]: 'some-date' } };
-    expect(() => getFormIdState({ formId })({})).not.toThrow();
-    expect(getFormIdState({ formId })(state)).toEqual('some-date');
-    expect(getFormIdState({ formId: 'invalid' })(state)).toEqual({});
+    expect(() => getFormIdState({}, { formId })).not.toThrow();
+    expect(getFormIdState(state, { formId })).toEqual('some-date');
+    expect(getFormIdState(state, { formId: 'invalid' })).toEqual({});
   });
 });
 
@@ -41,9 +41,9 @@ describe('getForm', () => {
 
   it('getForm to throw with wrong params', () => {
     expect(() => getForm()).toThrow();
-    expect(() => getForm({ formId })()).toThrow();
-    expect(() => getForm({ formId })(() => {})).toThrow();
-    expect(() => getForm({ formId })('string')).toThrow();
+    expect(() => getForm(undefined, { formId })()).toThrow();
+    expect(() => getForm(() => {}, { formId })(() => {})).toThrow();
+    expect(() => getForm('string', { formId })).toThrow();
   });
 
   it('getForm to return data', () => {
@@ -71,7 +71,7 @@ describe('getForm', () => {
         },
       },
     };
-    const formState = getForm({ formId })(state);
+    const formState = getForm(state, { formId });
     expect(formState.data).toEqual({ someData: 1 });
     expect(formState.isSubmitted).toEqual(false);
     expect(formState.isSubmittable).toEqual(false);
@@ -109,7 +109,7 @@ describe('getForm', () => {
         },
       },
     };
-    const formState = getForm({ formId })(state);
+    const formState = getForm(state, { formId });
     expect(formState.data).toEqual({ someData: 3 });
     expect(formState.isSubmitted).toEqual(false);
     expect(formState.isSubmittable).toEqual(false);
@@ -136,7 +136,7 @@ describe('getForm', () => {
         },
       },
     };
-    const formResultData = getFormResult({ formId })(state);
+    const formResultData = getFormResult(state, { formId });
     expect(formResultData.a).toEqual(1);
   });
 });

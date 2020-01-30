@@ -20,16 +20,17 @@
         coverpage: true,
         loadSidebar: true,
         search: {
-          noData: {
-            '/': 'No results!',
-          },
+          maxAge: 86400000, // Expiration time, the default one day
           paths: 'auto',
-          placeholder: {
-            '/': 'Search',
-          },
+          placeholder: 'Type to search',
+          noData: 'No Results!',
+          // Headline depth, 1 - 6
+          depth: 6,
+          hideOtherSidebarContent: false, // whether or not to hide other sidebar content
         },
       };
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   </body>
 </html>

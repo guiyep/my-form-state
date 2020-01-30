@@ -42,7 +42,7 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 
 - if schema is falsy and not a YUP schema.
 
-**Params**:
+**Params**
 
 | Param  | Type                | Description |
 | ------ | ------------------- | ----------- |
@@ -67,7 +67,7 @@ This is used in `registerForm` from `my-form-state/core` or `useMyFormState` fro
 
 - if schema is falsy and not a YUP schema.
 
-**Params**:
+**Params**
 
 | Param  | Type                | Description |
 | ------ | ------------------- | ----------- |
@@ -83,7 +83,7 @@ formValidator(schema);
 
 UNDER DEVELOPMENT
 
-## JSON SCHEMA
+## Json Schema
 
 UNDER DEVELOPMENT
 

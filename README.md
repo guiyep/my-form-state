@@ -65,12 +65,17 @@ import { useMyFormState } from 'my-form-state/react-redux';
 
 import Form from '@Your-form-component';
 
-const MyFormContainer = () => {
+const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
   const onEmptyHandler = () => resetForm({ initialState: {} });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
 
   return (
     <Form
@@ -97,12 +102,17 @@ import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFE
 
 import Form from '@Your-form-component';
 
-const MyFormContainer = () => {
+const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
   const onEmptyHandler = () => resetForm({ initialState: {} });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
 
   return (
     <Form

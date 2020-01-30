@@ -22,7 +22,7 @@ as default name if name is not provided.
 
 - If you already initialized the library reducer. This can only be run once!
 
-**Params**:
+**Params**
 
 | Param          | Type                | Default                                | Description                                                                                    |
 | -------------- | ------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |

@@ -23,7 +23,7 @@
   - [Validator Functions](/core/validators/README#validator-function 'Validator Function')
   - [YUP](/core/validators/README#yup 'YUP')
   - [JOI](/core/validators/README#joi 'JOI')
-  - [JSON SCHEMA](/core/validators/README#json-schema 'JOI')
+  - [Json Schema](/core/validators/README#json-schema 'Json Schema')
   - [Custom](/core/validators/README#custom 'Custom')
 
 - React

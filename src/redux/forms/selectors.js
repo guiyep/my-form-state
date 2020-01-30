@@ -16,9 +16,15 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
   return {
     data: thisFormIdState.data || initialState || {},
 
+    initialData: thisFormIdState.initialData || initialState,
+
+    resultData: thisFormIdState.resultData,
+
     isSubmitted: thisFormIdState.isSubmitted,
 
     isSubmittable: thisFormIdState.isSubmittable,
+
+    isInitialized: thisFormIdState.isInitialized,
 
     isTouched: thisFormIdState.isTouched,
 

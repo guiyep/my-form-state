@@ -29,7 +29,7 @@ perform any of the next actions:
 
 **Returns**: <code>MyFormStateHook</code> - Hook to be use in a React component.
 
-**Params**:
+**Params**
 
 | Param                     | Type                  | Description                                                                  |
 | ------------------------- | --------------------- | ---------------------------------------------------------------------------- |

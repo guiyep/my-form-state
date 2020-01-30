@@ -10,6 +10,24 @@ const state = {
     'profileOne.alias': '',
     'profileOne.favoriteColor': 'red',
   },
+  // Is the initial data for your form. This will only be loaded once the form is
+  // initialized and always remain the same unless you reset the form to a 
+  // different state. (using the resetForm operation)
+  initialData: {
+    'profileOne.name': 'Jon',
+    'profileOne.familyName': 'Doe',
+    'profileOne.alias': '',
+    'profileOne.favoriteColor': 'red',
+  },
+  // The form result data. It is going to be the merge between `state.data` and
+  // `state.initialData`. It will be populated after you submit the form and
+  // `state.isSubmitted` is set to true. (using the submitForm operation)
+  resultData: {
+    'profileOne.name': 'Jon',
+    'profileOne.familyName': 'Doe',
+    'profileOne.alias': '',
+    'profileOne.favoriteColor': 'red',
+  },
   // Shows when the form was submitted. This happens to be true when `state.isTouched` and
   //`state.isValid` happen to be truthy after the submitForm operation was dispatched.
   isSubmitted: false,
@@ -122,9 +140,9 @@ const state = {
 ```
 
 `state['my-form-state']` => This is the default property name used when initializing `my-form-state` library reducer.
-You can check <a href="/#/redux/get-started/README">Redux/Getting Started</a> on how to change it.
+You can check <a href="/#/redux/get-started/README#my-form-library-redux-configuration">Redux/Getting Started</a> on how to change it.
 
 `state['my-form-state']['dfd766d0-27d8-4776-9d53-c8aaba435240']` => `dfd766d0-27d8-4776-9d53-c8aaba435240` It is a unique form uuid automatically generated when you
 use the `useMyFormState` hook without passing any specific form ID.
 
-Please refer to <a href="/#/react-redux/hook/README">React-Redux/HOOKS</a> for more information.
+Please refer to <a href="/#/react-redux/hook/README#react-redux-hooks">React-Redux/HOOKS</a> for more information.

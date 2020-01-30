@@ -46,7 +46,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 - Arguments.formId is falsy
 - Arguments.field is falsy
 
-**Params**:
+**Params**
 
 | Param            | Type                | Description                     |
 | ---------------- | ------------------- | ------------------------------- |
@@ -82,7 +82,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 - Arguments.formId is falsy
 - Arguments.data is falsy
 
-**Params**:
+**Params**
 
 | Param            | Type                | Description                                                           |
 | ---------------- | ------------------- | --------------------------------------------------------------------- |
@@ -115,7 +115,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: When dispatched returns a <code>Promise</code>.
 **Throws**: Arguments.formId is falsy.
 
-**Params**:
+**Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
@@ -153,7 +153,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: When dispatched returns a <code>Promise</code>.
 **Throws**: Arguments.formId is falsy.
 
-**Params**:
+**Params**
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |
@@ -182,7 +182,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**: Arguments.formId is falsy.
 
-**Params**:
+**Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
@@ -210,7 +210,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**: Arguments.formId is falsy.
 
-**Params**:
+**Params**
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |

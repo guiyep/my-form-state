@@ -28,7 +28,7 @@ perform any of the next actions:
 **Kind**: React-Redux Hook.  
 **Returns**: <code>MyFormStateHook</code> - hook to be use in a react component.
 
-**Params**:
+**Params**
 
 | Param                      | Type                  | Default            | Description                                                                            |
 | -------------------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------- |

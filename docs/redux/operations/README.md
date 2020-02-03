@@ -43,8 +43,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**:
 
-- Arguments.formId is falsy
-- Arguments.field is falsy
+- Arguments.formId is falsey
+- Arguments.field is falsey
 
 **Params**
 
@@ -58,6 +58,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { updateField } from 'my-form-state/redux/operations';
+
 dispatch(
   updateField({
     field: 'color',
@@ -79,8 +81,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**:
 
-- Arguments.formId is falsy
-- Arguments.data is falsy
+- Arguments.formId is falsey
+- Arguments.data is falsey
 
 **Params**
 
@@ -93,6 +95,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { updateForm } from 'my-form-state/redux/operations';
+
 dispatch(
   updateForm({
     data: {
@@ -113,7 +117,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: When dispatched returns a <code>Promise</code>.
-**Throws**: Arguments.formId is falsy.
+**Throws**: Arguments.formId is falsey.
 
 **Params**
 
@@ -125,6 +129,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { submitForm } from 'my-form-state/redux/operations';
+
 const submit = async () => {
   try {
     const formValues = await dispatch(
@@ -151,7 +157,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: When dispatched returns a <code>Promise</code>.
-**Throws**: Arguments.formId is falsy.
+**Throws**: Arguments.formId is falsey.
 
 **Params**
 
@@ -164,6 +170,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { initializeForm } from 'my-form-state/redux/operations';
+
 dispatch(
   initializeForm({
     formId: 'unique-form-id',
@@ -180,7 +188,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: Nothing.
-**Throws**: Arguments.formId is falsy.
+**Throws**: Arguments.formId is falsey.
 
 **Params**
 
@@ -192,6 +200,8 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { clearForm } from 'my-form-state/redux/operations';
+
 dispatch(
   clearForm({
     formId: 'unique-form-id',
@@ -208,7 +218,7 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: Nothing.
-**Throws**: Arguments.formId is falsy.
+**Throws**: Arguments.formId is falsey.
 
 **Params**
 
@@ -221,8 +231,10 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
+import { resetForm } from 'my-form-state/redux/operations';
+
 dispatch(
-  clearForm({
+  resetForm({
     formId: 'unique-form-id',
   }),
 );

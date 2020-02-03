@@ -8,13 +8,55 @@ There are 3 different ways you can create these functions:
 - [x] Using pre-defined function for JOI Schema.
 - [x] Using Custom validators.
 
-IMPORTANT:
+## IMPORTANT:
 
-Validation functions will validate the entire form data model and treat every single property as a field. If you initialize
+The validator will validate only what is defined in the schema and the library will create only the fields that are coming from there.
 
 # YUP
 
+<a name="formSchema"></a>
 
+## formSchema(schema, [options]) ⇒ <code>function</code>
+
+Builds a function that `my-form-library` will use to validate the YUP schema.
+
+**Kind**: global function  
+**Returns**: <code>function</code> - a function that will be used inside for validating the form.  
+**Throws**:
+
+- schema is falsey
+
+**Params**
+
+| Param           | Type                 | Default            | Description                                     |
+| --------------- | -------------------- | ------------------ | ----------------------------------------------- |
+| schema          | <code>Object</code>  |                    | a YUP schema object.                            |
+| [options]       | <code>Object</code>  |                    | options as object.                              |
+| [options.async] | <code>boolean</code> | <code>false</code> | if the validation need to happen sync or async. |
+
+**Example**
+
+```js
+import { formSchema } from 'my-form-state/core/validators/yup';
+import { useMyFormState } from 'my-form-state/react-redux';
+
+const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+  initialState,
+  formSchema: formSchema(schema, { async: true }),
+});
+```
+
+**Example**
+
+````js
+import { formSchema } from 'my-form-state/core/validators/yup';
+import { useMyFormState } from 'my-form-state/react';
+
+ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+   initialState,
+   formSchema: formSchema(YUPSchema),
+ });
+ ````
 
 ## JOI
 
@@ -32,6 +74,8 @@ You need to create a function that can be async or not, that will return `undefi
 More precise the newFormState is the `state.data` field from the form state.
 
 ```js
+import { useMyFormState } from 'my-form-state/react';
+
 const yourCustomFormValidator = (newFormState) => {
   // is valid
   if (yourCustomValidation(newFormState)) {
@@ -45,11 +89,19 @@ const yourCustomFormValidator = (newFormState) => {
     'yourField4.anotherField.another': 'has an error',
   };
 };
-```
+
+const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+  initialState: { varA: 123 },
+  formValidator: yourCustomFormValidator,
+});
+
+````
 
 or
 
-```js
+````js
+import { useMyFormState } from 'my-form-state/react';
+
 const yourCustomFormValidator = async (newFormState) => {
   try {
     // is valid
@@ -66,4 +118,9 @@ const yourCustomFormValidator = async (newFormState) => {
     };
   }
 };
-```
+
+const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+  initialState: { varA: 123 },
+  formValidator: yourCustomFormValidator,
+});
+````

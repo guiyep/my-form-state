@@ -22,7 +22,7 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Returns**: <code>object</code> - form state.  
 **Throws**:
 
-- Arguments.formId is falsy
+- Arguments.formId is falsey
 
 **Params**
 
@@ -34,6 +34,8 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Example**
 
 ```js
+import { getForm } from 'my-form-state/redux/selectors';
+
 getForm(state, { formId: 'unique-form-id' });
 ```
 
@@ -48,7 +50,7 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Returns**: <code>object</code> - form state.  
 **Throws**:
 
-- Arguments.formId is falsy
+- Arguments.formId is falsey
 
 **Params**
 
@@ -60,5 +62,7 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Example**
 
 ```js
+import { getFormResult } from 'my-form-state/redux/selectors';
+
 getFormResult(state, { formId: 'unique-form-id' });
 ```

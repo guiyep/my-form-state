@@ -42,7 +42,7 @@ const scopeSelectorToForm = (moduleMap, originalArgs) => {
  * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id indicator.
  * @return undefined
- * @throws if formId is falsy
+ * @throws if formId is falsey
  *
  * @example
  *
@@ -129,7 +129,7 @@ export const registerForm = ({ formId = uuid(), formValidator, formSchema, initi
  * @param {*} Arguments - Arguments as object.
  * @param {string} [Arguments.formId] - the unique form id.
  * @return {MyForm} - available functionality for the form {@link MyForm}
- * @throws if formId is falsy.
+ * @throws if formId is falsey.
  * @throws if form was not found.
  *
  * @example

@@ -21,3 +21,5 @@ export const jsonSchema = (schema) => {
   const description = schema.describe();
   return toJsonSchema(description.fields);
 };
+
+export default jsonSchema;

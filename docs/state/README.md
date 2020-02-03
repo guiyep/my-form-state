@@ -124,6 +124,21 @@ const state = {
 };
 ```
 
+### IMPORTANT:
+
+The fields object will be populated only with data that can be validated by the schema you are passing(if any).
+
+Example: If in your schema you only have:
+
+```js
+  const yourSchema = {
+    name: 'string',
+    alias: 'string'
+  }
+```
+
+The `state.fields` will only have those fields.
+
 ## Redux State
 
 ```js

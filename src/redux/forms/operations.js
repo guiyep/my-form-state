@@ -28,7 +28,7 @@ import {
  * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
  *
@@ -75,10 +75,12 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  * @param {string} Arguments.field - the field name inside the form.
  * @param {any} Arguments.value - any value.
  * @returns Nothing.
- * @throws Arguments.formId is falsy
- * @throws Arguments.field is falsy
+ * @throws Arguments.formId is falsey
+ * @throws Arguments.field is falsey
  *
  * @example
+ *
+ *     import { updateField } from 'my-form-state/redux/operations';
  *
  *     dispatch(updateField({
  *        field: 'color',
@@ -121,10 +123,12 @@ const validateFormDebounced = debounce(
  * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns Nothing.
- * @throws Arguments.formId is falsy
- * @throws Arguments.data is falsy
+ * @throws Arguments.formId is falsey
+ * @throws Arguments.data is falsey
  *
  * @example
+ *
+ *     import { updateForm } from 'my-form-state/redux/operations';
  *
  *     dispatch(updateForm({
  *        data: {
@@ -154,9 +158,10 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
+ *      import { submitForm } from 'my-form-state/redux/operations';
  *
  *     dispatch(submitForm({
  *        formId: 'unique-form-id'
@@ -185,9 +190,10 @@ export const submitForm = ({ formId }) => async (dispatch, getState) => {
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
  * @returns {Promise} Promise when dispatched.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
+ *     import { initializeForm } from 'my-form-state/redux/operations';
  *
  *     dispatch(initializeForm({
  *        formId: 'unique-form-id'
@@ -217,9 +223,10 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns Nothing.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
+ *     import { clearForm } from 'my-form-state/redux/operations';
  *
  *     dispatch(clearForm({
  *        formId: 'unique-form-id'
@@ -243,11 +250,12 @@ export const clearForm = ({ formId }) => (dispatch) => {
  * @param {string} Arguments.formId - the unique form id indicator.
  * @param {Object} [Arguments.initialState] - the form initial state
  * @returns Nothing.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
+ *     import { resetForm } from 'my-form-state/redux/operations';
  *
- *     dispatch(clearForm({
+ *     dispatch(resetForm({
  *        formId: 'unique-form-id'
  *     }))
  */

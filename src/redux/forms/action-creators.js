@@ -18,7 +18,7 @@ import { VALIDATED_FORM, UPDATE_FORM, SUBMIT_FORM, CLEAR_FORM, INITIALIZE_FORM, 
  * @param {Object} [Arguments.errors] - key value pair { [field] : error } with the changes.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy.
+ * @throws Arguments.formId is falsey.
  *
  * @example
  *
@@ -47,7 +47,7 @@ export const validateForm = ({ errors, formId }) => ({
  * @param {Object} [Arguments.data] - key value pair { [field] : value } with the changes.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
  *
@@ -75,7 +75,7 @@ export const updateForm = ({ data, formId }) => ({
  * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
  *
@@ -101,7 +101,7 @@ export const submitForm = ({ formId }) => ({
  * @param {Object} [Arguments.fieldsDefinition] - your form fields structure state as { [props] : boolean }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  * @example
  *
  *     dispatch(initializeForm({
@@ -128,7 +128,7 @@ export const initializeForm = ({ initialState, formId, fieldsDefinition }) => ({
  * @param {*} Arguments - Arguments as object.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
  *
@@ -154,7 +154,7 @@ export const clearForm = ({ formId }) => ({
  * @param {Object} [Arguments.fieldsDefinition] - your form fields structure state as { [props] : boolean }.
  * @param {string} Arguments.formId - the unique form id indicator.
  * @returns {Action} an action to be executed using dispatch.
- * @throws Arguments.formId is falsy
+ * @throws Arguments.formId is falsey
  *
  * @example
  *

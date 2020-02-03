@@ -4,7 +4,7 @@
 
 <dl>
 <dt><a href="#initializeReducer">initializeReducer(arguments)</a> ⇒ <code>object</code></dt>
-<dd><p>Initialize the `my-form-state` reducer into the redux store. All the forms created will be under the provided name. Uses the <code>my-form-state</code> entry
+<dd><p>Initialize the <code>my-form-state</code> reducer into the redux store. All the forms created will be under the provided name. Uses the <code>my-form-state</code> entry
 as default name if name is not provided when initializing the reducer.</p>
 </dd>
 </dl>

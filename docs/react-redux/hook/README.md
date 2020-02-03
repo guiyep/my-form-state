@@ -10,7 +10,7 @@ We provide an unified API to use this library, and this API is using <a href="ht
 </dl>
 
 <dl>
-<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function}]}</code></dt>
+<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function, clearForm: function}]}</code></dt>
 <dd></dd>
 </dl>
 

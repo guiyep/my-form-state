@@ -35,7 +35,7 @@ perform any of the next actions:
 | ------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
 | Arguments                 | <code>Object</code>   | Arguments as object.                                                                                  |
 | [Arguments.formId]        | <code>string</code>   | The unique form id indicator, will generate a unique id if not.                                       |
-| [Arguments.formSchema]    | <code>function</code> | The form schema. this can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
+| [Arguments.formSchema]    | <code>function</code> | The form schema. This can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
 | [Arguments.formValidator] | <code>function</code> | The form validator. <a href="/#/core/validators/README#custom">Check Validators</a>                   |
 | [Arguments.initialState]  | <code>Object</code>   | The initial state you want to use.                                                                    |
 

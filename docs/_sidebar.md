@@ -6,12 +6,12 @@
 
   - [Getting started](/#getting-started 'Getting started')
   - [Peer dependencies](/#peer-dependencies 'Peer dependencies')
-  - [Quick example react-redux](/#quick-example-with-react-redux 'Quick example react-redux')
-  - [Quick Example with only React](/#quick-example-with-just-react 'Getting Started')
+  - [Example react-redux](/#example-with-react-redux 'Quick example react-redux')
+  - [Example with only react](/#example-with-only-react 'Getting Started')
 
 - Modules
 
-  - [What is included?](/modules/README#modules 'What is included?')
+  - [What is included? (Cheat-sheet)](/modules/README#modules 'What is included?')
 
 - Storybook
 

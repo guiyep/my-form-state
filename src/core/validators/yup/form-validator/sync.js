@@ -7,7 +7,7 @@ import { findErrorsFromException } from '../shared';
  * @kind function
  * @param {object} schema - a YUP schema
  * @return {function} - function to be use inside operations for validating the schema against the form state
- * @throws if schema is falsey and not a YUP schema.
+ * @throws if schema is falsy and not a YUP schema.
  *
  * @example
  *

@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
-import reducer from '../redux/reducer';
 import { registerForm } from '@mfs-core';
+import reducer from '../redux/reducer';
 import { useThunkReducer } from './useThunkReducer';
 import { gerDefaultReducerProp } from '../../redux/init';
 
@@ -23,11 +23,11 @@ import { gerDefaultReducerProp } from '../../redux/init';
  * - clearForm
  *
  * @kind React Hook
- * @param {*} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
- * @param {Function} [Arguments.formValidator] - The form validator.
- * @param {Object} [Arguments.initialState] - The initial state you want to use.
+ * @param {*} arguments - arguments as object.
+ * @param {string} [arguments.formId] - The unique form id indicator, will generate a unique id if not.
+ * @param {Function} [arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
+ * @param {Function} [arguments.formValidator] - The form validator.
+ * @param {Object} [arguments.initialState] - The initial state you want to use.
  * @return {MyFormStateHook} Hook to be use in a React component.
  *
  * @example

@@ -11,12 +11,12 @@ export const gerDefaultReducerProp = () => {
 };
 
 /**
- * Initialize the my-form-state reducer into redux. All the forms created will be under the provided name. Uses the `my-form-state` property
+ * Initialize the `my-form-state` reducer into redux. All the forms created will be under the provided name. Uses the `my-form-state` property
  * as default name if name is not provided.
  *
  * @kind function
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.name='my-form-state' - The redux state property from which all the forms will be stored. Defaults to `my-form-state`.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.name='my-form-state' - The redux state property from which all the forms will be stored. Defaults to `my-form-state`.
  * @return {object} - the reducer object to combine with the all of your reducers
  * @throws if you already initialized the library reducer. This can only be run once!
  *
@@ -64,7 +64,7 @@ export const initializeReducer = ({ name = gerDefaultReducerProp() } = {}) => {
 export const gerReducerProp = () => {
   if (!reducerProp) {
     throw new Error(
-      'my-form-state reducer has not been initialized yet. Please run first `initializeReducer` from `my-form-state/redux`',
+      '`my-form-state` reducer has not been initialized yet. Please run first `initializeReducer` from `my-form-state/redux`',
     );
   }
 

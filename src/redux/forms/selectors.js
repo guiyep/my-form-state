@@ -48,10 +48,10 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
  *
  * @kind function
  * @name getForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - The unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - The unique form id indicator.
  * @returns {object} form state.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *     import { getForm } from 'my-form-state/redux/selectors';
@@ -74,10 +74,10 @@ export const getForm = (state, { formId }) => {
  *
  * @kind function
  * @name getFormResult
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - The unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - The unique form id indicator.
  * @returns {object} form state.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *     import { getFormResult } from 'my-form-state/redux/selectors';

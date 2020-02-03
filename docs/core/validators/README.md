@@ -2,7 +2,7 @@
 
 Validators provide the ability to validate the form state within redux/react. This is what the library uses to determine if a change in the form fields need to be marked as with an error or not.
 
-There are 3 different ways you can create these functions:
+There are 3 different ways you can create one of these:
 
 - [x] Using the pre-defined function for YUP Schema.
 - [x] Using pre-defined function for JOI Schema.
@@ -20,19 +20,19 @@ The validator will validate only what is defined in the schema and the library w
 
 Builds a function that `my-form-library` will use to validate the YUP schema.
 
-**Kind**: global function  
-**Returns**: <code>function</code> - a function that will be used inside for validating the form.  
+**Kind**: function  
+**Returns**: <code>function</code> - a function that will be used for validating the form.  
 **Throws**:
 
-- schema is falsey
+- schema is falsy
 
 **Params**
 
 | Param           | Type                 | Default            | Description                                     |
 | --------------- | -------------------- | ------------------ | ----------------------------------------------- |
-| schema          | <code>Object</code>  |                    | a YUP schema object.                            |
-| [options]       | <code>Object</code>  |                    | options as object.                              |
-| [options.async] | <code>boolean</code> | <code>false</code> | if the validation need to happen sync or async. |
+| schema          | <code>Object</code>  |                    | A YUP schema object.                            |
+| [options]       | <code>Object</code>  |                    | Options as object.                              |
+| [options.async] | <code>boolean</code> | <code>false</code> | If the validation need to happen sync or async. |
 
 **Example**
 
@@ -76,10 +76,10 @@ UNDER DEVELOPMENT
 
 ## Custom
 
-You can build your own validations using your framework of choice.
+You can build your own validators using your framework of choice.
 You need to create a function that can be async or not, that will return `undefined` when is valid, or a flat object with the errors when it is not.
 
-More precise the newFormState is the `state.data` field from the form state.
+More precise the newFormState is the `state.data` field from the form state. <a href="/#/state/README#form-state">Check the form state</a> 
 
 ```js
 import { useMyFormState } from 'my-form-state/react';

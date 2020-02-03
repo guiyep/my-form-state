@@ -1,31 +1,31 @@
 # Operations
 
 <dl>
-<dt><a>updateField(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>updateField(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that updates one field value inside the <code>my-form-state</code> redux state. Will update any form/field property
 that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>updateForm(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>updateForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that updates one/more field/s value/s inside the <code>my-form-state</code> redux state. Will update any form/field property
 that is being affected by this field. (ex: isSubmittable, isValid, isInvalid, etc).
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>submitForm(Arguments)</a> ⇒ <code><a">Thunk</a></code></dt>
+<dt><a>submitForm(arguments)</a> ⇒ <code><a">Thunk</a></code></dt>
 <dd><p>Dispatchable operation that will submit and lock the form state. Will set the isSubmitted form property to true.
 You can await for this operation and will resolve the promise once the validation is completed after the form is submitted.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>initializeForm(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>initializeForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that will initialize the form state. Normally use it after the component that uses this operation is mounted.
 You can await for this operation and will resolve the promise once the form is initialized.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>clearForm(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>clearForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>resetForm(Arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>resetForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that will reset the form state to the initial state. You can also change the initialState using the operation.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
@@ -43,17 +43,17 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**:
 
-- Arguments.formId is falsey
-- Arguments.field is falsey
+- arguments.formId is falsy
+- arguments.field is falsy
 
 **Params**
 
 | Param            | Type                | Description                     |
 | ---------------- | ------------------- | ------------------------------- |
-| Arguments        | <code>Object</code> | Arguments as object.            |
-| Arguments.formId | <code>string</code> | the unique form id indicator.   |
-| Arguments.field  | <code>string</code> | the field name inside the form. |
-| Arguments.value  | <code>any</code>    | any value.                      |
+| arguments        | <code>Object</code> | arguments as object.            |
+| arguments.formId | <code>string</code> | the unique form id indicator.   |
+| arguments.field  | <code>string</code> | the field name inside the form. |
+| arguments.value  | <code>any</code>    | any value.                      |
 
 **Example**
 
@@ -81,16 +81,16 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Returns**: Nothing.
 **Throws**:
 
-- Arguments.formId is falsey
-- Arguments.data is falsey
+- arguments.formId is falsy
+- arguments.data is falsy
 
 **Params**
 
 | Param            | Type                | Description                                                           |
 | ---------------- | ------------------- | --------------------------------------------------------------------- |
-| Arguments        | <code>Object</code> | Arguments as object.                                                  |
-| Arguments.data   | <code>Object</code> | a key value pair with the form data. { [key] : value, [key] : value } |
-| Arguments.formId | <code>string</code> | the unique form id indicator.                                         |
+| arguments        | <code>Object</code> | arguments as object.                                                  |
+| arguments.data   | <code>Object</code> | a key value pair with the form data. { [key] : value, [key] : value } |
+| arguments.formId | <code>string</code> | the unique form id indicator.                                         |
 
 **Example**
 
@@ -117,14 +117,14 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: When dispatched returns a <code>Promise</code>.
-**Throws**: Arguments.formId is falsey.
+**Throws**: arguments.formId is falsy.
 
 **Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
-| Arguments        | <code>Object</code> | Arguments as object.          |
-| Arguments.formId | <code>string</code> | the unique form id indicator. |
+| arguments        | <code>Object</code> | arguments as object.          |
+| arguments.formId | <code>string</code> | the unique form id indicator. |
 
 **Example**
 
@@ -157,15 +157,15 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: When dispatched returns a <code>Promise</code>.
-**Throws**: Arguments.formId is falsey.
+**Throws**: arguments.formId is falsy.
 
 **Params**
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |
-| Arguments                | <code>Object</code> | Arguments as object.          |
-| Arguments.formId         | <code>string</code> | the unique form id indicator. |
-| [Arguments.initialState] | <code>Object</code> | the form initial state        |
+| arguments                | <code>Object</code> | arguments as object.          |
+| arguments.formId         | <code>string</code> | the unique form id indicator. |
+| [arguments.initialState] | <code>Object</code> | the form initial state        |
 
 **Example**
 
@@ -188,14 +188,14 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: Nothing.
-**Throws**: Arguments.formId is falsey.
+**Throws**: arguments.formId is falsy.
 
 **Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
-| Arguments        | <code>Object</code> | Arguments as object.          |
-| Arguments.formId | <code>string</code> | the unique form id indicator. |
+| arguments        | <code>Object</code> | arguments as object.          |
+| arguments.formId | <code>string</code> | the unique form id indicator. |
 
 **Example**
 
@@ -218,15 +218,15 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 
 **Kind**: Thunk.
 **Returns**: Nothing.
-**Throws**: Arguments.formId is falsey.
+**Throws**: arguments.formId is falsy.
 
 **Params**
 
 | Param                    | Type                | Description                   |
 | ------------------------ | ------------------- | ----------------------------- |
-| Arguments                | <code>Object</code> | Arguments as object.          |
-| Arguments.formId         | <code>string</code> | the unique form id indicator. |
-| [Arguments.initialState] | <code>Object</code> | the form initial state        |
+| arguments                | <code>Object</code> | arguments as object.          |
+| arguments.formId         | <code>string</code> | the unique form id indicator. |
+| [arguments.initialState] | <code>Object</code> | the form initial state        |
 
 **Example**
 
@@ -240,6 +240,6 @@ dispatch(
 );
 ```
 
-# Note
+# Note - IMPORTANT
 
 When using the operation outside this library hooks, you need to have the <a href="https://github.com/reduxjs/redux-thunk">Thunk Middleware</a> applied into your redux store.

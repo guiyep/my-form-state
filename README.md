@@ -56,7 +56,7 @@ They depend on how you want to use the library:
 
 ## Example with React-Redux
 
-The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
+The library will initialize a `my-form-state` entry in your redux state where all the forms data will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 ```js
 import React from 'react';

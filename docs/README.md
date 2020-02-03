@@ -46,9 +46,9 @@ They depend on how you want to use the library:
 }
 ```
 
-## Quick Example with React-Redux
+## Example with React-Redux
 
-The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
+The library will initialize a `my-form-state` entry in your redux state where all the forms data will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 Check <a href="/#/redux/get-started/README?id=my-form-library-redux-configuration">Getting Started Redux</a> for the Redux configuration
 
@@ -93,7 +93,7 @@ const MyFormContainer = ({ onSubmit }) => {
 export default MyFormContainer;
 ```
 
-## Quick Example with only React (No Redux)
+## Example with only react
 
 The library will keep the state internal to your component. No extra configuration needed.
 

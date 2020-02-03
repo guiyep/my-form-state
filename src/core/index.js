@@ -39,10 +39,10 @@ const scopeSelectorToForm = (moduleMap, originalArgs) => {
  * Remove a registered form from the `my-form-state` registry.
  *
  * @kind function
- * @param {*} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {string} [arguments.formId] - the unique form id indicator.
  * @return undefined
- * @throws if formId is falsey
+ * @throws if formId is falsy
  *
  * @example
  *
@@ -63,11 +63,11 @@ const unregisterForm = ({ formId }) => {
  *
  *
  * @kind function
- * @param {*} Arguments - Arguments as object.
- * @param {String} [Arguments.formId] - the unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formValidator] - the form validator function.
- * @param {Function} [Arguments.formSchema] - the form schema function.
- * @param {Object} [Arguments.initialState] - the initial state you want to use.
+ * @param {*} arguments - arguments as object.
+ * @param {String} [arguments.formId] - the unique form id indicator, will generate a unique id if not.
+ * @param {Function} [arguments.formValidator] - the form validator function.
+ * @param {Function} [arguments.formSchema] - the form schema function.
+ * @param {Object} [arguments.initialState] - the initial state you want to use.
  * @return {MyForm} - available functionality for the form {@link MyForm}
  *
  * @example
@@ -126,10 +126,10 @@ export const registerForm = ({ formId = uuid(), formValidator, formSchema, initi
  * Get an already registered form from the `my-form-state` registry.
  *
  * @kind function
- * @param {*} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - the unique form id.
+ * @param {*} arguments - arguments as object.
+ * @param {string} [arguments.formId] - the unique form id.
  * @return {MyForm} - available functionality for the form {@link MyForm}
- * @throws if formId is falsey.
+ * @throws if formId is falsy.
  * @throws if form was not found.
  *
  * @example

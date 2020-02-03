@@ -31,20 +31,30 @@ perform any of the next actions:
 
 **Params**
 
-| Param                     | Type                  | Description                                                                  |
-| ------------------------- | --------------------- | ---------------------------------------------------------------------------- |
-| Arguments                 | <code>Object</code>   | Arguments as object.                                                         |
-| [Arguments.formId]        | <code>string</code>   | The unique form id indicator, will generate a unique id if not.              |
-| [Arguments.formValidator] | <code>function</code> | The form validator. <a href="/#/core/validators/README">Check Validators</a> |
-| [Arguments.initialState]  | <code>Object</code>   | The initial state you want to use.                                           |
+| Param                     | Type                  | Description                                                                                           |
+| ------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
+| Arguments                 | <code>Object</code>   | Arguments as object.                                                                                  |
+| [Arguments.formId]        | <code>string</code>   | The unique form id indicator, will generate a unique id if not.                                       |
+| [Arguments.formSchema]    | <code>function</code> | The form schema. this can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
+| [Arguments.formValidator] | <code>function</code> | The form validator. <a href="/#/core/validators/README#custom">Check Validators</a>                   |
+| [Arguments.initialState]  | <code>Object</code>   | The initial state you want to use.                                                                    |
 
 **Example**
 
 ```js
 import { formSchema } from 'my-form-state/core/validators/yup';
+import { useMyFormState } from 'my-form-state/react';
+import * as YUP from 'yup';
+
+const YUPSchema = YUP.object().shape({
+  name: YUP.string().required(),
+  familyName: YUP.string().required(),
+  favoriteColor: YUP.string().required(),
+  alias: YUP.string().required(),
+});
 
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
-  initialState: { varA: 123 },
+  initialState: { alias: 'guiyep' },
   formSchema: formSchema(YUPSchema),
 });
 ```

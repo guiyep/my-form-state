@@ -30,22 +30,32 @@ perform any of the next actions:
 
 **Params**
 
-| Param                      | Type                  | Default            | Description                                                                            |
-| -------------------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------- |
-| Arguments                  | <code>Object</code>   |                    | Arguments as object.                                                                   |
-| [Arguments.formId]         | <code>string</code>   |                    | The unique form id indicator, will generate a unique id if not.                        |
-| [Arguments.formValidator]  | <code>function</code> |                    | The form validator.<a href="/#/core/validators/README">Check Validators</a>            |
-| [Arguments.initialState]   | <code>Object</code>   |                    | The initial state you want to use.                                                     |
-| [Arguments.clearOnUnmount] | <code>boolean</code>  | <code>true</code>  | When the component unmounts, it will remove the form reference.                        |
-| [Arguments.isGlobalForm]   | <code>boolean</code>  | <code>false</code> | Tells if the form is defined global or not. If that is the case we will just reuse it. |
+| Param                      | Type                  | Default                                                                                               | Description                                                                            |
+| -------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Arguments                  | <code>Object</code>   |                                                                                                       | Arguments as object.                                                                   |
+| [Arguments.formId]         | <code>string</code>   |                                                                                                       | The unique form id indicator, will generate a unique id if not.                        |
+| [Arguments.formSchema]     | <code>function</code> | The form schema. this can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
+| [Arguments.formValidator]  | <code>function</code> |                                                                                                       | The form validator.<a href="/#/core/validators/README">Check Validators</a>            |
+| [Arguments.initialState]   | <code>Object</code>   |                                                                                                       | The initial state you want to use.                                                     |
+| [Arguments.clearOnUnmount] | <code>boolean</code>  | <code>true</code>                                                                                     | When the component unmounts, it will remove the form reference.                        |
+| [Arguments.isGlobalForm]   | <code>boolean</code>  | <code>false</code>                                                                                    | Tells if the form is defined global or not. If that is the case we will just reuse it. |
 
 **Example**
 
 ```js
 import { formSchema } from 'my-form-state/core/validators/yup';
+import { useMyFormState } from 'my-form-state/react-redux';
+import * as YUP from 'yup';
+
+const YUPSchema = YUP.object().shape({
+  name: YUP.string().required(),
+  familyName: YUP.string().required(),
+  favoriteColor: YUP.string().required(),
+  alias: YUP.string().required(),
+});
 
 const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
-  initialState: {},
+  initialState: { alias: 'guiyep' },
   formSchema: formSchema(YUPSchema),
 });
 ```

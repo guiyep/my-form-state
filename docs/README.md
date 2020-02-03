@@ -2,7 +2,7 @@
 
 > react/redux form state management library.
 
-[![NPM](https://img.shields.io/npm/v/react-select-virtualized.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Form libraries are complex, they don't make a separation between state and UI. You always end up building custom components on top of the library components that at the same time are on top of the HTML elements!!!. This makes it complex, hard to maintain and hard to change. Too many abstractions :(
 
@@ -48,19 +48,27 @@ They depend on how you want to use the library:
 
 ## Quick Example with React-Redux
 
-The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger update in the `useMyFormState` hook.
+The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 Check <a href="/#/redux/get-started/README?id=my-form-library-redux-configuration">Getting Started Redux</a> for the Redux configuration
 
 ```js
 import React from 'react';
-
 import { useMyFormState } from 'my-form-state/react-redux';
+import { formSchema } from 'my-form-state/core/validators/yup';
+import * as YUP from 'yup';
 
 import Form from '@Your-form-component';
 
+const YUPSchema = YUP.object().shape({
+  alias: YUP.string().required(),
+});
+
 const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: formSchema(YUPSchema),
+  });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
@@ -91,13 +99,21 @@ The library will keep the state internal to your component. No extra configurati
 
 ```js
 import React from 'react';
-
+import { formSchema } from 'my-form-state/core/validators/yup';
+import * as YUP from 'yup';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 
 import Form from '@Your-form-component';
 
+const YUPSchema = YUP.object().shape({
+  alias: YUP.string().required(),
+});
+
 const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: formSchema(YUPSchema),
+  });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 

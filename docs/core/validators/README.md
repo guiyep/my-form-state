@@ -48,15 +48,23 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 
 **Example**
 
-````js
+```js
 import { formSchema } from 'my-form-state/core/validators/yup';
 import { useMyFormState } from 'my-form-state/react';
+import * as YUP from 'yup';
 
- const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
-   initialState,
-   formSchema: formSchema(YUPSchema),
- });
- ````
+const YUPSchema = YUP.object().shape({
+  name: YUP.string().required(),
+  familyName: YUP.string().required(),
+  favoriteColor: YUP.string().required(),
+  alias: YUP.string().required(),
+});
+
+const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+  initialState: { alias: 'guiyep' },
+  formSchema: formSchema(YUPSchema),
+});
+```
 
 ## JOI
 
@@ -94,12 +102,11 @@ const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }]
   initialState: { varA: 123 },
   formValidator: yourCustomFormValidator,
 });
-
-````
+```
 
 or
 
-````js
+```js
 import { useMyFormState } from 'my-form-state/react';
 
 const yourCustomFormValidator = async (newFormState) => {
@@ -123,4 +130,4 @@ const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }]
   initialState: { varA: 123 },
   formValidator: yourCustomFormValidator,
 });
-````
+```

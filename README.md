@@ -56,7 +56,7 @@ They depend on how you want to use the library:
 
 ## Example with React-Redux
 
-The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger update in the `useMyFormState` hook.
+The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 ```js
 import React from 'react';
@@ -119,6 +119,49 @@ const MyFormContainer = ({ onSubmit }) => {
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}
+      onClear={onEmptyHandler}
+      onReset={resetForm}
+    />
+  );
+};
+
+export default MyFormContainer;
+```
+
+## With form schema.
+
+```js
+import React from 'react';
+import { formSchema } from 'my-form-state/core/validators/yup';
+import { useMyFormState } from 'my-form-state/react';
+import * as YUP from 'yup';
+
+import Form from '@Your-form-component';
+
+const YUPSchema = YUP.object().shape({
+  alias: YUP.string().required(),
+});
+
+const MyFormContainer = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: formSchema(YUPSchema),
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onEmptyHandler = () => resetForm({ initialState: {} });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form
+      formState={formState}
+      onFieldChange={onFieldChangeHandler}
+      onSubmit={onSubmitHandler}
       onClear={onEmptyHandler}
       onReset={resetForm}
     />

@@ -33,6 +33,7 @@ as default name if name is not provided.
 
 ```js
 import { combineReducers, createStore } from 'redux';
+import { initializeReducer } from 'my-form-state/redux';
 
 const formsReducer = initializeReducer();
 const reducer = combineReducers({ ..yourAppReducer, ...formsReducer })
@@ -45,6 +46,7 @@ const store = createStore(reducer, initialState)
 
 ```js
 import { combineReducers, createStore } from 'redux';
+import { initializeReducer } from 'my-form-state/redux';
 
 const formsReducer = initializeReducer({ name: 'custom-path' });
 const reducer = combineReducers({ ..yourAppReducer, ...formsReducer })

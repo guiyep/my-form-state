@@ -9,6 +9,10 @@
   - [Quick example react-redux](/#quick-example-with-react-redux 'Quick example react-redux')
   - [Quick Example with only React](/#quick-example-with-just-react 'Getting Started')
 
+- Modules
+
+  - [What is included?](/modules/README#modules 'What is included?')
+
 - Storybook
 
   - [Examples](/storybook/README.md 'Storybook')
@@ -32,7 +36,7 @@
 
 - React-Redux
 
-  - [Hooks](/react-redux/hook/README#react-redux-hooks  'React-Redux Hooks')
+  - [Hooks](/react-redux/hook/README#react-redux-hooks 'React-Redux Hooks')
 
 - Redux
 

@@ -16,7 +16,7 @@ We provide an unified API to use this library, and this API is using <a href="ht
 
 ## useMyFormState ⇒ <code>MyFormStateHook</code>
 
-React-redux hook that will execute an update each time the redux form state changes. You will be able to
+React hook that will execute an update each time the redux form state changes. You will be able to
 perform any of the next actions:
 
 - <a href="/#/redux/operations/README#resetform">resetForm</a>

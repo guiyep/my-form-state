@@ -1,8 +1,8 @@
-# my-form-state (UNDER DEVELOPMENT)
+# my-form-state
 
 ![logo](logo.png)
 
-> react/redux form state management library.
+> react/redux form state management library.  One library to rule them all.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

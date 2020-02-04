@@ -1,5 +1,5 @@
-import { updateField, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../operations';
 import { addFormToRegistry, removeFormFromRegistry } from '@mfs-registry';
+import { updateField, updateForm, submitForm, initializeForm, removeForm, resetForm } from '../operations';
 import { initializeReducer } from '../../init';
 import 'babel-polyfill';
 
@@ -329,15 +329,15 @@ describe('initializeForm', () => {
   });
 });
 
-describe('clearForm', () => {
+describe('removeForm', () => {
   const mockDispatch = jest.fn();
 
-  it('clearForm to throw with wrong params', () => {
-    expect(() => clearForm()).toThrow();
+  it('removeForm to throw with wrong params', () => {
+    expect(() => removeForm()).toThrow();
   });
 
-  it('clearForm to not throw', () => {
-    expect(() => clearForm({ formId })(mockDispatch)).not.toThrow();
+  it('removeForm to not throw', () => {
+    expect(() => removeForm({ formId })(mockDispatch)).not.toThrow();
     expect(mockDispatch.mock.calls).toHaveLength(1);
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: 'MY-FORM-STATE/CLEAR_FORM',

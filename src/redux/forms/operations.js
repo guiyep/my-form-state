@@ -9,7 +9,7 @@ import {
   validateForm as validateFormAction,
   updateForm as updateFormAction,
   submitForm as submitFormAction,
-  clearForm as clearFormAction,
+  removeForm as removeFormAction,
   initializeForm as initializeFormAction,
   resetForm as resetFormAction,
 } from './action-creators';
@@ -219,25 +219,25 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
  * @kind Thunk
- * @name clearForm
+ * @name removeForm
  * @param {*} arguments - arguments as object.
  * @param {string} arguments.formId - the unique form id indicator.
  * @returns Nothing.
  * @throws arguments.formId is falsy
  *
  * @example
- *     import { clearForm } from 'my-form-state/redux/operations';
+ *     import { removeForm } from 'my-form-state/redux/operations';
  *
- *     dispatch(clearForm({
+ *     dispatch(removeForm({
  *        formId: 'unique-form-id'
  *     }))
  */
 
-export const clearForm = ({ formId }) => (dispatch) => {
+export const removeForm = ({ formId }) => (dispatch) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isFunction(dispatch, 'dispatch');
 
-  return dispatch(clearFormAction({ formId }));
+  return dispatch(removeFormAction({ formId }));
 };
 
 /**
@@ -266,7 +266,7 @@ export const resetForm = ({ formId, initialState }) => (dispatch) => {
   ParamValidator.isFunction(dispatch, 'dispatch');
 
   const formData = getFormFromRegistry(formId);
-  dispatch(clearFormAction({ formId }));
+  dispatch(removeFormAction({ formId }));
   dispatch(
     resetFormAction({
       formId,

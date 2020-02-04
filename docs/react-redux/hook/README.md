@@ -10,7 +10,7 @@ We provide an unified API to use this library, and this API is using <a href="ht
 </dl>
 
 <dl>
-<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function, clearForm: function}]}</code></dt>
+<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function }]}</code></dt>
 <dd></dd>
 </dl>
 
@@ -23,7 +23,7 @@ perform any of the next actions:
 - <a href="/#/redux/operations/README#updateform">updateForm</a>
 - <a href="/#/redux/operations/README#submitform">submitForm</a>
 - <a href="/#/redux/operations/README#updatefield">updateField</a>
-- <a href="/#/redux/operations/README#clearform">clearForm</a>
+- <a href="/#/redux/operations/README#removeForm">removeForm</a>
 
 **Kind**: React-Redux Hook.  
 **Returns**: <code>MyFormStateHook</code> - hook to be use in a react component.
@@ -52,7 +52,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
   initialState: { alias: 'guiyep' },
   formSchema: formSchema(YUPSchema),
 });

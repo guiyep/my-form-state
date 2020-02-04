@@ -132,12 +132,12 @@ export const initializeForm = ({ initialState, formId, fieldsDefinition }) => ({
  *
  * @example
  *
- *     dispatch(clearForm({
+ *     dispatch(removeForm({
  *        formId: 'unique-form-id'
  *     }))
  */
 
-export const clearForm = ({ formId }) => ({
+export const removeForm = ({ formId }) => ({
   type: CLEAR_FORM,
   options: {
     formId,

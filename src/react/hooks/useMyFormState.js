@@ -20,7 +20,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  * - updateForm
  * - submitForm : Promise. (will be resolve when the form is locked)
  * - updateField
- * - clearForm
+ * - removeForm
  *
  * @kind React Hook
  * @param {*} arguments - arguments as object.
@@ -32,7 +32,7 @@ import { gerDefaultReducerProp } from '../../redux/init';
  *
  * @example
  *
- *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm}] = useMyFormState({
+ *const [formState, { updateField, updateForm, submitForm, resetForm}] = useMyFormState({
  *    initialState: {},
  *    formValidator: formValidator(schema),
  *});
@@ -60,11 +60,13 @@ export const useMyFormState = ({ formId, formValidator, formSchema, initialState
     dispatch(operations.initializeForm({ initialState }));
     return () => {
       unregister();
-      dispatch(operations.clearForm({ dispatch, state }));
+      dispatch(operations.removeForm({ dispatch, state }));
     };
   }, []);
 
-  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [operations.resetForm]);
+  const resetForm = useCallback((param) => dispatch(operations.resetForm({ initialState: param.initialState })), [
+    operations.resetForm,
+  ]);
 
   const updateForm = useCallback(({ data }) => dispatch(operations.updateForm({ data })), [operations.updateForm]);
 
@@ -73,8 +75,6 @@ export const useMyFormState = ({ formId, formValidator, formSchema, initialState
   const updateField = useCallback(({ field, value }) => dispatch(operations.updateField({ field, value })), [
     operations.updateField,
   ]);
-
-  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
 
   const thisForm = getForm(state);
 
@@ -85,7 +85,6 @@ export const useMyFormState = ({ formId, formValidator, formSchema, initialState
       updateForm,
       updateField,
       submitForm,
-      clearForm,
     },
   ];
 };

@@ -21,7 +21,7 @@ The <code>formId</code> is not required when used using <code>registerForm</code
 You can await for this operation and will resolve the promise once the form is initialized.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
-<dt><a>clearForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
+<dt><a>removeForm(arguments)</a> ⇒ <code><a>Thunk</a></code></dt>
 <dd><p>Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The <code>formId</code> is not required when used using <code>registerForm</code> from <code>my-form-state/core</code> or <code>useMyFormState</code> from <code>my-form-state/react</code> or <code>my-form-state/react-redux</code>.</p>
 </dd>
@@ -179,9 +179,9 @@ dispatch(
 );
 ```
 
-<a name="clearForm"></a>
+<a name="removeForm"></a>
 
-## clearForm
+## removeForm
 
 Dispatchable operation that will clear the form state from the store. Normally use it after the component that uses this operation is unmounted.
 The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
@@ -200,10 +200,10 @@ The `formId` is not required when used using `registerForm` from `my-form-state/
 **Example**
 
 ```js
-import { clearForm } from 'my-form-state/redux/operations';
+import { removeForm } from 'my-form-state/redux/operations';
 
 dispatch(
-  clearForm({
+  removeForm({
     formId: 'unique-form-id',
   }),
 );

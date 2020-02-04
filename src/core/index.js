@@ -30,7 +30,7 @@ const scopeSelectorToForm = (moduleMap, originalArgs) => {
 
 /**
  * @typedef {object} MyForm.
- * @property {{ resetForm: function, validateForm: function, updateForm: function, submitForm: function, updateField: function, clearForm: function }} operations - form operations to be dispatched.
+ * @property {{ resetForm: function, validateForm: function, updateForm: function, submitForm: function, updateField: function }} operations - form operations to be dispatched.
  * @property {{ getForm: function }} selectors - form selectors.
  * @property {string} formId - unique form indicator.
  */

@@ -6,8 +6,8 @@ const Form = ({
   formState: {
     fields: { alias, name, familyName, favoriteColor },
     isSubmittable,
-    isPristine,
     isSubmitted,
+    isInitialized,
   },
   onFieldChange,
   onClear,
@@ -64,11 +64,11 @@ const Form = ({
         <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
           Submit
         </Button>
-        <Button disabled={isPristine} onClick={onClear}>
-          Clear
+        <Button disabled={!isInitialized} onClick={onClear}>
+          Reset To Empty
         </Button>
-        <Button disabled={isPristine} onClick={onReset}>
-          Reset
+        <Button disabled={!isInitialized} onClick={onReset}>
+          Reset to default
         </Button>
       </div>
     </form>

@@ -98,7 +98,7 @@ const yourCustomFormValidator = (newFormState) => {
   };
 };
 
-const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
   initialState: { varA: 123 },
   formValidator: yourCustomFormValidator,
 });
@@ -126,7 +126,7 @@ const yourCustomFormValidator = async (newFormState) => {
   }
 };
 
-const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
   initialState: { varA: 123 },
   formValidator: yourCustomFormValidator,
 });

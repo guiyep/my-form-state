@@ -46,7 +46,7 @@
     - [Update Form](/redux/operations/README#updateform 'Update Form')
     - [Submit Form](/redux/operations/README#submitform 'Submit Form')
     - [Initialize Form](/redux/operations/README#initializeform 'Initialize Form')
-    - [Clear Form](/redux/operations/README#clearform 'Clear Form')
+    - [Remove Form](/redux/operations/README#removeForm 'Remove Form')
     - [Reset Form](/redux/operations/README#resetform 'Reset Form')
   - [Selectors](/redux/selectors/README#selectors 'Redux Selectors')
 

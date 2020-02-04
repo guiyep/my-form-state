@@ -19,7 +19,7 @@ import { useThunks } from './useThunks';
  * - updateForm
  * - submitForm : Promise. (will be resolve when the form is locked and will return the result)
  * - updateField
- * - clearForm
+ * - removeForm
  *
  * @kind react-redux hook.
  * @param {*} arguments - arguments as object.
@@ -33,7 +33,7 @@ import { useThunks } from './useThunks';
  *
  * @example
  *
- *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+ *const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
  *    initialState: {},
  *    formSchema: formSchema(schema),
  *});
@@ -70,12 +70,14 @@ export const useMyFormState = ({
     return () => {
       unregister();
       if (clearOnUnmount) {
-        dispatch(operations.clearForm());
+        dispatch(operations.removeForm());
       }
     };
   }, []);
 
-  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [operations.resetForm]);
+  const resetForm = useCallback((param) => dispatch(operations.resetForm({ initialState: param.initialState })), [
+    operations.resetForm,
+  ]);
 
   const updateForm = useCallback(({ data }) => dispatch(operations.updateForm(data)), [operations.updateForm]);
 
@@ -85,8 +87,6 @@ export const useMyFormState = ({
     operations.updateField,
   ]);
 
-  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
-
   return [
     formState,
     {
@@ -94,7 +94,6 @@ export const useMyFormState = ({
       updateForm,
       updateField,
       submitForm,
-      clearForm,
     },
   ];
 };

@@ -6,8 +6,8 @@ const FormNested = ({
   formState: {
     fields: { profileOne, profileTwo },
     isSubmittable,
-    isPristine,
     isSubmitted,
+    isInitialized,
   },
   onFieldChange,
   onClear,
@@ -115,11 +115,11 @@ const FormNested = ({
         <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
           Submit
         </Button>
-        <Button disabled={isPristine} onClick={onClear}>
-          Clear
+        <Button disabled={!isInitialized} onClick={onClear}>
+          Reset To Empty
         </Button>
-        <Button disabled={isPristine} onClick={onReset}>
-          Reset
+        <Button disabled={!isInitialized} onClick={onReset}>
+          Reset to default
         </Button>
       </div>
     </form>

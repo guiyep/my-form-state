@@ -70,8 +70,6 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
@@ -82,7 +80,6 @@ const MyFormContainer = ({ onSubmit }) => {
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}
-      onClear={onEmptyHandler}
       onReset={resetForm}
     />
   );

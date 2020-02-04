@@ -9,6 +9,7 @@ import {
   removeFormFromRegistry,
   getFormFromRegistry as getFormFromInternalRegistry,
 } from '@mfs-registry';
+import * as yupModule from './validators/yup';
 
 const scopeOperationToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
@@ -148,6 +149,6 @@ export const getFormFromRegistry = ({ formId }) => {
   }
 };
 
-export * from './validators/yup';
+export const yup = yupModule;
 
 export default registerForm;

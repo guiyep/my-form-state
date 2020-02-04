@@ -2,7 +2,7 @@
 
 ![logo](logo.png)
 
-> react/redux form state management library.  One library to rule them all.
+> react/redux form state management library. One library to rule them all.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -107,8 +107,6 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
@@ -119,7 +117,6 @@ const MyFormContainer = ({ onSubmit }) => {
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}
-      onClear={onEmptyHandler}
       onReset={resetForm}
     />
   );
@@ -150,21 +147,13 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
   };
 
   return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={onSubmitHandler}
-      onClear={onEmptyHandler}
-      onReset={resetForm}
-    />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
   );
 };
 
@@ -174,3 +163,7 @@ export default MyFormContainer;
 ## Storybook
 
 Check [Storybook](https://storybook-my-form-state.netlify.com/) for more examples.
+
+## Another work I have done :)
+
+- react-select-virtualized [![NPM](https://img.shields.io/npm/v/react-select-virtualized.svg)](https://www.npmjs.com/package/react-select-virtualized)

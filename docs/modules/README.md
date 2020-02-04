@@ -8,7 +8,8 @@ This module includes everything needed for setting up the library. Including val
 
 #### Includes
 
-- `import { formSchema } from 'my-form-state/core/validators/yup'`<a href="/#/core/validators/README#yup">Check YUP schema validation</a>
+- `import { formSchema } from 'my-form-state/core/validators/yup'` <a href="/#/core/validators/README#yup">Check YUP schema validation</a>
+- `import { yup : { formSchema } } from 'my-form-state/core'` (same as above)
 - `import { registerForm } from 'my-form-state/core'` This is internal unless you are defining a global form schema. <a href="/#/core/global/README.md">Check global form Schema</a>
 
 ## Redux

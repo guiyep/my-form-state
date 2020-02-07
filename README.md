@@ -6,6 +6,8 @@
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+This is a React/Redux form state management library with/without hooks.
+
 Form libraries are complex, they don't make a separation between state and UI. You always end up building custom components on top of the library components that at the same time are on top of the HTML elements!!!. This makes it complex, hard to maintain and hard to change. Too many abstractions :(
 
 This library was built for the sole purpose of unifying and simplifying the way we manage the state with React and/or Redux.

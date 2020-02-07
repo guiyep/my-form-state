@@ -1,4 +1,4 @@
-import { validateForm, updateForm, submitForm, initializeForm, clearForm, resetForm } from '../action-creators';
+import { validateForm, updateForm, submitForm, initializeForm, removeForm, resetForm } from '../action-creators';
 
 const formId = 'test-form-id';
 
@@ -76,8 +76,8 @@ it('updateForm action', () => {
   });
 });
 
-it('clearForm action', () => {
-  const action = clearForm({ formId });
+it('removeForm action', () => {
+  const action = removeForm({ formId });
 
   expect(action).toEqual({
     type: 'MY-FORM-STATE/CLEAR_FORM',

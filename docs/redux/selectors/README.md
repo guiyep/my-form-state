@@ -1,11 +1,11 @@
 # Selectors
 
 <dl>
-<dt><a href="#getForm">getForm(Arguments)</a> ⇒ <code>object</code></dt>
+<dt><a href="#getForm">getForm(arguments)</a> ⇒ <code>object</code></dt>
 <dd><p>Selector that returns the current state of the form.
 Passing formId is not required when used using <code>registerForm</code> from <code>my-form-state/core</code>.</p>
 </dd>
-<dt><a href="#getFormResult">getFormResult(Arguments)</a> ⇒ <code>object</code></dt>
+<dt><a href="#getFormResult">getFormResult(arguments)</a> ⇒ <code>object</code></dt>
 <dd><p>Gets the forms result data. This result data is the merge between the form changes and the initial state.
 Passing formId is not required when used using <code>registerForm</code> from <code>my-form-state/core</code>.</p>
 </dd>
@@ -13,7 +13,7 @@ Passing formId is not required when used using <code>registerForm</code> from <c
 
 <a name="getForm"></a>
 
-## getForm(Arguments) ⇒ <code>object</code>
+## getForm(arguments) ⇒ <code>object</code>
 
 Selector that returns the current state of the form.
 Passing formId is not required when used using `registerForm` from `my-form-state/core`.
@@ -22,14 +22,14 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Returns**: <code>object</code> - form state.  
 **Throws**:
 
-- Arguments.formId is falsey
+- arguments.formId is falsy
 
 **Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
-| Arguments        | <code>\*</code>     | Arguments as object.          |
-| Arguments.formId | <code>string</code> | The unique form id indicator. |
+| arguments        | <code>\*</code>     | arguments as object.          |
+| arguments.formId | <code>string</code> | The unique form id indicator. |
 
 **Example**
 
@@ -41,7 +41,7 @@ getForm(state, { formId: 'unique-form-id' });
 
 <a name="getFormResult"></a>
 
-## getFormResult(Arguments) ⇒ <code>object</code>
+## getFormResult(arguments) ⇒ <code>object</code>
 
 Gets the forms result data. This result data is the merge between the form changes and the initial state.
 Passing formId is not required when used using `registerForm` from `my-form-state/core`.
@@ -50,14 +50,14 @@ Passing formId is not required when used using `registerForm` from `my-form-stat
 **Returns**: <code>object</code> - form state.  
 **Throws**:
 
-- Arguments.formId is falsey
+- arguments.formId is falsy
 
 **Params**
 
 | Param            | Type                | Description                   |
 | ---------------- | ------------------- | ----------------------------- |
-| Arguments        | <code>\*</code>     | Arguments as object.          |
-| Arguments.formId | <code>string</code> | The unique form id indicator. |
+| arguments        | <code>\*</code>     | arguments as object.          |
+| arguments.formId | <code>string</code> | The unique form id indicator. |
 
 **Example**
 

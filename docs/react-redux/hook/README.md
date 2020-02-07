@@ -10,7 +10,7 @@ We provide an unified API to use this library, and this API is using <a href="ht
 </dl>
 
 <dl>
-<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function, clearForm: function}]}</code></dt>
+<dt><a>MyFormStateHook</a> : <code>{[formState, { resetForm: function, updateForm: function, submitForm:function, updateField: function }]}</code></dt>
 <dd></dd>
 </dl>
 
@@ -23,22 +23,20 @@ perform any of the next actions:
 - <a href="/#/redux/operations/README#updateform">updateForm</a>
 - <a href="/#/redux/operations/README#submitform">submitForm</a>
 - <a href="/#/redux/operations/README#updatefield">updateField</a>
-- <a href="/#/redux/operations/README#clearform">clearForm</a>
+- <a href="/#/redux/operations/README#removeForm">removeForm</a>
 
 **Kind**: React-Redux Hook.  
 **Returns**: <code>MyFormStateHook</code> - hook to be use in a react component.
 
 **Params**
 
-| Param                      | Type                  | Default                                                                                               | Description                                                                            |
-| -------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Arguments                  | <code>Object</code>   |                                                                                                       | Arguments as object.                                                                   |
-| [Arguments.formId]         | <code>string</code>   |                                                                                                       | The unique form id indicator, will generate a unique id if not.                        |
-| [Arguments.formSchema]     | <code>function</code> | The form schema. This can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
-| [Arguments.formValidator]  | <code>function</code> |                                                                                                       | The form validator.<a href="/#/core/validators/README">Check Validators</a>            |
-| [Arguments.initialState]   | <code>Object</code>   |                                                                                                       | The initial state you want to use.                                                     |
-| [Arguments.clearOnUnmount] | <code>boolean</code>  | <code>true</code>                                                                                     | When the component unmounts, it will remove the form reference.                        |
-| [Arguments.isGlobalForm]   | <code>boolean</code>  | <code>false</code>                                                                                    | Tells if the form is defined global or not. If that is the case we will just reuse it. |
+| Param                     | Type                  | Default | Description                                                                                               |
+| ------------------------- | --------------------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| arguments                 | <code>Object</code>   |         | arguments as object.                                                                                      |
+| [arguments.formId]        | <code>string</code>   |         | The unique form id indicator, will generate a unique id if not.                                           |
+| [arguments.formSchema]    | <code>function</code> |         | The form schema. This can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README#yup">Check Schema</a> |
+| [arguments.formValidator] | <code>function</code> |         | The form validator.<a href="/#/core/validators/README#custom">Check Validators</a>                        |
+| [arguments.initialState]  | <code>Object</code>   |         | The initial state you want to use.                                                                        |
 
 **Example**
 
@@ -54,7 +52,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
   initialState: { alias: 'guiyep' },
   formSchema: formSchema(YUPSchema),
 });

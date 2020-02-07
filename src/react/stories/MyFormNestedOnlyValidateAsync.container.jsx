@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { useMyFormState } from '../hooks/useMyFormState';
-import { formValidators } from '../../core/validators/yup';
+import formValidatorAsync from '../../core/validators/yup/form-validator/async';
 import FormNested from '../../stories/shared/FormNested';
 
 const MyFormNestedOnlyValidateAsyncContainer = ({ initialState, emptyState, schema, onFormWasUpdated, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formValidator: formValidators.async(schema),
+    formValidator: formValidatorAsync(schema),
   });
 
   // this is only for testing purposes

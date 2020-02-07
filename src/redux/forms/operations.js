@@ -9,7 +9,7 @@ import {
   validateForm as validateFormAction,
   updateForm as updateFormAction,
   submitForm as submitFormAction,
-  clearForm as clearFormAction,
+  removeForm as removeFormAction,
   initializeForm as initializeFormAction,
   resetForm as resetFormAction,
 } from './action-creators';
@@ -25,10 +25,10 @@ import {
  *
  * @kind Thunk
  * @name validateForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *
@@ -70,13 +70,13 @@ const validateForm = ({ formId }) => async (dispatch, getState) => {
  *
  * @kind Thunk
  * @name updateField
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
- * @param {string} Arguments.field - the field name inside the form.
- * @param {any} Arguments.value - any value.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
+ * @param {string} arguments.field - the field name inside the form.
+ * @param {any} arguments.value - any value.
  * @returns Nothing.
- * @throws Arguments.formId is falsey
- * @throws Arguments.field is falsey
+ * @throws arguments.formId is falsy
+ * @throws arguments.field is falsy
  *
  * @example
  *
@@ -119,12 +119,12 @@ const validateFormDebounced = debounce(
  *
  * @kind Thunk
  * @name updateForm
- * @param {*} Arguments - Arguments as object.
- * @param {Object} Arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
- * @param {string} Arguments.formId - the unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {Object} arguments.data -  a key value pair with the form data. { [key] : value, [key] : value }
+ * @param {string} arguments.formId - the unique form id indicator.
  * @returns Nothing.
- * @throws Arguments.formId is falsey
- * @throws Arguments.data is falsey
+ * @throws arguments.formId is falsy
+ * @throws arguments.data is falsy
  *
  * @example
  *
@@ -155,10 +155,10 @@ export const updateForm = ({ formId, data }) => (dispatch) => {
  *
  * @kind Thunk
  * @name submitForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
  * @returns {Promise} Promise when dispatched.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *      import { submitForm } from 'my-form-state/redux/operations';
@@ -186,11 +186,11 @@ export const submitForm = ({ formId }) => async (dispatch, getState) => {
  *
  * @kind Thunk
  * @name initializeForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
- * @param {Object} [Arguments.initialState] - the form initial state
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
+ * @param {Object} [arguments.initialState] - the form initial state
  * @returns {Promise} Promise when dispatched.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *     import { initializeForm } from 'my-form-state/redux/operations';
@@ -219,25 +219,25 @@ export const initializeForm = ({ formId, initialState = {} }) => (dispatch) => {
  * The `formId` is not required when used using `registerForm` from `my-form-state/core` or `useMyFormState` from `my-form-state/react` or `my-form-state/react-redux`.
  *
  * @kind Thunk
- * @name clearForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
+ * @name removeForm
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
  * @returns Nothing.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
- *     import { clearForm } from 'my-form-state/redux/operations';
+ *     import { removeForm } from 'my-form-state/redux/operations';
  *
- *     dispatch(clearForm({
+ *     dispatch(removeForm({
  *        formId: 'unique-form-id'
  *     }))
  */
 
-export const clearForm = ({ formId }) => (dispatch) => {
+export const removeForm = ({ formId }) => (dispatch) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isFunction(dispatch, 'dispatch');
 
-  return dispatch(clearFormAction({ formId }));
+  return dispatch(removeFormAction({ formId }));
 };
 
 /**
@@ -246,11 +246,11 @@ export const clearForm = ({ formId }) => (dispatch) => {
  *
  * @kind Thunk
  * @name resetForm
- * @param {*} Arguments - Arguments as object.
- * @param {string} Arguments.formId - the unique form id indicator.
- * @param {Object} [Arguments.initialState] - the form initial state
+ * @param {*} arguments - arguments as object.
+ * @param {string} arguments.formId - the unique form id indicator.
+ * @param {Object} [arguments.initialState] - the form initial state
  * @returns Nothing.
- * @throws Arguments.formId is falsey
+ * @throws arguments.formId is falsy
  *
  * @example
  *     import { resetForm } from 'my-form-state/redux/operations';
@@ -266,7 +266,7 @@ export const resetForm = ({ formId, initialState }) => (dispatch) => {
   ParamValidator.isFunction(dispatch, 'dispatch');
 
   const formData = getFormFromRegistry(formId);
-  dispatch(clearFormAction({ formId }));
+  dispatch(removeFormAction({ formId }));
   dispatch(
     resetFormAction({
       formId,

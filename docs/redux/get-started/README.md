@@ -3,17 +3,17 @@
 ## Functions
 
 <dl>
-<dt><a href="#initializeReducer">initializeReducer(Arguments)</a> ⇒ <code>object</code></dt>
-<dd><p>Initialize the my-form-state reducer into the redux store. All the forms created will be under the provided name. Uses the <code>my-form-state</code> property
-as default name if name is not provided.</p>
+<dt><a href="#initializeReducer">initializeReducer(arguments)</a> ⇒ <code>object</code></dt>
+<dd><p>Initialize the <code>my-form-state</code> reducer into the redux store. All the forms created will be under the provided name. Uses the <code>my-form-state</code> entry
+as default name if name is not provided when initializing the reducer.</p>
 </dd>
 </dl>
 
 <a name="initializeReducer"></a>
 
-## initializeReducer(Arguments) ⇒ <code>object</code>
+## initializeReducer(arguments) ⇒ <code>object</code>
 
-Initialize the my-form-state reducer into the redux store. All the forms created will be under the provided name. Uses the `my-form-state` property
+Initialize the `my-form-state` reducer into the redux store. All the forms created will be under the provided name. Uses the `my-form-state` property
 as default name if name is not provided.
 
 **Kind**: function  
@@ -26,8 +26,8 @@ as default name if name is not provided.
 
 | Param          | Type                | Default                                | Description                                                                                    |
 | -------------- | ------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Arguments      | <code>Object</code> |                                        | Arguments as object.                                                                           |
-| Arguments.name | <code>string</code> | <code>&quot;my-form-state&quot;</code> | The redux state property from which all the forms will be stored. Defaults to `my-form-state`. |
+| arguments      | <code>Object</code> |                                        | arguments as object.                                                                           |
+| arguments.name | <code>string</code> | <code>&quot;my-form-state&quot;</code> | The redux state property from which all the forms will be stored. Defaults to `my-form-state`. |
 
 **Example**
 
@@ -54,3 +54,7 @@ const reducer = combineReducers({ ..yourAppReducer, ...formsReducer })
 const store = createStore(reducer, initialState)
 
 ```
+
+# Note - IMPORTANT
+
+When using this library without the library hooks, you need to have the <a href="https://github.com/reduxjs/redux-thunk">Thunk Middleware</a> applied into your redux store.

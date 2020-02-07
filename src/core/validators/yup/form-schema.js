@@ -12,7 +12,7 @@ import { jsonSchema } from './json-schema';
  * @param {Object} [options] - options as object.
  * @param {boolean} [options.async=false] - if the validation need to happen sync or async.
  * @returns {Function} a function that will be used inside for validating the form.
- * @throws schema is falsey
+ * @throws schema is falsy
  *
  * @example 1
  *  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({

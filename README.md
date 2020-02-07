@@ -1,10 +1,12 @@
-# my-form-state (UNDER DEVELOPMENT)
+# my-form-state
 
 ![logo](logo.png)
 
-> react/redux form state management library.
+> react/redux form state management library. One library to rule them all.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+This is a React/Redux form state management library with/without hooks.
 
 Form libraries are complex, they don't make a separation between state and UI. You always end up building custom components on top of the library components that at the same time are on top of the HTML elements!!!. This makes it complex, hard to maintain and hard to change. Too many abstractions :(
 
@@ -56,7 +58,7 @@ They depend on how you want to use the library:
 
 ## Example with React-Redux
 
-The library will initialize a `my-form-state` property in your store where all the forms will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
+The library will initialize a `my-form-state` entry in your redux state where all the forms data will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 ```js
 import React from 'react';
@@ -70,8 +72,6 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
@@ -82,7 +82,6 @@ const MyFormContainer = ({ onSubmit }) => {
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}
-      onClear={onEmptyHandler}
       onReset={resetForm}
     />
   );
@@ -107,8 +106,6 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
@@ -119,7 +116,6 @@ const MyFormContainer = ({ onSubmit }) => {
       formState={formState}
       onFieldChange={onFieldChangeHandler}
       onSubmit={submitForm}
-      onClear={onEmptyHandler}
       onReset={resetForm}
     />
   );
@@ -150,21 +146,13 @@ const MyFormContainer = ({ onSubmit }) => {
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
-  const onEmptyHandler = () => resetForm({ initialState: {} });
-
   const onSubmitHandler = async () => {
     const result = await submitForm();
     onSubmit(result);
   };
 
   return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={onSubmitHandler}
-      onClear={onEmptyHandler}
-      onReset={resetForm}
-    />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
   );
 };
 
@@ -174,3 +162,7 @@ export default MyFormContainer;
 ## Storybook
 
 Check [Storybook](https://storybook-my-form-state.netlify.com/) for more examples.
+
+## Another work I have done :)
+
+- react-select-virtualized [![NPM](https://img.shields.io/npm/v/react-select-virtualized.svg)](https://www.npmjs.com/package/react-select-virtualized)

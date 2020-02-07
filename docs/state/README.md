@@ -128,9 +128,13 @@ const state = {
 
 The fields object will be populated only with data that can be validated by the schema you are passing(if any).
 
-Example: If in your schema you only have:
+Example:
+
+If in your schema you only have:
 
 ```js
+  (pseudo code)
+
   const yourSchema = {
     name: 'string',
     alias: 'string'
@@ -154,10 +158,11 @@ const state = {
 
 ```
 
-`state['my-form-state']` => This is the default property name used when initializing `my-form-state` library reducer.
+`state['my-form-state']` => This is the default entry name in the redux state used when initializing `my-form-state` library reducer.
 You can check <a href="/#/redux/get-started/README#my-form-library-redux-configuration">Redux/Getting Started</a> on how to change it.
 
-`state['my-form-state']['dfd766d0-27d8-4776-9d53-c8aaba435240']` => `dfd766d0-27d8-4776-9d53-c8aaba435240` It is a unique form uuid automatically generated when you
-use the `useMyFormState` hook without passing any specific form ID.
+`state['my-form-state']['dfd766d0-27d8-4776-9d53-c8aaba435240']` => `dfd766d0-27d8-4776-9d53-c8aaba435240` It is a unique form `uuid` automatically generated when you
+use the `useMyFormState` hook without passing any specific `form ID`.
 
-Please refer to <a href="/#/react-redux/hook/README#react-redux-hooks">React-Redux/HOOKS</a> for more information.
+- Please refer to <a href="/#/react/hook/README#react-hooks">React/HOOKS</a> for more information.
+- Please refer to <a href="/#/react-redux/hook/README#react-redux-hooks">React-Redux/HOOKS</a> for more information.

@@ -1,7 +1,7 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useThunks } from './useThunks';
 import { registerForm, getFormFromRegistry } from '@mfs-core';
+import { useThunks } from './useThunks';
 
 /**
  * @typedef {object} formState
@@ -19,21 +19,21 @@ import { registerForm, getFormFromRegistry } from '@mfs-core';
  * - updateForm
  * - submitForm : Promise. (will be resolve when the form is locked and will return the result)
  * - updateField
- * - clearForm
+ * - removeForm
  *
  * @kind react-redux hook.
- * @param {*} Arguments - Arguments as object.
- * @param {string} [Arguments.formId] - The unique form id indicator, will generate a unique id if not.
- * @param {Function} [Arguments.formValidator] - The form validator.
- * @param {Function} [Arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
- * @param {Object} [Arguments.initialState] - The initial state you want to use.
- * @param {boolean} [Arguments.clearOnUnmount=true] - When the component unmounts it will remove the form reference.
- * @param {boolean} [Arguments.isGlobalForm=false] - Tells if the form is defined global or not. If that is the case we will just reuse it.
+ * @param {*} arguments - arguments as object.
+ * @param {string} [arguments.formId] - The unique form id indicator, will generate a unique id if not.
+ * @param {Function} [arguments.formValidator] - The form validator.
+ * @param {Function} [arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
+ * @param {Object} [arguments.initialState] - The initial state you want to use.
+ * @param {boolean} [arguments.clearOnUnmount=true] - When the component unmounts it will remove the form reference.
+ * @param {boolean} [arguments.isGlobalForm=false] - Tells if the form is defined global or not. If that is the case we will just reuse it.
  * @return {MyFormStateHook} hook to be use in a react component.
  *
  * @example
  *
- *const [formState, { updateField, updateForm, submitForm, resetForm, clearForm }] = useMyFormState({
+ *const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
  *    initialState: {},
  *    formSchema: formSchema(schema),
  *});
@@ -70,12 +70,14 @@ export const useMyFormState = ({
     return () => {
       unregister();
       if (clearOnUnmount) {
-        dispatch(operations.clearForm());
+        dispatch(operations.removeForm());
       }
     };
   }, []);
 
-  const resetForm = useCallback((param) => dispatch(operations.resetForm(param.initialState)), [operations.resetForm]);
+  const resetForm = useCallback((param) => dispatch(operations.resetForm({ initialState: param.initialState })), [
+    operations.resetForm,
+  ]);
 
   const updateForm = useCallback(({ data }) => dispatch(operations.updateForm(data)), [operations.updateForm]);
 
@@ -85,8 +87,6 @@ export const useMyFormState = ({
     operations.updateField,
   ]);
 
-  const clearForm = useCallback(() => dispatch(operations.clearForm()), [operations.clearForm]);
-
   return [
     formState,
     {
@@ -94,7 +94,6 @@ export const useMyFormState = ({
       updateForm,
       updateField,
       submitForm,
-      clearForm,
     },
   ];
 };

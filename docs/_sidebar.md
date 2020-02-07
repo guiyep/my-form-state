@@ -6,12 +6,12 @@
 
   - [Getting started](/#getting-started 'Getting started')
   - [Peer dependencies](/#peer-dependencies 'Peer dependencies')
-  - [Quick example react-redux](/#quick-example-with-react-redux 'Quick example react-redux')
-  - [Quick Example with only React](/#quick-example-with-just-react 'Getting Started')
+  - [Example react-redux](/#example-with-react-redux 'Quick example react-redux')
+  - [Example with only react](/#example-with-only-react 'Getting Started')
 
 - Modules
 
-  - [What is included?](/modules/README#modules 'What is included?')
+  - [What is included? (Cheat-sheet)](/modules/README#modules 'What is included?')
 
 - Storybook
 
@@ -46,7 +46,7 @@
     - [Update Form](/redux/operations/README#updateform 'Update Form')
     - [Submit Form](/redux/operations/README#submitform 'Submit Form')
     - [Initialize Form](/redux/operations/README#initializeform 'Initialize Form')
-    - [Clear Form](/redux/operations/README#clearform 'Clear Form')
+    - [Remove Form](/redux/operations/README#removeForm 'Remove Form')
     - [Reset Form](/redux/operations/README#resetform 'Reset Form')
   - [Selectors](/redux/selectors/README#selectors 'Redux Selectors')
 
@@ -55,3 +55,4 @@
   - [Core](./core/README.md 'Core')
   - [Advance Example](./core/advance/README.md 'Advance Example')
   - [Global form schema](./core/global/README.md 'Global form schema')
+  - [Without Hooks](./core/without-hooks/README.md 'Without Hooks')

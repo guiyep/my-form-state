@@ -8,8 +8,7 @@ This module includes everything needed for setting up the library. Including val
 
 #### Includes
 
-- `import { formSchema } from 'my-form-state/core/validators/yup'` <a href="/#/core/validators/README#yup">Check YUP schema validation</a>
-- `import { yup : { formSchema } } from 'my-form-state/core'` (same as above)
+- `import { yup : { formSchema } } from 'my-form-state/core'` <a href="/#/core/validators/README#yup">Check YUP schema validation</a>
 - `import { registerForm } from 'my-form-state/core'` This is internal unless you are defining a global form schema. <a href="/#/core/global/README.md">Check global form Schema</a>
 
 ## Redux
@@ -20,9 +19,8 @@ This module includes all the Operations/Selectors/Actions/Reducers for the libra
 
 - `import { initializeReducer } from 'my-form-state/redux';` This is for initializing the library reducer if you are using with redux. <a href="/#/redux/get-started/README#my-form-library-redux-configuration">Check redux configuration</a>
 - `import { operations, selectors, reducer } from 'my-form-state/redux'`
-- `import reducer from 'my-form-state/redux/reducer'`
-- `import operations from 'my-form-state/redux/operations'` <a href="/#/redux/operations/README#operations">Check redux operations</a>
-- `import selectors from 'my-form-state/redux/selectors'` <a href="/#/redux/selectors/README#selectors">Check state selectors</a>
+- <a href="/#/redux/operations/README#operations">Check redux operations</a>
+- <a href="/#/redux/selectors/README#selectors">Check state selectors</a>
 
 ## React
 

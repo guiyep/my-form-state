@@ -55,7 +55,7 @@ Check <a href="/#/redux/get-started/README?id=my-form-library-redux-configuratio
 ```js
 import React from 'react';
 import { useMyFormState } from 'my-form-state/react-redux';
-import { formSchema } from 'my-form-state/core/validators/yup';
+import { yup: { formSchema } } from 'my-form-state/core';
 import * as YUP from 'yup';
 
 import Form from '@Your-form-component';
@@ -99,7 +99,7 @@ The library will keep the state internal to your component. No extra configurati
 
 ```js
 import React from 'react';
-import { formSchema } from 'my-form-state/core/validators/yup';
+import { yup: { formSchema } } from 'my-form-state/core';
 import * as YUP from 'yup';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 

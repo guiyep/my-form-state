@@ -42,7 +42,7 @@ perform any of the next actions:
 **Example**
 
 ```js
-import { formSchema } from 'my-form-state/core/validators/yup';
+import { yup: { formSchema } } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 

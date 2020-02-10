@@ -117,7 +117,7 @@ export default MyFormContainer;
 
 ```js
 import React from 'react';
-import { formSchema } from 'my-form-state/core/validators/yup';
+import { yup: { formSchema } } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 import Form from '@Your-form-component';

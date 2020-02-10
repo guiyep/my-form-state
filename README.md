@@ -62,9 +62,7 @@ The library will initialize a `my-form-state` entry in your redux state where al
 
 ```js
 import React from 'react';
-
 import { useMyFormState } from 'my-form-state/react-redux';
-
 import Form from '@Your-form-component';
 
 const MyFormContainer = ({ onSubmit }) => {
@@ -77,14 +75,7 @@ const MyFormContainer = ({ onSubmit }) => {
     onSubmit(result);
   };
 
-  return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
-      onReset={resetForm}
-    />
-  );
+  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />;
 };
 
 export default MyFormContainer;
@@ -96,9 +87,7 @@ The library will keep the state internal to your component. No extra configurati
 
 ```js
 import React from 'react';
-
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
-
 import Form from '@Your-form-component';
 
 const MyFormContainer = ({ onSubmit }) => {
@@ -131,7 +120,6 @@ import React from 'react';
 import { formSchema } from 'my-form-state/core/validators/yup';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
-
 import Form from '@Your-form-component';
 
 const YUPSchema = YUP.object().shape({

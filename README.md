@@ -112,7 +112,7 @@ export default MyFormContainer;
 
 ```js
 import React from 'react';
-import { yup: { formSchema } } from 'my-form-state/core';
+import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 import Form from '@YourFormComponent';
@@ -124,7 +124,7 @@ const YUPSchema = YUP.object().shape({
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
-    formSchema: formSchema(YUPSchema),
+    formSchema: yup.formSchema(YUPSchema),
   });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });

@@ -37,7 +37,7 @@ Builds a function that `my-form-library` will use to validate the YUP schema.
 **Example**
 
 ```js
-import { yup: { formSchema } } from 'my-form-state/core';
+import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react-redux';
 
 const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
@@ -49,7 +49,7 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 **Example**
 
 ```js
-import { yup: { formSchema } } from 'my-form-state/core';
+import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 
@@ -62,7 +62,7 @@ const YUPSchema = YUP.object().shape({
 
 const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
   initialState: { alias: 'guiyep' },
-  formSchema: formSchema(YUPSchema),
+  formSchema: yup.formSchema(YUPSchema),
 });
 ```
 

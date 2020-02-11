@@ -42,7 +42,7 @@ perform any of the next actions:
 **Example**
 
 ```js
-import { yup: { formSchema } } from 'my-form-state/core';
+import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 
@@ -55,6 +55,6 @@ const YUPSchema = YUP.object().shape({
 
 const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFormState({
   initialState: { alias: 'guiyep' },
-  formSchema: formSchema(YUPSchema),
+  formSchema: yup.formSchema(YUPSchema),
 });
 ```

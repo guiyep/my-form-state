@@ -58,7 +58,7 @@ import { useMyFormState } from 'my-form-state/react-redux';
 import { yup: { formSchema } } from 'my-form-state/core';
 import * as YUP from 'yup';
 
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
@@ -103,7 +103,7 @@ import { yup: { formSchema } } from 'my-form-state/core';
 import * as YUP from 'yup';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),

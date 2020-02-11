@@ -63,7 +63,7 @@ The library will initialize a `my-form-state` entry in your redux state where al
 ```js
 import React from 'react';
 import { useMyFormState } from 'my-form-state/react-redux';
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
@@ -88,7 +88,7 @@ The library will keep the state internal to your component. No extra configurati
 ```js
 import React from 'react';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
@@ -101,12 +101,7 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
-      onReset={resetForm}
-    />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />
   );
 };
 
@@ -120,7 +115,7 @@ import React from 'react';
 import { yup: { formSchema } } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),

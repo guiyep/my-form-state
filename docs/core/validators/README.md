@@ -39,10 +39,18 @@ Builds a function that `my-form-library` will use to validate the YUP schema.
 ```js
 import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react-redux';
+import * as YUP from 'yup';
+
+const YUPSchema = YUP.object().shape({
+  name: YUP.string().required(),
+  familyName: YUP.string().required(),
+  favoriteColor: YUP.string().required(),
+  alias: YUP.string().required(),
+});
 
 const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
   initialState,
-  formSchema: formSchema(schema, { async: true }),
+  formSchema: yup.formSchema(YUPSchema, { async: true }),
 });
 ```
 

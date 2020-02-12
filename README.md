@@ -56,6 +56,10 @@ They depend on how you want to use the library:
 }
 ```
 
+## Try It!!
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
 ## Example with React-Redux
 
 The library will initialize a `my-form-state` entry in your redux state where all the forms data will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
@@ -146,6 +150,6 @@ export default MyFormContainer;
 
 Check [Storybook](https://storybook-my-form-state.netlify.com/) for more examples.
 
-## Another work I have done :)
+## More from me :)
 
 - react-select-virtualized [![NPM](https://img.shields.io/npm/v/react-select-virtualized.svg)](https://www.npmjs.com/package/react-select-virtualized)

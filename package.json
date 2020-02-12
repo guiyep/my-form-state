@@ -1,6 +1,6 @@
 {
   "name": "my-form-state",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "forms state management using redux or react hooks",
   "author": "guiyep",
   "license": "MIT",
@@ -108,10 +108,10 @@
     "yup": "^0.28.1"
   },
   "files": [
-    "core.js",
-    "react.js",
-    "redux.js",
-    "react-redux.js"
+    "core/index.js",
+    "react/index.js",
+    "redux/index.js",
+    "react-redux/index.js"
   ],
   "peerDependencies": {
     "react": "16.12.0",

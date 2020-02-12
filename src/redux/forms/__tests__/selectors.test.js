@@ -17,7 +17,7 @@ describe('getFormIdState', () => {
 
   it('getFormIdState to return state', () => {
     const state = { [formStateProp]: { [formId]: 'some-date' } };
-    expect(() => getFormIdState({}, { formId })).not.toThrow();
+    expect(() => getFormIdState({}, { formId })).toThrow();
     expect(getFormIdState(state, { formId })).toEqual('some-date');
     expect(getFormIdState(state, { formId: 'invalid' })).toEqual({});
   });

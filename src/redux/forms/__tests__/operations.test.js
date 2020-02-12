@@ -4,6 +4,7 @@ import { initializeReducer } from '../../init';
 import 'babel-polyfill';
 
 const formId = 'unique-form-id';
+initializeReducer({ name: 'my-form-state' });
 
 describe('updateField, normal flow', () => {
   const mockDispatch = jest.fn();
@@ -129,7 +130,6 @@ describe('updateForm', () => {
 
 describe('updateForm - with validation function', () => {
   beforeAll(() => {
-    initializeReducer({ name: 'my-form-state' });
     addFormToRegistry(formId, {
       initialState: { someData: 3 },
       formValidator: (data) =>
@@ -262,7 +262,12 @@ describe('submitForm', () => {
   });
 
   it('submitForm to not throw', () => {
-    expect(() => submitForm({ formId })(mockDispatch, () => ({}))).not.toThrow();
+    const state = {
+      'my-form-state': {
+        [formId]: {},
+      },
+    };
+    expect(() => submitForm({ formId })(mockDispatch, () => state)).not.toThrow();
     expect(mockDispatch.mock.calls).toHaveLength(2);
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: 'MY-FORM-STATE/SUBMIT_FORM',

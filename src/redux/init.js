@@ -4,7 +4,7 @@ import forms from './forms/reducer';
 let reducerProp;
 
 /**
- * DON'T USE INTERNAL
+ * DON'T USE - INTERNAL
  */
 export const gerDefaultReducerProp = () => {
   return 'my-form-state';
@@ -53,8 +53,7 @@ export const initializeReducer = ({ name = gerDefaultReducerProp() } = {}) => {
  * Get the property name which you use for the redux reducer. All the forms will be under this state property.
  *
  * @kind function
- * @return {string} - The property you initialized the reducer. (my-form-state is the default value)
- * @throws If reducer has not been initialized.
+ * @return {string|undefined} - The property you initialized the reducer. (my-form-state is the default value)
  *
  * @example
  *
@@ -62,11 +61,5 @@ export const initializeReducer = ({ name = gerDefaultReducerProp() } = {}) => {
  */
 
 export const gerReducerProp = () => {
-  if (!reducerProp) {
-    throw new Error(
-      '`my-form-state` reducer has not been initialized yet. Please run first `initializeReducer` from `my-form-state/redux`',
-    );
-  }
-
   return reducerProp;
 };

@@ -1,13 +1,22 @@
 import { memoize } from '@mfs-lib/memoize';
 import ParamValidator from '@mfs-lib/param-validator';
 import { getFormFromRegistry } from '@mfs-registry';
-import { gerReducerProp } from '../init';
+import { gerReducerProp, gerDefaultReducerProp } from '../init';
 
 export const getFormIdState = (state, { formId }) => {
   ParamValidator.isString(formId, 'formId');
   ParamValidator.isObject(state, 'state');
 
-  return (state && state[gerReducerProp()] && state[gerReducerProp()][formId]) || {};
+  const formsListState = state && state[gerReducerProp() || gerDefaultReducerProp()];
+
+  if (!formsListState) {
+    // we will hit this only running from redux
+    throw new Error(
+      '`my-form-state` reducer has not been initialized yet. Please run first `initializeReducer` from `my-form-state/redux`',
+    );
+  }
+
+  return (formsListState && formsListState[formId]) || {};
 };
 
 const memoizeGetForm = memoize((formId, thisFormIdState) => {

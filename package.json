@@ -1,15 +1,15 @@
 {
   "name": "my-form-state",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "forms state management using redux or react hooks",
   "author": "guiyep",
   "license": "MIT",
   "repository": "guiyep/my-form-state",
-  "main": "dist/core.js",
-  "core": "dist/core.js",
-  "react": "dist/react.js",
-  "redux": "dist/redux.js",
-  "react-redux": "dist/react-redux.js",
+  "main": "core.js",
+  "core": "dist/core/index.js",
+  "react": "dist/react/index.js",
+  "redux": "dist/redux/index.js",
+  "react-redux": "dist/react-redux/index.js",
   "engines": {
     "node": ">=9",
     "npm": ">=6"
@@ -31,7 +31,8 @@
     "build-core": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.core.js",
     "build-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.redux.js",
     "build-react-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.react-redux.js",
-    "build-prod": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux",
+    "build-prod": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux && cp package.json ./dist",
+    "prod-publish": "npm publish dist",
     "start": "rollup -c -w",
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",
@@ -107,7 +108,10 @@
     "yup": "^0.28.1"
   },
   "files": [
-    "dist"
+    "core.js",
+    "react.js",
+    "redux.js",
+    "react-redux.js"
   ],
   "peerDependencies": {
     "react": "16.12.0",

@@ -145,6 +145,9 @@ const MyFormContainer = ({ onSubmit }) => {
 
 export default MyFormContainer;
 ```
+#### Edit schema example.
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
 
 ## Storybook
 

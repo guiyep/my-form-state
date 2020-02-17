@@ -1,18 +1,15 @@
 {
   "name": "my-form-state",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "forms state management using redux or react hooks",
   "author": "guiyep",
   "license": "MIT",
   "repository": "guiyep/my-form-state",
-  "core": "dist/core/index.min.js",
-  "core-module": "dist/core/index.min.es.js",
-  "react": "dist/react/index.min.js",
-  "react-module": "dist/react/index.min.es.js",
-  "redux": "dist/redux/index.min.js",
-  "redux-module": "dist/redux/index.min.es.js",
-  "react-redux": "dist/react-redux/index.min.js",
-  "react-redux-module": "dist/react-redux/index.min.es.js",
+  "main": "core.js",
+  "core": "dist/core/index.js",
+  "react": "dist/react/index.js",
+  "redux": "dist/redux/index.js",
+  "react-redux": "dist/react-redux/index.js",
   "engines": {
     "node": ">=9",
     "npm": ">=6"
@@ -34,7 +31,8 @@
     "build-core": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.core.js",
     "build-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.redux.js",
     "build-react-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.react-redux.js",
-    "build-prod": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux",
+    "build-prod": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux && cp package.json ./dist && cp README.md ./dist",
+    "prod-publish": "npm publish dist",
     "start": "rollup -c -w",
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",
@@ -110,7 +108,10 @@
     "yup": "0.28.1"
   },
   "files": [
-    "dist"
+    "core/index.js",
+    "react/index.js",
+    "redux/index.js",
+    "react-redux/index.js"
   ],
   "peerDependencies": {
     "react": "16.12.0",

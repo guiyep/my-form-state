@@ -1,6 +1,6 @@
-import pkg from './package.json';
-import { rollupBase } from './rollup.base';
 import cleaner from 'rollup-plugin-cleaner';
+import { rollupBase } from './rollup.base';
+import pkg from './package.json';
 
 const isProd = process.env.NODE_ENV === 'production';
 

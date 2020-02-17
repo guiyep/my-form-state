@@ -56,16 +56,18 @@ They depend on how you want to use the library:
 }
 ```
 
+## Try It!!
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
 ## Example with React-Redux
 
 The library will initialize a `my-form-state` entry in your redux state where all the forms data will live. You can check the state at any given time using the redux tools. Any change in the redux state form will trigger an update in the `useMyFormState` hook.
 
 ```js
 import React from 'react';
-
 import { useMyFormState } from 'my-form-state/react-redux';
-
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
@@ -77,14 +79,7 @@ const MyFormContainer = ({ onSubmit }) => {
     onSubmit(result);
   };
 
-  return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
-      onReset={resetForm}
-    />
-  );
+  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />;
 };
 
 export default MyFormContainer;
@@ -96,10 +91,8 @@ The library will keep the state internal to your component. No extra configurati
 
 ```js
 import React from 'react';
-
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
-
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
@@ -112,12 +105,7 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form
-      formState={formState}
-      onFieldChange={onFieldChangeHandler}
-      onSubmit={submitForm}
-      onReset={resetForm}
-    />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />
   );
 };
 
@@ -128,11 +116,10 @@ export default MyFormContainer;
 
 ```js
 import React from 'react';
-import { formSchema } from 'my-form-state/core/validators/yup';
+import { yup } from 'my-form-state/core';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
-
-import Form from '@Your-form-component';
+import Form from '@YourFormComponent';
 
 const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
@@ -141,7 +128,7 @@ const YUPSchema = YUP.object().shape({
 const MyFormContainer = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
-    formSchema: formSchema(YUPSchema),
+    formSchema: yup.formSchema(YUPSchema),
   });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
@@ -158,11 +145,14 @@ const MyFormContainer = ({ onSubmit }) => {
 
 export default MyFormContainer;
 ```
+#### Edit schema example.
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
 
 ## Storybook
 
 Check [Storybook](https://storybook-my-form-state.netlify.com/) for more examples.
 
-## Another work I have done :)
+## More from me :)
 
 - react-select-virtualized [![NPM](https://img.shields.io/npm/v/react-select-virtualized.svg)](https://www.npmjs.com/package/react-select-virtualized)

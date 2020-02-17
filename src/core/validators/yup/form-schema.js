@@ -15,12 +15,16 @@ import { jsonSchema } from './json-schema';
  * @throws schema is falsy
  *
  * @example 1
+ *  import { yup } from 'my-form-state/core'
+ *
  *  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
  *    initialState,
- *    formSchema: formSchema(schema, { async: true }),
+ *    formSchema: yup.formSchema(schema, { async: true }),
  *  });
  *
  * @example 2
+ *  import { yup } from 'my-form-state/core'
+ *
  *  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
  *    initialState,
  *    formSchema: formSchema(schema),

@@ -68,7 +68,7 @@ const unregisterForm = ({ formId }) => {
  * @param {String} [arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [arguments.formValidator] - the form validator function.
  * @param {Function} [arguments.formSchema] - the form schema function.
- * @param {Object} [arguments.initialState] - the initial state you want to use.
+ * @param {Object} arguments.initialState - the initial state you want to use.
  * @return {MyForm} - available functionality for the form {@link MyForm}
  *
  * @example
@@ -79,10 +79,13 @@ const unregisterForm = ({ formId }) => {
  *});
  */
 
-export const registerForm = ({ formId = uuid(), formValidator, formSchema, initialState }) => {
+export const registerForm = (
+  { formId = uuid(), formValidator, formSchema, initialState } = { formId: uuid(), initialState: {} },
+) => {
   ParamValidator.isString(formId, 'formId');
+  ParamValidator.isObject(initialState, 'initialState');
   ParamValidator.notRequired.isFunction(formValidator, 'formValidator');
-  ParamValidator.notRequired.isObject(initialState, 'initialState');
+  ParamValidator.notRequired.isFunction(formSchema, 'formSchema');
 
   // protect the initial state
   const initial = Object.freeze({ ...initialState });
@@ -102,11 +105,15 @@ export const registerForm = ({ formId = uuid(), formValidator, formSchema, initi
     formSchemaResolved.formValidator = formValidator;
   }
 
+  const initialFlat =
+    (formSchemaResolved.jsonSchemaFlatMap && flatten(initial, formSchemaResolved.jsonSchemaFlatMap)) ||
+    flatten(initial);
+
   addFormToRegistry(formId, {
     ...formSchemaResolved,
     initialState: initial,
     initialFields: unflatten(
-      Object.entries(flatten(initial, formSchemaResolved.jsonSchemaFlatMap)).reduce((acc, [key, val]) => {
+      Object.entries(initialFlat).reduce((acc, [key, val]) => {
         acc[key] = {
           value: val,
         };

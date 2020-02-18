@@ -6,7 +6,7 @@ import FormNested from '../../stories/shared/FormNested';
 const MyFormNestedContainer = ({ initialState, emptyState, schema, asyncValidation, onFormWasUpdated, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formSchema: formSchema(schema, { async: asyncValidation }),
+    formSchema: schema && formSchema(schema, { async: asyncValidation }),
   });
 
   // this is only for testing purposes

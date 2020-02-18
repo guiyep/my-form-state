@@ -26,6 +26,18 @@ storiesOf(`React/MyFormState`, module)
       maxPropsIntoLine: 1,
     },
   })
+  .add('Vary Basic', () =>
+    withState({})(({ store }) => {
+      const initialStateBasic = { name: '', familyName: '', alias: '', favoriteColor: '' };
+      return (
+        <Form
+          onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
+          initialState={initialStateBasic}
+        />
+      );
+    })(),
+  )
   .add('Basic, YUP schema', () =>
     withState({})(({ store }) => {
       const schema = YUP.object().shape({
@@ -36,6 +48,29 @@ storiesOf(`React/MyFormState`, module)
       });
 
       const initialState = { name: 'Jon', familyName: 'Doe', alias: 'guiyep', favoriteColor: 'red' };
+      const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+      return (
+        <Form
+          schema={schema}
+          initialState={initialState}
+          emptyState={emptyState}
+          onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
+        />
+      );
+    })(),
+  )
+  .add('Basic, YUP schema - no initial', () =>
+    withState({})(({ store }) => {
+      const schema = YUP.object().shape({
+        name: YUP.string().required(),
+        familyName: YUP.string().required(),
+        favoriteColor: YUP.string().required(),
+        alias: YUP.string().required(),
+      });
+
+      const initialState = { name: undefined, familyName: undefined, alias: undefined, favoriteColor: undefined };
       const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
 
       return (

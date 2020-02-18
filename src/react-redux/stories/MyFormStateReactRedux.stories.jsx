@@ -30,6 +30,10 @@ storiesOf(`React-Redux/MyFormState`, module)
       maxPropsIntoLine: 1,
     },
   })
+  .add('Very Basic', () => {
+    const initialStateBasic = { name: '', familyName: '', alias: '', favoriteColor: '' };
+    return <Form onSubmit={onSubmit} initialState={initialStateBasic} />;
+  })
   .add('Basic - YUP Schema', () => {
     const schema = YUP.object().shape({
       name: YUP.string().required(),
@@ -42,6 +46,19 @@ storiesOf(`React-Redux/MyFormState`, module)
     const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
 
     return <Form schema={schema} onSubmit={onSubmit} initialState={initialState2} emptyState={emptyState} />;
+  })
+  .add('Basic - YUP Schema - no initial', () => {
+    const schema = YUP.object().shape({
+      name: YUP.string().required(),
+      familyName: YUP.string().required(),
+      favoriteColor: YUP.string().required(),
+      alias: YUP.string().required(),
+    });
+
+    const initialState3 = { name: undefined, familyName: undefined, alias: undefined, favoriteColor: undefined };
+    const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+    return <Form schema={schema} initialState={initialState3} emptyState={emptyState} onSubmit={onSubmit} />;
   })
   .add('Nested state - YUP Schema', () => {
     const schema = YUP.object().shape({

@@ -6,7 +6,7 @@ import FormNested from '../../stories/shared/FormNested';
 const MyFormNestedContainer = ({ initialState, emptyState, schema, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formSchema: formSchema(schema),
+    formSchema: schema && formSchema(schema),
   });
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);

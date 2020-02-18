@@ -6,7 +6,7 @@ import Form from '../../stories/shared/Form';
 const MyFormContainer = ({ initialState, emptyState, schema, onFormWasUpdated, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
-    formSchema: formSchema(schema),
+    formSchema: schema && formSchema(schema),
   });
 
   const onFieldChangeHandler = useCallback((field, value) => updateField({ field, value }), [updateField]);

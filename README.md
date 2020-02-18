@@ -70,7 +70,9 @@ import { useMyFormState } from 'my-form-state/react-redux';
 import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+  });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
@@ -95,7 +97,9 @@ import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFE
 import Form from '@YourFormComponent';
 
 const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState();
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+  });
 
   const onFieldChangeHandler = (field, value) => updateField({ field, value });
 
@@ -145,7 +149,6 @@ const MyFormContainer = ({ onSubmit }) => {
 
 export default MyFormContainer;
 ```
-#### Edit schema example.
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
 

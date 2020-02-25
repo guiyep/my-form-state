@@ -26,18 +26,18 @@ perform any of the next actions:
 - <a href="/#/redux/operations/README#removeForm">removeForm</a>
 
 **Kind**: React Hook
-
 **Returns**: <code>MyFormStateHook</code> - Hook to be use in a React component.
+**Throws**: initialState and formSchema cannot be empty at the same time.
 
 **Params**
 
 | Param                     | Req | Type                  | Description                                                                                           |
 | ------------------------- | --- | --------------------- | ----------------------------------------------------------------------------------------------------- |
-| arguments                 |     | <code>Object</code>   | arguments as object.                                                                                  |
+| [arguments]               |     | <code>Object</code>   | arguments as object.                                                                                  |
 | [arguments.formId]        | N   | <code>string</code>   | The unique form id indicator, will generate a unique id if not.                                       |
 | [arguments.formSchema]    | N   | <code>function</code> | The form schema. This can be YUP/JOI/JSON-SCHEMA <a href="/#/core/validators/README">Check Schema</a> |
 | [arguments.formValidator] | N   | <code>function</code> | The form validator. <a href="/#/core/validators/README#custom">Check Validators</a>                   |
-| arguments.initialState    | Y   | <code>Object</code>   | The initial state you want to use.                                                                    |
+| [arguments.initialState]  | N   | <code>Object</code>   | The initial state you want to use.                                                                    |
 
 **Example**
 
@@ -58,3 +58,7 @@ const [formState, { updateField, updateForm, submitForm, resetForm }] = useMyFor
   formSchema: yup.formSchema(YUPSchema),
 });
 ```
+
+**Note**
+
+It is RECOMMENDED but not required to always use a formSchema for building forms. The form will be more consistent.

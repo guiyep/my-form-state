@@ -26,7 +26,7 @@ import { useThunks } from './useThunks';
  * @param {string} [arguments.formId] - The unique form id indicator, will generate a unique id if not.
  * @param {Function} [arguments.formValidator] - The form validator.
  * @param {Function} [arguments.formSchema] - The form schema. This can be json-schema, yup or joi.
- * @param {Object} arguments.initialState - The initial state you want to use.
+ * @param {Object} [arguments.initialState] - The initial state you want to use.
  * @param {boolean} [arguments.clearOnUnmount=true] - When the component unmounts it will remove the form reference.
  * @param {boolean} [arguments.isGlobalForm=false] - Tells if the form is defined global or not. If that is the case we will just reuse it.
  * @return {MyFormStateHook} hook to be use in a react component.
@@ -53,6 +53,7 @@ export const useMyFormState = ({
     operations,
     selectors: { getForm },
     unregister,
+    initialFormState,
   } = useMemo(
     () =>
       ((!isGlobalForm && registerForm) || getFormFromRegistry)({
@@ -68,7 +69,7 @@ export const useMyFormState = ({
   const dispatch = useThunks();
 
   useEffect(() => {
-    dispatch(operations.initializeForm({ initialState }));
+    dispatch(operations.initializeForm({ initialState: initialFormState }));
     return () => {
       unregister();
       if (clearOnUnmount) {

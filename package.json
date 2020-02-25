@@ -32,7 +32,7 @@
     "build-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.redux.js",
     "build-react-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.react-redux.js",
     "build": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux && cp package.json ./dist && cp README.md ./dist",
-    "prod-publish": "npm publish dist",
+    "publish": "npm publish dist",
     "start": "rollup -c -w",
     "deploy": "gh-pages -d",
     "storybook": "start-storybook -p 9009",

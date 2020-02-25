@@ -11,6 +11,15 @@ import {
 } from '@mfs-registry';
 import * as yupModule from './validators/yup';
 
+const DEFAULTS_VALUES = {
+  string: '',
+  number: 0,
+  boolean: false,
+  date: null,
+  array: [],
+  object: [],
+};
+
 const scopeOperationToForm = (moduleMap, originalArgs) => {
   return Object.keys(moduleMap).reduce((acc, name) => {
     acc[name] = (args = {}) => {
@@ -27,6 +36,24 @@ const scopeSelectorToForm = (moduleMap, originalArgs) => {
     };
     return acc;
   }, {});
+};
+
+const buildInitialState = (initialState, fieldsDefinition) => {
+  if (!fieldsDefinition) {
+    return {
+      ...initialState,
+    };
+  }
+
+  const initialDefaultsValues = Object.entries(fieldsDefinition).reduce((acc, [prop, value]) => {
+    acc[prop] = DEFAULTS_VALUES[value] === undefined ? null : DEFAULTS_VALUES[value];
+    return acc;
+  }, {});
+
+  return unflatten({
+    ...initialDefaultsValues,
+    ...flatten(initialState, fieldsDefinition),
+  });
 };
 
 /**
@@ -68,8 +95,10 @@ const unregisterForm = ({ formId }) => {
  * @param {String} [arguments.formId] - the unique form id indicator, will generate a unique id if not.
  * @param {Function} [arguments.formValidator] - the form validator function.
  * @param {Function} [arguments.formSchema] - the form schema function.
- * @param {Object} arguments.initialState - the initial state you want to use.
+ * @param {Object} [arguments.initialState] - the initial state you want to use.
  * @return {MyForm} - available functionality for the form {@link MyForm}
+ *
+ * @throws initialState and formSchema cannot be empty at the same time.
  *
  * @example
  *
@@ -80,15 +109,16 @@ const unregisterForm = ({ formId }) => {
  */
 
 export const registerForm = (
-  { formId = uuid(), formValidator, formSchema, initialState } = { formId: uuid(), initialState: {} },
+  { formId = uuid(), formValidator, formSchema, initialState = {} } = { formId: uuid(), initialState: {} },
 ) => {
   ParamValidator.isString(formId, 'formId');
-  ParamValidator.isObject(initialState, 'initialState');
+  ParamValidator.notRequired.isObject(initialState, 'initialState');
   ParamValidator.notRequired.isFunction(formValidator, 'formValidator');
   ParamValidator.notRequired.isFunction(formSchema, 'formSchema');
 
-  // protect the initial state
-  const initial = Object.freeze({ ...initialState });
+  if (!initialState && !formSchema) {
+    throw Error('initialState and formSchema cannot be empty at the same time.');
+  }
 
   const formSchemaResolved =
     typeof formSchema === 'function'
@@ -105,15 +135,13 @@ export const registerForm = (
     formSchemaResolved.formValidator = formValidator;
   }
 
-  const initialFlat =
-    (formSchemaResolved.jsonSchemaFlatMap && flatten(initial, formSchemaResolved.jsonSchemaFlatMap)) ||
-    flatten(initial);
+  const initialConstructedState = Object.freeze(buildInitialState(initialState, formSchemaResolved.fieldsDefinition));
 
   addFormToRegistry(formId, {
     ...formSchemaResolved,
-    initialState: initial,
+    initialState: initialConstructedState,
     initialFields: unflatten(
-      Object.entries(initialFlat).reduce((acc, [key, val]) => {
+      Object.entries(flatten(initialConstructedState)).reduce((acc, [key, val]) => {
         acc[key] = {
           value: val,
         };
@@ -126,6 +154,7 @@ export const registerForm = (
     operations: scopeOperationToForm(operationsRedux, { formId }),
     selectors: scopeSelectorToForm(selectorsRedux, { formId }),
     formId,
+    initialFormState: initialConstructedState,
     unregister: () => unregisterForm({ formId }),
   };
 };

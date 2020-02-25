@@ -49,20 +49,20 @@ const jsonSchema = {
 it('getFlatMap to return what is expected', () => {
   const flatMap = getFlatMap({ jsonSchema });
   expect(flatMap).toEqual({
-    o: true,
-    'o.0': true,
-    'o.1': true,
-    'o.2.abb': true,
-    'o.3': true,
-    'o.3.0': true,
-    'o.3.1': true,
-    'o.3.2': true,
-    'o.4': true,
-    'o.4.0': true,
-    'o.4.1': true,
-    'o.4.2': true,
-    'o.4.3': true,
-    'a.b.c': true,
+    'a.b.c': 'number',
+    o: false,
+    'o.0': 'number',
+    'o.1': 'string',
+    'o.2.abb': 'number',
+    'o.3': 'string',
+    'o.3.0': 'Street',
+    'o.3.1': 'Avenue',
+    'o.3.2': 'Boulevard',
+    'o.4': 'string',
+    'o.4.0': 'NW',
+    'o.4.1': 'NE',
+    'o.4.2': 'SW',
+    'o.4.3': 'SE',
   });
 });
 

@@ -34,6 +34,18 @@ storiesOf(`React-Redux/MyFormState`, module)
     const initialStateBasic = { name: '', familyName: '', alias: '', favoriteColor: '' };
     return <Form onSubmit={onSubmit} initialState={initialStateBasic} />;
   })
+  .add('Basic - YUP Schema - empty initial', () => {
+    const schema = YUP.object().shape({
+      name: YUP.string().required(),
+      familyName: YUP.string().required(),
+      favoriteColor: YUP.string().required(),
+      alias: YUP.string().required(),
+    });
+
+    const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+    return <Form schema={schema} emptyState={emptyState} onSubmit={onSubmit} />;
+  })
   .add('Basic - YUP Schema', () => {
     const schema = YUP.object().shape({
       name: YUP.string().required(),

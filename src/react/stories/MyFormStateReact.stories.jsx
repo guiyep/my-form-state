@@ -38,6 +38,27 @@ storiesOf(`React/MyFormState`, module)
       );
     })(),
   )
+  .add('Basic, YUP schema - empty initial', () =>
+    withState({})(({ store }) => {
+      const schema = YUP.object().shape({
+        name: YUP.string().required(),
+        familyName: YUP.string().required(),
+        favoriteColor: YUP.string().required(),
+        alias: YUP.string().required(),
+      });
+
+      const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+      return (
+        <Form
+          schema={schema}
+          emptyState={emptyState}
+          onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
+        />
+      );
+    })(),
+  )
   .add('Basic, YUP schema', () =>
     withState({})(({ store }) => {
       const schema = YUP.object().shape({

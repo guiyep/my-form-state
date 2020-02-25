@@ -34,7 +34,7 @@ Builds a function that `my-form-library` will use to validate the YUP schema.
 | [options]       | <code>Object</code>  |                    | Options as object.                              |
 | [options.async] | <code>boolean</code> | <code>false</code> | If the validation need to happen sync or async. |
 
-**Example**
+**Example 1**
 
 ```js
 import { yup } from 'my-form-state/core';
@@ -54,7 +54,7 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 });
 ```
 
-**Example**
+**Example 2**
 
 ```js
 import { yup } from 'my-form-state/core';
@@ -74,6 +74,45 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 });
 ```
 
+**Example 3**
+
+```js
+import React from 'react';
+import { yup } from 'my-form-state/core';
+import { useMyFormState } from 'my-form-state/react';
+import * as YUP from 'yup';
+import Form from '@YourFormComponent';
+
+const YUPSchema = YUP.object().shape({
+  alias: YUP.string().required(),
+});
+
+const MyFormContainer = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: yup.formSchema(YUPSchema),
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+  );
+};
+
+export default MyFormContainer;
+```
+
+###### Above example With React
+  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+###### Above example With React-Redux
+  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
+
 ## JOI
 
 UNDER DEVELOPMENT
@@ -87,7 +126,7 @@ UNDER DEVELOPMENT
 You can build your own validators using your framework of choice.
 You need to create a function that can be async or not, that will return `undefined` when is valid, or a flat object with the errors when it is not.
 
-More precise the newFormState is the `state.data` field from the form state. <a href="/#/state/README#form-state">Check the form state</a> 
+More precise the newFormState is the `state.data` field from the form state. <a href="/#/state/README#form-state">Check the form state</a>
 
 ```js
 import { useMyFormState } from 'my-form-state/react';

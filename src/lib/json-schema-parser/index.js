@@ -4,7 +4,9 @@ import flattenF from 'flat';
 export const getFlatMap = ({ jsonSchema }) => {
   ParamValidator.isObject(jsonSchema, 'jsonSchema');
 
-  return Object.entries(flattenF(jsonSchema)).reduce((acc, [prop, value]) => {
+  const flatSchema = flattenF(jsonSchema);
+
+  return Object.entries(flatSchema).reduce((acc, [prop, value]) => {
     if (prop === 'type' || prop === 'type' || value === 'object') {
       return acc;
     }
@@ -14,7 +16,8 @@ export const getFlatMap = ({ jsonSchema }) => {
       .replace(/.items/g, '')
       .replace(/.enum/g, '')
       .replace(/.additionalItems/g, '');
-    acc[newProp] = true;
+
+    acc[newProp] = value;
     return acc;
   }, {});
 };

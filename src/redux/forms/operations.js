@@ -109,7 +109,7 @@ const validateFormDebounced = debounce(
   },
   // this number need to be bellow 100 so it is not noticeable to the user
   100,
-  { leading: false, trailing: true },
+  false,
 );
 
 /**

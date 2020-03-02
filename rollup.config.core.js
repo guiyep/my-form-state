@@ -22,7 +22,7 @@ const coreConfig = {
 if (isProd) {
   coreConfig.plugins.push(
     cleaner({
-      targets: ['./dist/'],
+      targets: ['./dist/', './build'],
     }),
   );
 }

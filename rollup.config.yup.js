@@ -4,10 +4,10 @@ import pkg from './package.json';
 const isProd = process.env.NODE_ENV === 'production';
 
 const coreConfig = {
-  input: 'src/index.js',
+  input: 'src/core/validators/yup/index.js',
   output: [
     {
-      file: pkg.core,
+      file: pkg.yup,
       format: 'cjs',
       sourcemap: !isProd,
       compact: true,

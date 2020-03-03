@@ -9,7 +9,6 @@ import {
   removeFormFromRegistry,
   getFormFromRegistry as getFormFromInternalRegistry,
 } from '@mfs-registry';
-import * as yupModule from './validators/yup';
 
 const DEFAULTS_VALUES = {
   string: '',
@@ -185,6 +184,12 @@ export const getFormFromRegistry = ({ formId }) => {
   }
 };
 
-export const yup = yupModule;
+export const yup = {
+  formSchema: () => {
+    throw Error(
+      `yup module has moved to 'my-form-state/yup please import it as : (import yup from 'my-form-state/yup')`,
+    );
+  },
+};
 
 export default registerForm;

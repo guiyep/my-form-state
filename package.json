@@ -1,6 +1,6 @@
 {
   "name": "my-form-state",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "forms state management using redux or react hooks",
   "author": "guiyep",
   "license": "MIT",
@@ -10,6 +10,9 @@
   "react": "build/react/index.js",
   "redux": "build/redux/index.js",
   "react-redux": "build/react-redux/index.js",
+  "json-schema": "build/json-schema/ajv/index.js",
+  "json-schema-custom": "build/json-schema/custom/index.js",
+  "yup": "build/yup/index.js",
   "engines": {
     "node": ">=9",
     "npm": ">=6"
@@ -22,6 +25,9 @@
     "hooks",
     "react hooks",
     "reducer state",
+    "json-schema",
+    "json",
+    "schema",
     "yup",
     "joi"
   ],
@@ -31,7 +37,9 @@
     "build-core": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.core.js",
     "build-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.redux.js",
     "build-react-redux": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.react-redux.js",
-    "build": "npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux && cp package.json ./build && cp README.md ./build",
+    "build-yup": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.yup.js",
+    "build-json-schema": "NODE_ENV=production BABEL_ENV=production rollup -c rollup.config.json-schema.js",
+    "build": "npm run build-json-schema && npm run build-yup && npm run build-core && npm run build-react && npm run build-redux && npm run build-react-redux && cp package.json ./build && cp README.md ./build",
     "publish": "npm publish build",
     "start": "rollup -c -w",
     "deploy": "gh-pages -d",
@@ -116,7 +124,8 @@
   "peerDependencies": {
     "react": "16.13.0",
     "react-dom": "16.13.0",
-    "react-redux": "7.2.0"
+    "react-redux": "7.2.0",
+    "ajv": "6.12.0"
   },
   "husky": {
     "hooks": {

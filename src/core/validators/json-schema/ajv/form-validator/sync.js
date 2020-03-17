@@ -19,8 +19,16 @@ export const formValidator = (schema) => {
 
   return (formData) => {
     const resultValidation = validateSchema(formData);
+
     if (!resultValidation) {
-      return validateSchema.errors;
+      return (
+        validateSchema.errors &&
+        validateSchema.errors.reduce((acc, error) => {
+          const prop = error.params.missingProperty || error.dataPath;
+          acc[prop.replace('.', '')] = error.message;
+          return acc;
+        }, {})
+      );
     }
     return undefined;
   };

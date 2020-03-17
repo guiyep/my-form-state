@@ -37,7 +37,7 @@ Builds a function that `my-form-library` will use to validate the YUP schema.
 **Example 1**
 
 ```js
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import { useMyFormState } from 'my-form-state/react-redux';
 import * as YUP from 'yup';
 
@@ -57,7 +57,7 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 **Example 2**
 
 ```js
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 
@@ -78,7 +78,7 @@ const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
 
 ```js
 import React from 'react';
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 import Form from '@YourFormComponent';
@@ -109,17 +109,117 @@ export default MyFormContainer;
 ```
 
 ###### Above example With React
-  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
 ###### Above example With React-Redux
-  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
 
 ## JOI
 
-UNDER DEVELOPMENT
+Waiting to JOI implement the describe functionality for the web version of the refactored JOI library.
 
 ## Json Schema
 
-UNDER DEVELOPMENT
+The Json schema form validator work with the <a href="https://www.npmjs.com/package/ajv">AJV</a> library by default. You need to install the AJV package as a dependency in your project.
+
+There will be other json schema validators to use in the near future. As for now only AJV.
+
+```
+npm install ajv
+```
+
+<a name="formSchema"></a>
+
+## formSchema(schema, [options]) ⇒ <code>function</code>
+
+Builds a function that `my-form-library` will use to validate the a JSON schema.
+
+**Kind**: function  
+**Returns**: <code>function</code> - a function that will be used for validating the form.  
+**Throws**:
+
+- schema is falsy
+
+**Params**
+
+| Param  | Type                | Default | Description           |
+| ------ | ------------------- | ------- | --------------------- |
+| schema | <code>Object</code> |         | A JSON schema object. |
+
+**Example 1**
+
+```js
+import jsonSchema from 'my-form-state/json-schema';
+import { useMyFormState } from 'my-form-state/react-redux';
+
+const JSONSchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+    },
+    familyName: {
+      type: 'string',
+    },
+  },
+  required: ['name', 'familyName'],
+};
+
+const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+  initialState,
+  formSchema: jsonSchema.formSchema(JSONSchema),
+});
+```
+
+**Example 2**
+
+```js
+import React from 'react';
+import jsonSchema from 'my-form-state/json-schema';
+import { useMyFormState } from 'my-form-state/react';
+import Form from '@YourFormComponent';
+
+const JSONSchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+    },
+    familyName: {
+      type: 'string',
+    },
+  },
+  required: ['name', 'familyName'],
+};
+
+const MyFormContainer = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { name: 'guiyep' },
+    formSchema: jsonSchema.formSchema(JSONSchema),
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+  );
+};
+
+export default MyFormContainer;
+```
+
+### Extending AJV configuration
+
+```js
+import { jsonSchema: { ajv } } from 'my-form-state/core';
+```
 
 ## Custom
 

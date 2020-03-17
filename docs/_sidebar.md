@@ -8,6 +8,7 @@
   - [Peer dependencies](/#peer-dependencies 'Peer dependencies')
   - [Example react-redux](/#example-with-react-redux 'Quick example react-redux')
   - [Example with only react](/#example-with-only-react 'Getting Started')
+  - [Form UI Component Example](/#form-ui-component-example 'Form UI Component Example')
 
 - Modules
 

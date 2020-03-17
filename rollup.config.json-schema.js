@@ -5,7 +5,7 @@ import pkg from './package.json';
 const isProd = process.env.NODE_ENV === 'production';
 
 const coreConfig = {
-  input: 'src/core/validators/json-schema/ajv/index.js',
+  input: 'src/core/validators/json-schema/index.js',
   output: [
     {
       file: pkg['json-schema'],

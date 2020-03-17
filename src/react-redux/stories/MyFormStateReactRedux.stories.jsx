@@ -46,6 +46,34 @@ storiesOf(`React-Redux/MyFormState`, module)
 
     return <Form schema={schema} emptyState={emptyState} onSubmit={onSubmit} />;
   })
+  .add('Basic, JSON schema - empty initial', () => {
+    const schema = {
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string',
+          minLength: 1,
+        },
+        familyName: {
+          type: 'string',
+          minLength: 1,
+        },
+        favoriteColor: {
+          type: 'string',
+          minLength: 1,
+        },
+        alias: {
+          type: 'string',
+          minLength: 1,
+        },
+      },
+      required: ['name', 'familyName', 'favoriteColor', 'alias'],
+    };
+
+    const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+    return <Form jsonSchemaUsingAjv={schema} emptyState={emptyState} onSubmit={onSubmit} />;
+  })
   .add('Basic - YUP Schema', () => {
     const schema = YUP.object().shape({
       name: YUP.string().required(),

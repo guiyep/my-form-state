@@ -23,7 +23,7 @@ const memoizeGetForm = memoize((formId, thisFormIdState) => {
   const { initialFields, initialState } = getFormFromRegistry(formId);
 
   return {
-    data: thisFormIdState.data || initialState || {},
+    data: thisFormIdState.data || {},
 
     initialData: thisFormIdState.initialData || initialState,
 

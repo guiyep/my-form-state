@@ -55,7 +55,7 @@ Check <a href="/#/redux/get-started/README?id=my-form-library-redux-configuratio
 ```js
 import React from 'react';
 import { useMyFormState } from 'my-form-state/react-redux';
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import * as YUP from 'yup';
 import Form from '@YourFormComponent';
 
@@ -91,6 +91,7 @@ const MyFormContainer = ({ onSubmit }) => {
 
 export default MyFormContainer;
 ```
+
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
 
 ## Example with only react
@@ -99,7 +100,7 @@ The library will keep the state internal to your component. No extra configurati
 
 ```js
 import React from 'react';
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import * as YUP from 'yup';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 import Form from '@YourFormComponent';
@@ -136,4 +137,72 @@ const MyFormContainer = ({ onSubmit }) => {
 
 export default MyFormContainer;
 ```
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+## Form UI Component Example.
+
+I used material-ui just as an example.
+
+```js
+import React, { useCallback } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const Form = ({
+  formState: {
+    fields: { name, familyName },
+    isSubmittable,
+    isSubmitted,
+    isInitialized,
+  },
+  onFieldChange,
+  onClear,
+  onSubmit,
+  onReset,
+}) => {
+  const onFieldChangeHandler = useCallback((e) => onFieldChange(e.target.id, e.target.value), [onFieldChange]);
+
+  return (
+    <form noValidate autoComplete="off">
+      <div>
+        <TextField
+          error={name.showError}
+          required
+          id="name"
+          label="Name"
+          value={name.value}
+          margin="normal"
+          onChange={onFieldChangeHandler}
+          disabled={isSubmitted}
+        />
+        <TextField
+          error={familyName.showError}
+          required
+          id="familyName"
+          label="Family Name"
+          value={familyName.value}
+          margin="normal"
+          onChange={onFieldChangeHandler}
+          disabled={isSubmitted}
+        />
+      </div>
+      <div>
+        <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
+          Submit
+        </Button>
+        <Button disabled={!isInitialized} onClick={onClear}>
+          Reset To Empty
+        </Button>
+        <Button disabled={!isInitialized} onClick={onReset}>
+          Reset to default
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+export default Form;
+```
+
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)

@@ -3,7 +3,7 @@
 ```js
 const state = {
   // Form data stored as a key-value definition. It will include only the fields defined
-  // in the schema if using `formSchema`.
+  // in the schema if using `formSchema` that has changed.
   data: {
     'profileOne.name': 'Jon test',
     'profileOne.familyName': 'Doe',
@@ -19,8 +19,7 @@ const state = {
     'profileOne.alias': '',
     'profileOne.favoriteColor': 'red',
   },
-  // The form result data. It is going to be the merge between `state.data` and
-  // `state.initialData`. It will be populated after you submit the form and
+  // The form result data `state.data`. It will be populated after you submit the form and
   // `state.isSubmitted` is set to true. (using the submitForm operation)
   resultData: {
     'profileOne.name': 'Jon',

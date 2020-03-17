@@ -42,7 +42,7 @@ perform any of the next actions:
 **Example**
 
 ```js
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 

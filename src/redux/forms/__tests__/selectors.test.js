@@ -110,7 +110,7 @@ describe('getForm', () => {
       },
     };
     const formState = getForm(state, { formId });
-    expect(formState.data).toEqual({ someData: 3 });
+    expect(formState.data).toEqual({});
     expect(formState.isSubmitted).toEqual(false);
     expect(formState.isSubmittable).toEqual(false);
     expect(formState.isTouched).toEqual(false);

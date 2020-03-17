@@ -111,7 +111,7 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
   );
 };
 
@@ -120,11 +120,11 @@ export default MyFormContainer;
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-moon-2yj06)
 
-## With form schema.
+## With YUP form schema.
 
 ```js
 import React from 'react';
-import { yup } from 'my-form-state/core';
+import yup from 'my-form-state/yup';
 import { useMyFormState } from 'my-form-state/react';
 import * as YUP from 'yup';
 import Form from '@YourFormComponent';
@@ -155,9 +155,123 @@ export default MyFormContainer;
 ```
 
 ###### Above example With React
-  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
 ###### Above example With React-Redux
-  [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
+
+## With JSON form schema (Using the latest [JsonSchema](https://json-schema.org/) draft).
+
+```js
+import React from 'react';
+import jsonSchema from 'my-form-state/json-schema';
+import { useMyFormState } from 'my-form-state/react';
+import Form from '@YourFormComponent';
+
+const JSONSchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+      minLength: 1,
+    },
+    familyName: {
+      type: 'string',
+      minLength: 1,
+    },
+  },
+  required: ['name', 'familyName'],
+};
+
+const MyFormContainer = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: jsonSchema.formSchema(JSONSchema),
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+  );
+};
+
+export default MyFormContainer;
+```
+
+## Form UI Component Example.
+
+I used material-ui just as an example.
+
+```js
+import React, { useCallback } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const Form = ({
+  formState: {
+    fields: { name, familyName },
+    isSubmittable,
+    isSubmitted,
+    isInitialized,
+  },
+  onFieldChange,
+  onClear,
+  onSubmit,
+  onReset,
+}) => {
+  const onFieldChangeHandler = useCallback((e) => onFieldChange(e.target.id, e.target.value), [onFieldChange]);
+
+  return (
+    <form noValidate autoComplete="off">
+      <div>
+        <TextField
+          error={name.showError}
+          required
+          id="name"
+          label="Name"
+          value={name.value}
+          margin="normal"
+          onChange={onFieldChangeHandler}
+          disabled={isSubmitted}
+        />
+        <TextField
+          error={familyName.showError}
+          required
+          id="familyName"
+          label="Family Name"
+          value={familyName.value}
+          margin="normal"
+          onChange={onFieldChangeHandler}
+          disabled={isSubmitted}
+        />
+      </div>
+      <div>
+        <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
+          Submit
+        </Button>
+        <Button disabled={!isInitialized} onClick={onClear}>
+          Reset To Empty
+        </Button>
+        <Button disabled={!isInitialized} onClick={onReset}>
+          Reset to default
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+export default Form;
+```
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
 
 ## Storybook
 

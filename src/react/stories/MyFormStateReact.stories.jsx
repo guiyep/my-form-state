@@ -59,6 +59,43 @@ storiesOf(`React/MyFormState`, module)
       );
     })(),
   )
+  .add('Basic, JSON schema - empty initial', () =>
+    withState({})(({ store }) => {
+      const schema = {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            minLength: 1,
+          },
+          familyName: {
+            type: 'string',
+            minLength: 1,
+          },
+          favoriteColor: {
+            type: 'string',
+            minLength: 1,
+          },
+          alias: {
+            type: 'string',
+            minLength: 1,
+          },
+        },
+        required: ['name', 'familyName', 'favoriteColor', 'alias'],
+      };
+
+      const emptyState = { name: '', familyName: '', alias: '', favoriteColor: '' };
+
+      return (
+        <Form
+          jsonSchemaUsingAjv={schema}
+          emptyState={emptyState}
+          onFormWasUpdated={(formState) => store.set({ ...formState })}
+          onSubmit={onSubmit}
+        />
+      );
+    })(),
+  )
   .add('Basic, YUP schema', () =>
     withState({})(({ store }) => {
       const schema = YUP.object().shape({

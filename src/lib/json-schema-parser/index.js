@@ -10,6 +10,11 @@ export const getFlatMap = ({ jsonSchema }) => {
     if (prop === 'type' || prop === 'type' || value === 'object') {
       return acc;
     }
+
+    if (prop.indexOf('required') !== -1) {
+      return acc;
+    }
+
     const newProp = prop
       .replace(/properties./g, '')
       .replace(/.type/g, '')

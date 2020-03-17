@@ -67,9 +67,10 @@ describe('formReducer', () => {
     const nextState = formReducer(state, { type: 'MY-FORM-STATE/INITIALIZE_FORM', payload: { test: 1 } });
     const nextState2 = formReducer(state, { type: 'MY-FORM-STATE/INITIALIZE_FORM', payload: { test: { test2: 3 } } });
     const nextState3 = formReducer(state, { type: 'MY-FORM-STATE/INITIALIZE_FORM' });
-    expect(nextState.data).toEqual({ test: 1 });
-    expect(nextState2.data).toEqual({ 'test.test2': 3 });
-    expect(nextState3.data).toEqual({});
+    expect(nextState.data).toEqual({});
+    expect(nextState.initialData).toEqual({ test: 1 });
+    expect(nextState2.initialData).toEqual({ 'test.test2': 3 });
+    expect(nextState3.initialData).toEqual({});
   });
 
   it('reset form with empty payload', () => {
@@ -91,9 +92,10 @@ describe('formReducer', () => {
     const nextState = formReducer(state, { type: 'MY-FORM-STATE/RESET_FORM', payload: { test: 1 } });
     const nextState2 = formReducer(state, { type: 'MY-FORM-STATE/RESET_FORM', payload: { test: { test2: 3 } } });
     const nextState3 = formReducer(state, { type: 'MY-FORM-STATE/RESET_FORM' });
-    expect(nextState.data).toEqual({ test: 1 });
-    expect(nextState2.data).toEqual({ 'test.test2': 3 });
-    expect(nextState3.data).toEqual({});
+    expect(nextState.data).toEqual({});
+    expect(nextState.initialData).toEqual({ test: 1 });
+    expect(nextState2.initialData).toEqual({ 'test.test2': 3 });
+    expect(nextState3.initialData).toEqual({});
     expect(nextState.isPristine).toEqual(true);
     expect(nextState.isInitialized).toEqual(true);
     expect(nextState.isSubmitted).toEqual(false);

@@ -10,7 +10,7 @@
   "react": "build/react/index.js",
   "redux": "build/redux/index.js",
   "react-redux": "build/react-redux/index.js",
-  "json-schema": "build/json-schema/ajv/index.js",
+  "json-schema": "build/json-schema/index.js",
   "json-schema-custom": "build/json-schema/custom/index.js",
   "yup": "build/yup/index.js",
   "engines": {

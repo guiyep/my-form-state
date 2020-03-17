@@ -218,7 +218,9 @@ export default MyFormContainer;
 ### Extending AJV configuration
 
 ```js
-import { jsonSchema: { ajv } } from 'my-form-state/core';
+import { ajv } from 'my-form-state/json-schema';
+
+// this will be the ajv singleton, you can pass down any prop to the main configuration.
 ```
 
 ## Custom

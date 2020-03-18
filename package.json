@@ -1,6 +1,6 @@
 {
   "name": "my-form-state",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "forms state management using redux or react hooks",
   "author": "guiyep",
   "license": "MIT",
@@ -119,6 +119,8 @@
     "core/index.js",
     "react/index.js",
     "redux/index.js",
+    "yup/index.js",
+    "json-schema/index.js",
     "react-redux/index.js"
   ],
   "peerDependencies": {

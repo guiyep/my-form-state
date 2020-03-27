@@ -86,7 +86,7 @@
     "extend-shallow": "3.0.2",
     "generate-random-data": "0.0.3",
     "husky": "4.2.3",
-    "jest": "25.2.2",
+    "jest": "25.2.3",
     "jest-css-modules": "2.1.0",
     "lint-staged": "10.0.9",
     "prettier": "2.0.2",

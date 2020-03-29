@@ -63,7 +63,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
@@ -89,7 +89,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
@@ -109,7 +109,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
@@ -135,7 +135,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)

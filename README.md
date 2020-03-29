@@ -69,7 +69,7 @@ import React from 'react';
 import { useMyFormState } from 'my-form-state/react-redux';
 import Form from '@YourFormComponent';
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
   });
@@ -81,10 +81,10 @@ const MyFormContainer = ({ onSubmit }) => {
     onSubmit(result);
   };
 
-  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />;
+  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} />;
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/youthful-dust-yl5vf)
@@ -98,7 +98,7 @@ import React from 'react';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 import Form from '@YourFormComponent';
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
   });
@@ -111,11 +111,11 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-moon-2yj06)
@@ -133,8 +133,8 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+const MyForm = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
   });
@@ -147,11 +147,11 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 ###### Above example With React
@@ -185,7 +185,7 @@ const JSONSchema = {
   required: ['name', 'familyName'],
 };
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: jsonSchema.formSchema(JSONSchema),
@@ -203,7 +203,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 ###### Above example With React
@@ -231,9 +231,7 @@ const Form = ({
     isInitialized,
   },
   onFieldChange,
-  onClear,
   onSubmit,
-  onReset,
 }) => {
   const onFieldChangeHandler = useCallback((e) => onFieldChange(e.target.id, e.target.value), [onFieldChange]);
 
@@ -264,12 +262,6 @@ const Form = ({
       <div>
         <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
           Submit
-        </Button>
-        <Button disabled={!isInitialized} onClick={onClear}>
-          Reset To Empty
-        </Button>
-        <Button disabled={!isInitialized} onClick={onReset}>
-          Reset to default
         </Button>
       </div>
     </form>

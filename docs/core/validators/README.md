@@ -87,7 +87,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
@@ -105,7 +105,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 ###### Above example With React
@@ -194,7 +194,7 @@ const JSONSchema = {
   required: ['name', 'familyName'],
 };
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { name: 'guiyep' },
     formSchema: jsonSchema.formSchema(JSONSchema),
@@ -212,7 +212,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 ###### Above example With React

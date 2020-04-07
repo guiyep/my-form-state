@@ -1,6 +1,6 @@
 {
   "name": "my-form-state",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "forms state management using redux or react or react native with hooks",
   "author": "guiyep",
   "license": "MIT",

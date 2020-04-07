@@ -2,7 +2,7 @@
 
 ![logo](logo.png)
 
-> react/redux form state management library. One library to rule them all.
+> react/react-native/redux form state management library. One library to rule them all.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -119,6 +119,35 @@ export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-moon-2yj06)
+
+## Example with only React-Native, it only changes the UI implementation :)
+
+```js
+import React from 'react';
+import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
+import Form from '@YourFormComponent';
+
+const MyForm = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
+  );
+};
+
+export default MyForm;
+```
+
+[![Edit my-form-state](https://codesandbox.io/s/react-native-xbsyz)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## With YUP form schema.
 
@@ -271,7 +300,13 @@ const Form = ({
 export default Form;
 ```
 
+With React
+
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+With React-Native
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## Storybook
 

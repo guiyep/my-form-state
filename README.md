@@ -147,7 +147,7 @@ const MyForm = ({ onSubmit }) => {
 export default MyForm;
 ```
 
-[![Edit my-form-state](https://codesandbox.io/s/react-native-xbsyz)](https://codesandbox.io/s/react-native-xbsyz)
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## With YUP form schema.
 
@@ -300,11 +300,11 @@ const Form = ({
 export default Form;
 ```
 
-With React
+###### Above example With React
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
 
-With React-Native
+###### Above example With React-Native
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 

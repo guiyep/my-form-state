@@ -1,6 +1,6 @@
 ## The Library
 
-> react/redux form state management library.
+> react/react-native/redux form state management library.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -8,7 +8,7 @@ Form libraries are complex, they don't make a separation between state and UI. Y
 
 This library was built for the sole purpose of unifying and simplifying the way we manage the state with React and/or Redux.
 
-If you use Redux or just React, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with DUCKS under the hood.
+If you use Redux or just React or React Native, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with DUCKS under the hood.
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
@@ -63,7 +63,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
@@ -89,7 +89,7 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/clever-browser-l6tvx)
@@ -109,7 +109,7 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
@@ -135,10 +135,54 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+## Example with only React-Native, it only changes the UI implementation :)
+
+```js
+import React from 'react';
+import yup from 'my-form-state/yup';
+import * as YUP from 'yup';
+import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
+import Form from '@YourFormComponent';
+
+const YUPSchema = YUP.object().shape({
+  alias: YUP.string().required(),
+});
+
+const MyForm = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+    formSchema: yup.formSchema(YUPSchema),
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onEmptyHandler = () => resetForm({ initialState: {} });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form
+      formState={formState}
+      onFieldChange={onFieldChangeHandler}
+      onSubmit={onSubmitHandler}
+      onClear={onEmptyHandler}
+      onReset={resetForm}
+    />
+  );
+};
+
+export default MyForm;
+```
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## Form UI Component Example.
 
@@ -204,5 +248,10 @@ const Form = ({
 
 export default Form;
 ```
+###### Above example With React
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+###### Above example With React-Native
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)

@@ -2,17 +2,17 @@
 
 ![logo](logo.png)
 
-> react/redux form state management library. One library to rule them all.
+> react/react-native/redux form state management library. One library to rule them all.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-This is a React/Redux form state management library with/without hooks.
+This is a React/Redux/React-Native form state management library with/without hooks.
 
 Form libraries are complex, they don't make a separation between state and UI. You always end up building custom components on top of the library components that at the same time are on top of the HTML elements!!!. This makes it complex, hard to maintain and hard to change. Too many abstractions :(
 
 This library was built for the sole purpose of unifying and simplifying the way we manage the state with React and/or Redux.
 
-If you use Redux or just React, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with [Ducks](https://github.com/erikras/ducks-modular-redux) under the hood.
+If you use Redux or just React or React Native, this library is for you! Yes, it is not a typo. You can use this library with one or the other, or both! It doesn't matter since it is implemented with [Ducks](https://github.com/erikras/ducks-modular-redux) under the hood.
 
 It provides a simple hook API that you can initialize in a container component and pass down the form-state to your form.
 
@@ -69,7 +69,7 @@ import React from 'react';
 import { useMyFormState } from 'my-form-state/react-redux';
 import Form from '@YourFormComponent';
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
   });
@@ -81,10 +81,10 @@ const MyFormContainer = ({ onSubmit }) => {
     onSubmit(result);
   };
 
-  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} onReset={resetForm} />;
+  return <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={submitForm} />;
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/youthful-dust-yl5vf)
@@ -98,7 +98,7 @@ import React from 'react';
 import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
 import Form from '@YourFormComponent';
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
   });
@@ -111,14 +111,43 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-moon-2yj06)
+
+## Example with only React-Native, it only changes the UI implementation :)
+
+```js
+import React from 'react';
+import { useMyFormState } from 'my-form-state/react'; <-- THIS IS THE ONLY DIFFERENCE ;) -->
+import Form from '@YourFormComponent';
+
+const MyForm = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+    initialState: { alias: 'guiyep' },
+  });
+
+  const onFieldChangeHandler = (field, value) => updateField({ field, value });
+
+  const onSubmitHandler = async () => {
+    const result = await submitForm();
+    onSubmit(result);
+  };
+
+  return (
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
+  );
+};
+
+export default MyForm;
+```
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## With YUP form schema.
 
@@ -133,8 +162,8 @@ const YUPSchema = YUP.object().shape({
   alias: YUP.string().required(),
 });
 
-const MyFormContainer = ({ onSubmit }) => {
-  const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
+const MyForm = ({ onSubmit }) => {
+  const [formState, { updateField, submitForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: yup.formSchema(YUPSchema),
   });
@@ -147,11 +176,11 @@ const MyFormContainer = ({ onSubmit }) => {
   };
 
   return (
-    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} onReset={resetForm} />
+    <Form formState={formState} onFieldChange={onFieldChangeHandler} onSubmit={onSubmitHandler} />
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
 
 ###### Above example With React
@@ -185,7 +214,7 @@ const JSONSchema = {
   required: ['name', 'familyName'],
 };
 
-const MyFormContainer = ({ onSubmit }) => {
+const MyForm = ({ onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState: { alias: 'guiyep' },
     formSchema: jsonSchema.formSchema(JSONSchema),
@@ -203,8 +232,16 @@ const MyFormContainer = ({ onSubmit }) => {
   );
 };
 
-export default MyFormContainer;
+export default MyForm;
 ```
+
+###### Above example With React
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/strange-northcutt-55xpi)
+
+###### Above example With React-Redux
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/stupefied-albattani-hofp9)
 
 ## Form UI Component Example.
 
@@ -223,9 +260,7 @@ const Form = ({
     isInitialized,
   },
   onFieldChange,
-  onClear,
   onSubmit,
-  onReset,
 }) => {
   const onFieldChangeHandler = useCallback((e) => onFieldChange(e.target.id, e.target.value), [onFieldChange]);
 
@@ -257,12 +292,6 @@ const Form = ({
         <Button disabled={!isSubmittable || isSubmitted} onClick={onSubmit}>
           Submit
         </Button>
-        <Button disabled={!isInitialized} onClick={onClear}>
-          Reset To Empty
-        </Button>
-        <Button disabled={!isInitialized} onClick={onReset}>
-          Reset to default
-        </Button>
       </div>
     </form>
   );
@@ -271,7 +300,13 @@ const Form = ({
 export default Form;
 ```
 
+###### Above example With React
+
 [![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/dark-bash-6l0hy)
+
+###### Above example With React-Native
+
+[![Edit my-form-state](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-native-xbsyz)
 
 ## Storybook
 

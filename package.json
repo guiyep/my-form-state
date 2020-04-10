@@ -1,7 +1,7 @@
 {
   "name": "my-form-state",
-  "version": "1.4.0",
-  "description": "forms state management using redux or react hooks",
+  "version": "1.5.3",
+  "description": "forms state management using redux or react or react native with hooks",
   "author": "guiyep",
   "license": "MIT",
   "repository": "guiyep/my-form-state",
@@ -10,7 +10,7 @@
   "react": "build/react/index.js",
   "redux": "build/redux/index.js",
   "react-redux": "build/react-redux/index.js",
-  "json-schema": "build/json-schema/ajv/index.js",
+  "json-schema": "build/json-schema/index.js",
   "json-schema-custom": "build/json-schema/custom/index.js",
   "yup": "build/yup/index.js",
   "engines": {
@@ -119,6 +119,8 @@
     "core/index.js",
     "react/index.js",
     "redux/index.js",
+    "yup/index.js",
+    "json-schema/index.js",
     "react-redux/index.js"
   ],
   "peerDependencies": {

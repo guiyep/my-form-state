@@ -4,7 +4,7 @@ import yup from '../../core/validators/yup';
 import ajv from '../../core/validators/json-schema/ajv';
 import Form from '../../stories/shared/Form';
 
-const MyFormContainer = ({ initialState, emptyState, schema, jsonSchemaUsingAjv, onFormWasUpdated, onSubmit }) => {
+const MyForm = ({ initialState, emptyState, schema, jsonSchemaUsingAjv, onFormWasUpdated, onSubmit }) => {
   const [formState, { updateField, submitForm, resetForm }] = useMyFormState({
     initialState,
     formSchema: (schema && yup.formSchema(schema)) || (jsonSchemaUsingAjv && ajv.formSchema(jsonSchemaUsingAjv)),
@@ -33,4 +33,4 @@ const MyFormContainer = ({ initialState, emptyState, schema, jsonSchemaUsingAjv,
   );
 };
 
-export default MyFormContainer;
+export default MyForm;

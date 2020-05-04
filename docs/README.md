@@ -1,8 +1,10 @@
 ## The Library
 
-> react/react-native/redux form state management library.
+> This is a React form state management library that works with React/Redux/React-Native.
 
 [![NPM](https://img.shields.io/npm/v/my-form-state.svg)](https://www.npmjs.com/package/my-form-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+This is a React form state management library that works with React/Redux/React-Native.
 
 Form libraries are complex, they don't make a separation between state and UI. You always end up building custom components on top of the library components that at the same time are on top of the HTML elements!!!. This makes it complex, hard to maintain and hard to change. Too many abstractions :(
 
